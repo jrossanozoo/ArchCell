@@ -1,0 +1,205 @@
+
+define class Din_EntidadPaletadecolores_REST as ServicioRestOperacionesEntidad of ServicioRestOperacionesEntidad.prg
+
+	cNamespaceDTOs = "ZooLogicSA.OrganicServiciosREST.Colorytalle.Generados.DTO.Paletadecolores"
+	cClaseResponse = this.cNamespaceDTOs + ".PaletadecoloresResponse"
+	cClaseModelo = "PaletadecoloresModelo"
+	cEntidad = "Paletadecolores"
+	lPermiteModificacion = .f.
+
+	*-----------------------------------------------------------------------------------------
+	protected function ObtenerClavePrimariaEnModeloRequest( toModeloRequest as Object ) as Variant
+		return _Screen.Dotnetbridge.ObtenerValorPropiedad( toModeloRequest, "Codigo" )
+	endfunc
+	
+	*-----------------------------------------------------------------------------------------
+	protected function SetearClavePrimaria( toEntidad as Object, txValor as Variant ) as Void
+		toEntidad.Codigo = txValor 
+	endfunc
+	
+	*-----------------------------------------------------------------------------------------
+	protected function SetearClavePrimariaPorId( toEntidad as Object, tcId as String ) as Void
+		toEntidad.Codigo = tcId
+	endfunc
+	
+	*-----------------------------------------------------------------------------------------
+	function ObtenerClaseRequest( tcOperacion as String ) as String
+		local lcRetorno as String
+		do case
+			case tcOperacion == "Nuevo"
+				lcRetorno = this.cNamespaceDTOs + "." + "PaletadecoloresModelo"
+			case tcOperacion == "Eliminar"
+				lcRetorno = "ZooLogicSA.OrganicServiciosREST.DTO.Base.MostrarBase"
+			case tcOperacion == "Modificar"
+				lcRetorno = this.cNamespaceDTOs + "." + "PaletadecoloresModelo"
+			case tcOperacion == "Mostrar"
+				lcRetorno = "ZooLogicSA.OrganicServiciosREST.DTO.Base.MostrarBase"
+			case tcOperacion == "Listar"
+				lcRetorno = this.cNamespaceDTOs + "." + "PaletadecoloresListarRequest"
+			case "Accion" $ tcOperacion
+				lcRetorno = "ZooLogicSA.OrganicServiciosREST.DTO.Base.MostrarBase"
+			otherwise
+				goServicios.Errores.LevantarExcepcionTexto( tcOperacion + " no implementada.")
+		endcase
+		return lcRetorno
+	endfunc
+	
+	*-----------------------------------------------------------------------------------------
+	function ObtenerClaseResponse( tcOperacion as String ) as String
+		local lcRetorno as String
+		do case
+			case tcOperacion == "Listar"
+				lcRetorno = this.cNamespaceDTOs + "." + "PaletadecoloresListarResponse"
+			otherwise
+				lcRetorno = this.cNamespaceDTOs + "." + "PaletadecoloresModelo"
+		endcase
+		return lcRetorno
+	endfunc
+	
+	*-----------------------------------------------------------------------------------------
+	protected function ObtenerCursorIds( toEntidad as Object, tcFiltro as String, tcOrderBy as String, tnCantidad as Integer, tnPagina as Integer ) as String
+		return toEntidad.oAd.ObtenerIdentificadoresPaginado( tcOrderBy, tcFiltro, tnCantidad, tnPagina )
+	endfunc
+	
+	*-----------------------------------------------------------------------------------------
+	protected function SetearEntidadConDatosModelo( toEntidad as Object, toModeloEnRequest as Object ) as Void
+		with toEntidad
+			this.SetearAtributoModeloEnEntidad( toModeloEnRequest, "Codigo", toEntidad, "Codigo" )
+			this.SetearAtributoModeloEnEntidad( toModeloEnRequest, "Tipoagrupamientopublicaciones", toEntidad, "Tipoagrupamientopublicaciones" )
+			this.SetearAtributoModeloEnEntidad( toModeloEnRequest, "Descripcion", toEntidad, "Descripcion" )
+			this.SetearDetalleAgrupublidetalle( toEntidad, toModeloEnRequest )
+			this.SetearDetalleColores( toEntidad, toModeloEnRequest )
+			this.SetearAtributoModeloEnEntidad( toModeloEnRequest, "Observacion", toEntidad, "Observacion" )
+		endwith
+	endfunc
+	
+	*-----------------------------------------------------------------------------------------
+	protected function SetearDetalleAgrupublidetalle( toEntidad as Object, toModeloEnRequest as Object ) as Void
+		local lnI as Integer, loItem as Object, lnCantidad as Integer, loDetalle as Object 
+		local loError as Exception
+		loDetalle = _Screen.DotNetBridge.ObtenerValorPropiedad( toModeloEnRequest, "Agrupublidetalle" )
+		lnCantidad = _Screen.DotNetBridge.ObtenerValorPropiedad( loDetalle, "Count" )
+		for lnI = 1 to lnCantidad 
+			loItem = _Screen.DotNetBridge.ObtenerValorPropiedad( toModeloEnRequest,"Agrupublidetalle[" + transform( lnI -1 ) + "]" )
+			lnNroItem = _Screen.DotNetBridge.ObtenerValorPropiedad( loItem ,"NroItem" )
+			if isnull( lnNroItem )
+				toEntidad.Agrupublidetalle.LimpiarItem()
+			else
+				try
+					toEntidad.Agrupublidetalle.CargarItem( lnNroItem )
+				Catch To loError
+					toEntidad.Agrupublidetalle.LimpiarItem()
+				endtry 
+			endif
+			this.SetearAtributoModeloEnEntidad( loItem, "Codigo", toEntidad.Agrupublidetalle.oItem, "Codigo" )
+			this.SetearAtributoModeloEnEntidad( loItem, "Agrupamiento", toEntidad.Agrupublidetalle.oItem, "Agrupamiento_PK" )
+			this.SetearAtributoModeloEnEntidad( loItem, "Agrupamientodetalle", toEntidad.Agrupublidetalle.oItem, "AgrupamientoDetalle" )
+			toEntidad.Agrupublidetalle.Actualizar()
+			
+		endfor
+	endfunc
+	
+	*-----------------------------------------------------------------------------------------
+	protected function SetearDetalleColores( toEntidad as Object, toModeloEnRequest as Object ) as Void
+		local lnI as Integer, loItem as Object, lnCantidad as Integer, loDetalle as Object 
+		local loError as Exception
+		loDetalle = _Screen.DotNetBridge.ObtenerValorPropiedad( toModeloEnRequest, "Colores" )
+		lnCantidad = _Screen.DotNetBridge.ObtenerValorPropiedad( loDetalle, "Count" )
+		for lnI = 1 to lnCantidad 
+			loItem = _Screen.DotNetBridge.ObtenerValorPropiedad( toModeloEnRequest,"Colores[" + transform( lnI -1 ) + "]" )
+			lnNroItem = _Screen.DotNetBridge.ObtenerValorPropiedad( loItem ,"NroItem" )
+			if isnull( lnNroItem )
+				toEntidad.Colores.LimpiarItem()
+			else
+				try
+					toEntidad.Colores.CargarItem( lnNroItem )
+				Catch To loError
+					toEntidad.Colores.LimpiarItem()
+				endtry 
+			endif
+			this.SetearAtributoModeloEnEntidad( loItem, "Color", toEntidad.Colores.oItem, "Color_PK" )
+			this.SetearAtributoModeloEnEntidad( loItem, "Colordetalle", toEntidad.Colores.oItem, "ColorDetalle" )
+			this.SetearAtributoModeloEnEntidad( loItem, "Ordenvisual", toEntidad.Colores.oItem, "OrdenVisual" )
+			toEntidad.Colores.Actualizar()
+			
+		endfor
+	endfunc
+	
+	*-----------------------------------------------------------------------------------------
+	protected function CargarModeloResponse( toModeloResponse as Object, toEntidad as Object ) as Void
+		with toModeloResponse
+			this.CargarAtributosFW(toModeloResponse, toEntidad )
+			this.SetearAtributoString( toModeloResponse, "Codigo", toEntidad.Codigo)
+			this.SetearAtributoInteger( toModeloResponse, "tipoagrupamientopublicaciones", toEntidad.tipoagrupamientopublicaciones)
+			this.SetearAtributoString( toModeloResponse, "Descripcion", toEntidad.Descripcion)
+			this.CargarColeccionModeloAgrupublidetalle( toModeloResponse, toEntidad )
+			this.CargarColeccionModeloColores( toModeloResponse, toEntidad )
+			this.SetearAtributo( toModeloResponse, "Observacion", toEntidad.Observacion)
+		endwith
+	endfunc
+	
+	*-----------------------------------------------------------------------------------------
+	protected function CargarColeccionModeloAgrupublidetalle( toModeloResponse as Object, toEntidad as Object ) as Void
+		local lnI as Integer, loColeccionModelo as Object
+		loColeccionModelo = _Screen.DotNetBridge.ObtenerValorPropiedad( toModeloResponse, "Agrupublidetalle" ) 
+		with toEntidad
+			for lnI = 1 to .Agrupublidetalle.Count
+				loItem = _Screen.DotNetBridge.CrearObjeto( this.cNamespaceDTOs + ".ItemAgrupapublic" )
+				this.SetearAtributoString( loItem, "Codigo", .Agrupublidetalle.Item(lnI).Codigo)
+				this.SetearAtributoString( loItem, "Agrupamiento", .Agrupublidetalle.Item(lnI).Agrupamiento_PK)
+				this.SetearAtributoString( loItem, "AgrupamientoDetalle", .Agrupublidetalle.Item(lnI).AgrupamientoDetalle)
+				this.SetearAtributoInteger( loItem, "NroItem", .Agrupublidetalle.Item(lnI).NroItem )
+				_Screen.DotNetBridge.InvocarMetodo( loColeccionModelo, "Add", loItem) 
+			endfor
+		endwith
+	endfunc
+	
+	*-----------------------------------------------------------------------------------------
+	protected function CargarColeccionModeloColores( toModeloResponse as Object, toEntidad as Object ) as Void
+		local lnI as Integer, loColeccionModelo as Object
+		loColeccionModelo = _Screen.DotNetBridge.ObtenerValorPropiedad( toModeloResponse, "Colores" ) 
+		with toEntidad
+			for lnI = 1 to .Colores.Count
+				loItem = _Screen.DotNetBridge.CrearObjeto( this.cNamespaceDTOs + ".ItemColores" )
+				this.SetearAtributoString( loItem, "Codigo", .Colores.Item(lnI).Codigo)
+				this.SetearAtributoString( loItem, "Color", .Colores.Item(lnI).Color_PK)
+				this.SetearAtributoString( loItem, "ColorDetalle", .Colores.Item(lnI).ColorDetalle)
+				this.SetearAtributoInteger( loItem, "OrdenVisual", .Colores.Item(lnI).OrdenVisual)
+				this.SetearAtributoInteger( loItem, "NroItem", .Colores.Item(lnI).NroItem )
+				_Screen.DotNetBridge.InvocarMetodo( loColeccionModelo, "Add", loItem) 
+			endfor
+		endwith
+	endfunc
+	
+	*-----------------------------------------------------------------------------------------
+	protected function ObtenerFiltroSegunModeloRequest( toModeloRequest as Object ) as String
+		local lcCampos as String, lcFiltro as String, loModeloRequest as Object, lcOrden as String, lcXml as String, lnI as Integer, lcOrderBy
+		
+		lcFiltro = "1=1"
+		
+		lcFiltro = this.AgregarCondicionesFWAFiltro( lcFiltro, toModeloRequest )
+		
+		lcFiltro = this.AgregarCondicionAFiltro( lcFiltro, toModeloRequest, "Tipoagrupamientopublicaciones", "TIPAGRUPUB")
+		lcFiltro = this.AgregarCondicionAFiltro( lcFiltro, toModeloRequest, "Descripcion", "DESCRIP")
+		lcFiltro = this.AgregarCondicionAFiltro( lcFiltro, toModeloRequest, "Observacion", "CONVERT( VARCHAR(MAX), MOBS)")
+		return lcFiltro 
+	endfunc
+	
+	*-----------------------------------------------------------------------------------------
+	protected function ObtenerBusquedaSegunModeloRequest( toRequest as Object ) as String
+		local lcCampos as String, lcFiltro as String, loModeloRequest as Object, lcOrden as String, lcXml as String, lnI as Integer, lcOrderBy
+		
+		lcRetorno = ""
+		lcExpresionBusqueda = _screen.DotNetBridge.ObtenerValorPropiedad( toRequest, "ExpresionBusqueda" )
+		
+		if !isnull( lcExpresionBusqueda )
+			lcRetorno = iif( !empty( lcRetorno ), lcRetorno + " OR ", "" ) + "Codigo LIKE '%" + lcExpresionBusqueda + "%'"
+			lcRetorno = iif( !empty( lcRetorno ), lcRetorno + " OR ", "" ) + "Descrip LIKE '%" + lcExpresionBusqueda + "%'"
+			lcRetorno = iif( !empty( lcRetorno ), lcRetorno + " OR ", "" ) + "Mobs LIKE '%" + lcExpresionBusqueda + "%'"
+		endif
+	
+		return lcRetorno 
+	endfunc
+	
+
+enddefine

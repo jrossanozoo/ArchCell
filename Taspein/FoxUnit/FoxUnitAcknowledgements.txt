@@ -1,0 +1,13 @@
+FoxUnit would like to acknowledge those who have contributed to
+or supported FoxUnit.
+
+Contributors:
+
+Jim Erwin (Vision Data Solutions)
+Drew Speedie (Vision Data Solutions)
+Glenn Taylor (Vision Data Solutions)
+Dave Aring (Vision Data Solutions)
+
+Supporters:
+
+The Core TDD steering team at Vision Data Solutions

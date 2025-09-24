@@ -1,0 +1,236 @@
+
+define class Din_EntidadComprobantedecaja_REST as ServicioRestOperacionesEntidad of ServicioRestOperacionesEntidad.prg
+
+	cNamespaceDTOs = "ZooLogicSA.OrganicServiciosREST.Felino.Generados.DTO.Comprobantedecaja"
+	cClaseResponse = this.cNamespaceDTOs + ".ComprobantedecajaResponse"
+	cClaseModelo = "ComprobantedecajaModelo"
+	cEntidad = "Comprobantedecaja"
+	lPermiteModificacion = .f.
+
+	*-----------------------------------------------------------------------------------------
+	protected function ObtenerClavePrimariaEnModeloRequest( toModeloRequest as Object ) as Variant
+		return _Screen.Dotnetbridge.ObtenerValorPropiedad( toModeloRequest, "Identificador" )
+	endfunc
+	
+	*-----------------------------------------------------------------------------------------
+	protected function SetearClavePrimaria( toEntidad as Object, txValor as Variant ) as Void
+		toEntidad.Identificador = txValor 
+	endfunc
+	
+	*-----------------------------------------------------------------------------------------
+	protected function SetearClavePrimariaPorId( toEntidad as Object, tcId as String ) as Void
+		toEntidad.Identificador = tcId
+	endfunc
+	
+	*-----------------------------------------------------------------------------------------
+	function ObtenerClaseRequest( tcOperacion as String ) as String
+		local lcRetorno as String
+		do case
+			case tcOperacion == "Nuevo"
+				lcRetorno = this.cNamespaceDTOs + "." + "ComprobantedecajaModelo"
+			case tcOperacion == "Eliminar"
+				lcRetorno = "ZooLogicSA.OrganicServiciosREST.DTO.Base.MostrarBase"
+			case tcOperacion == "Modificar"
+				lcRetorno = this.cNamespaceDTOs + "." + "ComprobantedecajaModelo"
+			case tcOperacion == "Mostrar"
+				lcRetorno = "ZooLogicSA.OrganicServiciosREST.DTO.Base.MostrarBase"
+			case tcOperacion == "Listar"
+				lcRetorno = this.cNamespaceDTOs + "." + "ComprobantedecajaListarRequest"
+			case "Accion" $ tcOperacion
+				lcRetorno = "ZooLogicSA.OrganicServiciosREST.DTO.Base.MostrarBase"
+			otherwise
+				goServicios.Errores.LevantarExcepcionTexto( tcOperacion + " no implementada.")
+		endcase
+		return lcRetorno
+	endfunc
+	
+	*-----------------------------------------------------------------------------------------
+	function ObtenerClaseResponse( tcOperacion as String ) as String
+		local lcRetorno as String
+		do case
+			case tcOperacion == "Listar"
+				lcRetorno = this.cNamespaceDTOs + "." + "ComprobantedecajaListarResponse"
+			otherwise
+				lcRetorno = this.cNamespaceDTOs + "." + "ComprobantedecajaModelo"
+		endcase
+		return lcRetorno
+	endfunc
+	
+	*-----------------------------------------------------------------------------------------
+	protected function ObtenerCursorIds( toEntidad as Object, tcFiltro as String, tcOrderBy as String, tnCantidad as Integer, tnPagina as Integer ) as String
+		return toEntidad.oAd.ObtenerIdentificadoresPaginado( tcOrderBy, tcFiltro, tnCantidad, tnPagina )
+	endfunc
+	
+	*-----------------------------------------------------------------------------------------
+	protected function SetearEntidadConDatosModelo( toEntidad as Object, toModeloEnRequest as Object ) as Void
+		with toEntidad
+			this.SetearAtributoModeloEnEntidad( toModeloEnRequest, "Origendestino", toEntidad, "Origendestino_PK" )
+			this.SetearAtributoModeloEnEntidad( toModeloEnRequest, "Concepto", toEntidad, "Concepto_PK" )
+			this.SetearAtributoModeloEnEntidad( toModeloEnRequest, "Tipo", toEntidad, "Tipo" )
+			this.SetearAtributoModeloEnEntidad( toModeloEnRequest, "Cajaorigen", toEntidad, "Cajaorigen_PK" )
+			this.SetearAtributoModeloEnEntidad( toModeloEnRequest, "Cajadestino", toEntidad, "Cajadestino_PK" )
+			this.SetearAtributoModeloEnEntidad( toModeloEnRequest, "Vendedor", toEntidad, "Vendedor_PK" )
+			this.SetearAtributoModeloDateTimeEnEntidad( toModeloEnRequest, "Fecha", toEntidad, "Fecha" )
+			this.SetearAtributoModeloEnEntidad( toModeloEnRequest, "Numero", toEntidad, "Numero" )
+			this.SetearAtributoModeloEnEntidad( toModeloEnRequest, "Observacion", toEntidad, "Observacion" )
+			this.SetearDetalleValores( toEntidad, toModeloEnRequest )
+		endwith
+	endfunc
+	
+	*-----------------------------------------------------------------------------------------
+	protected function SetearDetalleCompAfec( toEntidad as Object, toModeloEnRequest as Object ) as Void
+		local lnI as Integer, loItem as Object, lnCantidad as Integer, loDetalle as Object 
+		local loError as Exception
+		loDetalle = _Screen.DotNetBridge.ObtenerValorPropiedad( toModeloEnRequest, "CompAfec" )
+		lnCantidad = _Screen.DotNetBridge.ObtenerValorPropiedad( loDetalle, "Count" )
+		for lnI = 1 to lnCantidad 
+			loItem = _Screen.DotNetBridge.ObtenerValorPropiedad( toModeloEnRequest,"CompAfec[" + transform( lnI -1 ) + "]" )
+			lnNroItem = _Screen.DotNetBridge.ObtenerValorPropiedad( loItem ,"NroItem" )
+			if isnull( lnNroItem )
+				toEntidad.CompAfec.LimpiarItem()
+			else
+				try
+					toEntidad.CompAfec.CargarItem( lnNroItem )
+				Catch To loError
+					toEntidad.CompAfec.LimpiarItem()
+				endtry 
+			endif
+			this.SetearAtributoModeloEnEntidad( loItem, "Tipocompcaracter", toEntidad.CompAfec.oItem, "TipoCompCaracter" )
+			this.SetearAtributoModeloDateTimeEnEntidad( loItem, "Fecha", toEntidad.CompAfec.oItem, "Fecha" )
+			this.SetearAtributoModeloEnEntidad( loItem, "Total", toEntidad.CompAfec.oItem, "Total" )
+			this.SetearAtributoModeloEnEntidad( loItem, "Tipo", toEntidad.CompAfec.oItem, "Tipo" )
+			this.SetearAtributoModeloEnEntidad( loItem, "Interviniente", toEntidad.CompAfec.oItem, "Interviniente" )
+			this.SetearAtributoModeloEnEntidad( loItem, "Origen", toEntidad.CompAfec.oItem, "Origen" )
+			toEntidad.CompAfec.Actualizar()
+			
+		endfor
+	endfunc
+	
+	*-----------------------------------------------------------------------------------------
+	protected function SetearDetalleValores( toEntidad as Object, toModeloEnRequest as Object ) as Void
+		local lnI as Integer, loItem as Object, lnCantidad as Integer, loDetalle as Object 
+		local loError as Exception
+		local lcValor as String, llEsTarjeta as Boolean, llEsChequeDeTercero as Boolean, llEsChequePropio as Boolean 
+		local llDebePedirDatosCheque as Boolean, llDebeSetearNumeroInternoCheque as Boolean 
+		loDetalle = _Screen.DotNetBridge.ObtenerValorPropiedad( toModeloEnRequest, "Valores" )
+		lnCantidad = _Screen.DotNetBridge.ObtenerValorPropiedad( loDetalle, "Count" )
+		for lnI = 1 to lnCantidad 
+			loItem = _Screen.DotNetBridge.ObtenerValorPropiedad( toModeloEnRequest,"Valores[" + transform( lnI -1 ) + "]" )
+			lnNroItem = _Screen.DotNetBridge.ObtenerValorPropiedad( loItem ,"NroItem" )
+			if isnull( lnNroItem )
+				toEntidad.Valores.LimpiarItem()
+			else
+				try
+					toEntidad.Valores.CargarItem( lnNroItem )
+				Catch To loError
+					toEntidad.Valores.LimpiarItem()
+				endtry 
+			endif
+			this.SetearAtributoModeloEnEntidad( loItem, "Valor", toEntidad.Valores.oItem, "Valor_PK" )
+			this.SetearAtributoModeloEnEntidad( loItem, "Valordetalle", toEntidad.Valores.oItem, "ValorDetalle" )
+			this.SetearAtributoModeloDateTimeEnEntidad( loItem, "Fecha", toEntidad.Valores.oItem, "Fecha" )
+			this.SetearAtributoModeloEnEntidad( loItem, "Numerointerno", toEntidad.Valores.oItem, "NumeroInterno" )
+			this.SetearAtributoModeloEnEntidad( loItem, "Monto", toEntidad.Valores.oItem, "Monto" )
+			toEntidad.Valores.Actualizar()
+			
+		endfor
+	endfunc
+	
+	*-----------------------------------------------------------------------------------------
+	protected function CargarModeloResponse( toModeloResponse as Object, toEntidad as Object ) as Void
+		with toModeloResponse
+			this.CargarAtributosFW(toModeloResponse, toEntidad )
+			this.CargarColeccionModeloCompAfec( toModeloResponse, toEntidad )
+			this.SetearAtributoString( toModeloResponse, "OrigenDestino", toEntidad.OrigenDestino_PK)
+			this.SetearAtributoString( toModeloResponse, "Concepto", toEntidad.Concepto_PK)
+			this.SetearAtributoInteger( toModeloResponse, "Tipo", toEntidad.Tipo)
+			this.SetearAtributoInteger( toModeloResponse, "CajaOrigen", toEntidad.CajaOrigen_PK)
+			this.SetearAtributoInteger( toModeloResponse, "CajaDestino", toEntidad.CajaDestino_PK)
+			this.SetearAtributoString( toModeloResponse, "Vendedor", toEntidad.Vendedor_PK)
+			this.SetearAtributoDateTime( toModeloResponse, "Fecha", toEntidad.Fecha)
+			this.SetearAtributoString( toModeloResponse, "Identificador", toEntidad.Identificador)
+			this.SetearAtributoLong( toModeloResponse, "Numero", toEntidad.Numero)
+			this.SetearAtributo( toModeloResponse, "Observacion", toEntidad.Observacion)
+			this.CargarColeccionModeloValores( toModeloResponse, toEntidad )
+		endwith
+	endfunc
+	
+	*-----------------------------------------------------------------------------------------
+	protected function CargarColeccionModeloCompAfec( toModeloResponse as Object, toEntidad as Object ) as Void
+		local lnI as Integer, loColeccionModelo as Object
+		loColeccionModelo = _Screen.DotNetBridge.ObtenerValorPropiedad( toModeloResponse, "CompAfec" ) 
+		with toEntidad
+			for lnI = 1 to .CompAfec.Count
+				loItem = _Screen.DotNetBridge.CrearObjeto( this.cNamespaceDTOs + ".ItemComprobante" )
+				this.SetearAtributoString( loItem, "Codigo", .CompAfec.Item(lnI).Codigo)
+				this.SetearAtributoString( loItem, "TipoCompCaracter", .CompAfec.Item(lnI).TipoCompCaracter)
+				this.SetearAtributoDatetime( loItem, "Fecha", .CompAfec.Item(lnI).Fecha)
+				this.SetearAtributoDecimal( loItem, "Total", .CompAfec.Item(lnI).Total)
+				this.SetearAtributoString( loItem, "Tipo", .CompAfec.Item(lnI).Tipo)
+				this.SetearAtributoString( loItem, "Interviniente", .CompAfec.Item(lnI).Interviniente)
+				this.SetearAtributoString( loItem, "Origen", .CompAfec.Item(lnI).Origen)
+				this.SetearAtributoInteger( loItem, "NroItem", .CompAfec.Item(lnI).NroItem )
+				_Screen.DotNetBridge.InvocarMetodo( loColeccionModelo, "Add", loItem) 
+			endfor
+		endwith
+	endfunc
+	
+	*-----------------------------------------------------------------------------------------
+	protected function CargarColeccionModeloValores( toModeloResponse as Object, toEntidad as Object ) as Void
+		local lnI as Integer, loColeccionModelo as Object
+		loColeccionModelo = _Screen.DotNetBridge.ObtenerValorPropiedad( toModeloResponse, "Valores" ) 
+		with toEntidad
+			for lnI = 1 to .Valores.Count
+				loItem = _Screen.DotNetBridge.CrearObjeto( this.cNamespaceDTOs + ".ItemValorescaja" )
+				this.SetearAtributoString( loItem, "Numero", .Valores.Item(lnI).Numero)
+				this.SetearAtributoString( loItem, "Valor", .Valores.Item(lnI).Valor_PK)
+				this.SetearAtributoString( loItem, "ValorDetalle", .Valores.Item(lnI).ValorDetalle)
+				this.SetearAtributoDatetime( loItem, "Fecha", .Valores.Item(lnI).Fecha)
+				this.SetearAtributoString( loItem, "NumeroInterno", .Valores.Item(lnI).NumeroInterno)
+				this.SetearAtributoDecimal( loItem, "Monto", .Valores.Item(lnI).Monto)
+				this.SetearDatosExtraDelItem( loItem, toEntidad, lnI )
+				this.SetearAtributoInteger( loItem, "NroItem", .Valores.Item(lnI).NroItem )
+				_Screen.DotNetBridge.InvocarMetodo( loColeccionModelo, "Add", loItem) 
+			endfor
+		endwith
+	endfunc
+	
+	*-----------------------------------------------------------------------------------------
+	protected function ObtenerFiltroSegunModeloRequest( toModeloRequest as Object ) as String
+		local lcCampos as String, lcFiltro as String, loModeloRequest as Object, lcOrden as String, lcXml as String, lnI as Integer, lcOrderBy
+		
+		lcFiltro = "1=1"
+		
+		lcFiltro = this.AgregarCondicionesFWAFiltro( lcFiltro, toModeloRequest )
+		
+		lcFiltro = this.AgregarCondicionAFiltro( lcFiltro, toModeloRequest, "Origendestino", "ORIGDEST")
+		lcFiltro = this.AgregarCondicionAFiltro( lcFiltro, toModeloRequest, "Concepto", "CONCEPTO")
+		lcFiltro = this.AgregarCondicionAFiltro( lcFiltro, toModeloRequest, "Tipo", "TIPO")
+		lcFiltro = this.AgregarCondicionAFiltro( lcFiltro, toModeloRequest, "Cajaorigen", "CAJAORIG")
+		lcFiltro = this.AgregarCondicionAFiltro( lcFiltro, toModeloRequest, "Cajadestino", "CAJADEST")
+		lcFiltro = this.AgregarCondicionAFiltro( lcFiltro, toModeloRequest, "Vendedor", "VENDEDOR")
+		lcFiltro = this.AgregarCondicionAFiltro( lcFiltro, toModeloRequest, "Fecha", "FECHA")
+		lcFiltro = this.AgregarCondicionAFiltro( lcFiltro, toModeloRequest, "Numero", "NUMERO")
+		lcFiltro = this.AgregarCondicionAFiltro( lcFiltro, toModeloRequest, "Observacion", "CONVERT( VARCHAR(MAX), COBS)")
+		return lcFiltro 
+	endfunc
+	
+	*-----------------------------------------------------------------------------------------
+	protected function ObtenerBusquedaSegunModeloRequest( toRequest as Object ) as String
+		local lcCampos as String, lcFiltro as String, loModeloRequest as Object, lcOrden as String, lcXml as String, lnI as Integer, lcOrderBy
+		
+		lcRetorno = ""
+		lcExpresionBusqueda = _screen.DotNetBridge.ObtenerValorPropiedad( toRequest, "ExpresionBusqueda" )
+		
+		if !isnull( lcExpresionBusqueda )
+			lcRetorno = iif( !empty( lcRetorno ), lcRetorno + " OR ", "" ) + "Origdest LIKE '%" + lcExpresionBusqueda + "%'"
+			lcRetorno = iif( !empty( lcRetorno ), lcRetorno + " OR ", "" ) + "Concepto LIKE '%" + lcExpresionBusqueda + "%'"
+			lcRetorno = iif( !empty( lcRetorno ), lcRetorno + " OR ", "" ) + "Vendedor LIKE '%" + lcExpresionBusqueda + "%'"
+			lcRetorno = iif( !empty( lcRetorno ), lcRetorno + " OR ", "" ) + "Cobs LIKE '%" + lcExpresionBusqueda + "%'"
+		endif
+	
+		return lcRetorno 
+	endfunc
+	
+
+enddefine

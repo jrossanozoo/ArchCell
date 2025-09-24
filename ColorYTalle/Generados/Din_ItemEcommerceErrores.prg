@@ -1,0 +1,310 @@
+
+define class Din_ItemECOMMERCEErrores as ItemActivo of ItemActivo.prg
+
+	cNombre = 'ECOMMERCE'
+	NROITEM = 0
+	lHabilitarNROITEM = .T.
+	cAtributoPK = 'Codigo'
+	Codigo = []
+	lHabilitarCodigo = .T.
+	OpeError = 0
+	lHabilitarOpeError = .T.
+	StoreOrderID = []
+	lHabilitarStoreOrderID = .T.
+	oColeccionVS = null
+	oColeccionVSFW = null
+	lKitPermiteColorYTalle = .f.
+	*-----------------------------------------------------------------------------------------
+	function RestaurarGenHabilitar() as Void
+		this.lHabilitarNROITEM = .T.
+		this.lHabilitarCodigo = .T.
+		this.lHabilitarOpeError = .T.
+		this.lHabilitarStoreOrderID = .T.
+	endfunc
+
+	*--------------------------------------------------------------------------------------------------------
+	function Inicializar() as boolean
+		dodefault()
+		this.oColeccionVSFW = _screen.zoo.CrearObjeto( 'zoocoleccion' )
+		this.oColeccionVS = _screen.zoo.CrearObjeto( 'zoocoleccion' )
+		oICol = goServicios.SaltosDeCampoYValoresSugeridos.ObtenerValorSugeridoDeUnaEntidadDetalle( 'ECOMMERCE', 'Errores')
+		for each oItmUs in oICol
+			this.oColeccionVS.Agregar( '.ValorSugerido' + alltrim(oItmUs.atributo) + '()' )
+			try
+				this.oColeccionVSFW.Quitar( alltrim( proper( oItmUs.atributo ) ) )
+			catch to loError
+			endtry
+		endfor
+	endfunc
+
+	*--------------------------------------------------------------------------------------------------------
+	function Nroitem_Assign( txVal as variant ) as void
+
+		Local lxValOld As Variant
+		lxValOld = this.Nroitem
+		local lxVal as Variant
+		lxVal = txVal
+
+		if This.CargaManual()
+			if this.Validar_Nroitem( lxVal )
+				if ( this.lHabilitarNroitem or this.lEstaSeteandoValorSugerido or lxValOld == lxVal)
+					this.EventoAntesDeSetear( This, 'Nroitem', lxValOld, lxVal  )
+					this.Setear_Nroitem( lxVal )
+				this.EventoDespuesDeSetear( This, 'Nroitem', lxValOld, lxVal  )
+					If lxValOld != lxVal
+						If This.PuedeEjecutarHaCambiado()
+							this.HaCambiado( 'Nroitem', This )
+						Endif
+					EndIf
+				else
+					this.Nroitem = lxValOld
+					goServicios.Errores.LevantarExcepcion( "No se puede cambiar este valor (Entidad: Plataformas de ecommerce - Atributo: Nroitem)" )
+				endif 
+			EndIf
+		Else
+			This.Setear_Nroitem( lxVal ) 
+		EndIf
+		dodefault( lxVal )
+
+	endfunc
+
+	*--------------------------------------------------------------------------------------------------------
+	function Opeerror_Assign( txVal as variant ) as void
+
+		Local lxValOld As Variant
+		lxValOld = this.Opeerror
+		local lxVal as Variant
+		lxVal = txVal
+
+		if This.CargaManual()
+			if this.Validar_Opeerror( lxVal )
+				if ( this.lHabilitarOpeerror or this.lEstaSeteandoValorSugerido or lxValOld == lxVal)
+					this.EventoAntesDeSetear( This, 'Opeerror', lxValOld, lxVal  )
+					this.Setear_Opeerror( lxVal )
+				this.EventoDespuesDeSetear( This, 'Opeerror', lxValOld, lxVal  )
+					If lxValOld != lxVal
+						If This.PuedeEjecutarHaCambiado()
+							this.HaCambiado( 'Opeerror', This )
+						Endif
+					EndIf
+				else
+					this.Opeerror = lxValOld
+					goServicios.Errores.LevantarExcepcion( "No se puede cambiar este valor (Entidad: Plataformas de ecommerce - Atributo: Opeerror)" )
+				endif 
+			EndIf
+		Else
+			This.Setear_Opeerror( lxVal ) 
+		EndIf
+		dodefault( lxVal )
+
+	endfunc
+
+	*--------------------------------------------------------------------------------------------------------
+	function Storeorderid_Assign( txVal as variant ) as void
+
+		Local lxValOld As Variant
+		lxValOld = this.Storeorderid
+		local lxVal as Variant
+		lxVal = txVal
+
+		if This.CargaManual()
+			if this.Validar_Storeorderid( lxVal )
+				if ( this.lHabilitarStoreorderid or this.lEstaSeteandoValorSugerido or alltrim( lxValOld ) == alltrim( lxVal ))
+					this.EventoAntesDeSetear( This, 'Storeorderid', lxValOld, lxVal  )
+					this.Setear_Storeorderid( lxVal )
+				this.EventoDespuesDeSetear( This, 'Storeorderid', lxValOld, lxVal  )
+					If lxValOld != lxVal
+						If This.PuedeEjecutarHaCambiado()
+							this.HaCambiado( 'Storeorderid', This )
+						Endif
+					EndIf
+				else
+					this.Storeorderid = lxValOld
+					goServicios.Errores.LevantarExcepcion( "No se puede cambiar este valor (Entidad: Plataformas de ecommerce - Atributo: Storeorderid)" )
+				endif 
+			EndIf
+		Else
+			This.Setear_Storeorderid( lxVal ) 
+		EndIf
+		dodefault( lxVal )
+
+	endfunc
+
+	*--------------------------------------------------------------------------------------------------------
+	function Setear_Nroitem( txVal as variant ) as void
+
+		this.Nroitem = txVal
+		dodefault( txVal )
+
+	endfunc
+
+	*--------------------------------------------------------------------------------------------------------
+	function Setear_Opeerror( txVal as variant ) as void
+
+		this.Opeerror = txVal
+		dodefault( txVal )
+
+	endfunc
+
+	*--------------------------------------------------------------------------------------------------------
+	function Setear_Storeorderid( txVal as variant ) as void
+
+		this.Storeorderid = txVal
+		dodefault( txVal )
+
+	endfunc
+
+	*--------------------------------------------------------------------------------------------------------
+	function Validar_Nroitem( txVal as variant ) as Boolean
+
+		Return dodefault( txVal ) 
+
+	endfunc
+
+	*--------------------------------------------------------------------------------------------------------
+	function Validar_Opeerror( txVal as variant ) as Boolean
+
+		Return dodefault( txVal ) 
+
+	endfunc
+
+	*--------------------------------------------------------------------------------------------------------
+	function Validar_Storeorderid( txVal as variant ) as Boolean
+
+		Return dodefault( txVal ) 
+
+	endfunc
+
+	*--------------------------------------------------------------------------------------------------------
+	function Limpiar( tlForzar as boolean ) as void
+		local loError as Exception
+		with this
+			Try
+				.lLimpiando = .t.
+				dodefault( tlForzar )
+				.LimpiarFlag()
+
+				.Codigo = []
+				.Opeerror = 0
+				.Storeorderid = []
+				.LimpiarAtributosVirtuales()
+			catch to loError
+				goServicios.Errores.LevantarExcepcion( loError )
+			finally
+				.lLimpiando = .f.
+				if tlForzar
+				else
+					.SetearValoresSugeridos()
+				endif
+			EndTry
+		endwith
+	endfunc
+	*--------------------------------------------------------------------------------------------------------
+	Function SetearValoresSugeridos() as Void
+		With This
+			.lEstaSeteandoValorSugerido = .T.
+				if this.oColeccionVSFW.Buscar( "Fecha" )
+					lcValorSugeridoFecha = this.oColeccionVSFW.Item[ "Fecha" ]
+					&lcValorSugeridoFecha
+				endif
+				if this.oColeccionVSFW.Buscar( "Listadeprecios" )
+					lcValorSugeridoListaDePrecios = this.oColeccionVSFW.Item[ "Listadeprecios" ]
+					&lcValorSugeridoListaDePrecios
+				endif
+				for each ValorSugeridoPorEntidadSaltoDeCampo in this.oColeccionVS
+					&ValorSugeridoPorEntidadSaltoDeCampo
+				endfor
+			.lEstaSeteandoValorSugerido = .F.
+		EndWith
+	EndFunc
+	*--------------------------------------------------------------------------------------------------------
+	Function ValorSugeridoOpeerror() as void
+		local lcExpresionValorSugeridoDefinidoPorElUsuario as String, lvValorSugeridoDefinidoPorElUsuario as Variant, loError as Object, loEx as Object, loExTipoDato as Object
+		lcExpresionValorSugeridoDefinidoPorElUsuario = null
+		with this
+			lcExpresionValorSugeridoDefinidoPorElUsuario = goServicios.SaltosDeCampoYValoresSugeridos.ObtenerValorSugerido( "ECOMMERCE", "Errores", "Opeerror" )
+			if !isnull( lcExpresionValorSugeridoDefinidoPorElUsuario )
+				if !empty( lcExpresionValorSugeridoDefinidoPorElUsuario )
+					try
+						lvValorSugeridoDefinidoPorElUsuario = &lcExpresionValorSugeridoDefinidoPorElUsuario
+						if vartype( lvValorSugeridoDefinidoPorElUsuario ) # "N"
+							loExTipoDato = newobject("zooexception", "zooexception.prg" )
+							loExTipoDato.Message = "Error de tipo de dato."
+							loExTipoDato.Throw()
+						endif
+						This.EventoEstaSeteandoValorSugerido( 'Opeerror' )
+						.Opeerror = lvValorSugeridoDefinidoPorElUsuario
+					catch to loError
+						loEx = newobject("zooexception", "zooexception.prg" )
+						loEx.Grabar( loError )
+						loEx.AgregarInformacion( iif( type( "loError.UserValue.Message" ) == "C", loError.UserValue.Message, loError.Message ) )
+						loEx.AgregarInformacion( "Se produjo un error al intentar asignar el valor sugerido " + lcExpresionValorSugeridoDefinidoPorElUsuario + " del atributo Número para el detalle Errores." + chr( 10 ) + "Verifique el valor especificado en la entidad Comportamiento de atributos." + chr( 10 ) + "El tipo de dato del atributo es numérico." )
+						goServicios.Errores.LevantarExcepcion( loEx )
+					endtry
+				endif
+			endif
+		endwith
+	endfunc
+
+	*--------------------------------------------------------------------------------------------------------
+	function EventoEstaSeteandoValorSugerido( lcAtributo as String ) as Void
+	endfunc
+
+	*-----------------------------------------------------------------------------------------
+	function CargaManual() as Boolean
+		return !this.lLimpiando and !this.lCargando and !this.lDestroy
+	endfunc
+
+	*--------------------------------------------------------------------------------------------------------
+	function Destroy()
+
+		this.lDestroy = .t.
+		dodefault()
+	endfunc
+
+	*--------------------------------------------------------------------------------------------------------
+	function ValidarAtributoComponente( txVal as variant, tcAtributo as string ) as boolean
+		local llRetorno as Boolean
+		llRetorno = .T.
+		
+		
+		Return llRetorno
+	endfunc
+	*--------------------------------------------------------------------------------------------------------
+	function LimpiarAtributosVirtuales() as void
+		dodefault()
+		with this
+		endwith
+	endfunc
+	
+	*--------------------------------------------------------------------------------------------------------
+	function ObtenerAtributosCombinacion() as object
+		local loColRetorno as object
+		
+		loColRetorno = _screen.zoo.CrearObjeto( 'zooColeccion' )
+		return loColRetorno
+	endfunc
+
+	*--------------------------------------------------------------------------------------------------------
+	function ValidarExistenciaCamposFijos() as Boolean
+		Local llRetorno as boolean
+		llRetorno = .t.
+
+		return llRetorno
+
+	endfunc
+
+	*--------------------------------------------------------------------------------------------------------
+	function habilitar( tlHabilitar as boolean ) as void
+		this.lHabilitarNROITEM = tlHabilitar
+		this.lHabilitarCodigo = tlHabilitar
+		this.lHabilitarOpeError = tlHabilitar
+		this.lHabilitarStoreOrderID = tlHabilitar
+	endfunc
+
+	*--------------------------------------------------------------------------------------------------------
+	function ObtenerNombre() as String
+		return [ITEMERRORESECOMMERCE]
+	endfunc
+
+enddefine

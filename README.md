@@ -1,2 +1,12 @@
-# ArchCell
-Investigacion para el uso de visual foxpro desde visual studio code y copilot como agente IA
+## ArchCell
+
+### Investigación para el uso de visual foxpro desde visual studio code y copilot como agente IA
+
+
+En este espacio de trabajo hay una solución desarrollada en el lenguaje visual foxpro version 9.0. Esta construida con un framework desarrollado internamente denominado Organic.
+La solución tiene una estructura dividida en carpetas por proyectos, el proyecto Nucleo que incluye las clases base y servicios de la aplicacion, el proyecto Dibujante que contiene los elementos visuales, el proyecto Felino que contiene las entidades base de todas las aplicaciones y el proyecto ColorYTalle que es una aplicaciones con las entidades específicas; cada proyecto correspondo a una carpeta, Nucleo a Nucleo, Dibujante a Dibujante, Felino a Felino y ColorYTalle a Dragonfish que es el producto final. 
+Las dimensiones y los hechos se construyen mediante una definición que crea entidades con un esquema generado para cada proyecto que estan ubicados en la carpeta generados de cada uno; en Felino exite Felino\Generados, y el resto en ColoryTalle\Generados, Nucleo\Generados y Dibujante\Generados.
+La estructura de la aplicación consta de una clases base de la que heredan los distintos tipos de clases. Los servicios son clases globales que pueden accederse desde cualquier entidad; ejemplo de servicios son goCaja, goMensajes y goDatos. Algunas se puede acceder desde goServicios como goServicios.Mensajes y goServicios.Datos. Los componentes son clases que van asociadas a entidades o a ítems que son los elementos de las colecciones en las entidades de hechos. Casos de componentes son oComponenteFiscal y oCompSenias de la entidad factura, oCompCajero del ítem de la coleccion de valores de la factura y oCompPrecios y oCompStock del ítem de la coleccion de articulos de la factura.
+La entidad tiene las reglas de negocio y contiene la capa de presentacion (propiedad oKontroler) y la de acceso a datos (propiedad oAD). 
+El esquema de herencia de las entidades son una clase base (entidad.prg), una clase generada con la nomenclatura din_Entidad seguido del nombre de la clase y esta puede heredar directamente de entidad (como el caso de la entidad Cliente) o de una clase intermedia (como el caso de la entidad Factura que hereda de ent_ComprobanteDeVentasConValores.prg)
+Convenciones de escritura de código: Las indentaciones se realizan con 1 carácter tabulador, no se usan espacion. Cada clase, funcion o procedimiento tiene su correspondiente cierre a la misma alguna de la definición (pares Define Class - Enddefine, Funcion - EndFunc, Procedure - EndProc), lo mismo para los condicionales (if - else - endif, do case - case - endcase) y los bucles (with - endwith, for - endfor, do while - enddo) En todos estos casos el código interno esta indentado con 1 carácter tabulador

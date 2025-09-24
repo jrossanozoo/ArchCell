@@ -1,0 +1,175 @@
+
+define class Din_EntidadMinimoreposicion_REST as ServicioRestOperacionesEntidad of ServicioRestOperacionesEntidad.prg
+
+	cNamespaceDTOs = "ZooLogicSA.OrganicServiciosREST.Felino.Generados.DTO.Minimoreposicion"
+	cClaseResponse = this.cNamespaceDTOs + ".MinimoreposicionResponse"
+	cClaseModelo = "MinimoreposicionModelo"
+	cEntidad = "Minimoreposicion"
+	lPermiteModificacion = .f.
+
+	*-----------------------------------------------------------------------------------------
+	protected function ObtenerClavePrimariaEnModeloRequest( toModeloRequest as Object ) as Variant
+		return _Screen.Dotnetbridge.ObtenerValorPropiedad( toModeloRequest, "Codigo" )
+	endfunc
+	
+	*-----------------------------------------------------------------------------------------
+	protected function SetearClavePrimaria( toEntidad as Object, txValor as Variant ) as Void
+		toEntidad.Codigo = txValor 
+	endfunc
+	
+	*-----------------------------------------------------------------------------------------
+	protected function SetearClavePrimariaPorId( toEntidad as Object, tcId as String ) as Void
+		toEntidad.Codigo = tcId
+	endfunc
+	
+	*-----------------------------------------------------------------------------------------
+	function ObtenerClaseRequest( tcOperacion as String ) as String
+		local lcRetorno as String
+		do case
+			case tcOperacion == "Nuevo"
+				lcRetorno = this.cNamespaceDTOs + "." + "MinimoreposicionModelo"
+			case tcOperacion == "Eliminar"
+				lcRetorno = "ZooLogicSA.OrganicServiciosREST.DTO.Base.MostrarBase"
+			case tcOperacion == "Modificar"
+				lcRetorno = this.cNamespaceDTOs + "." + "MinimoreposicionModelo"
+			case tcOperacion == "Mostrar"
+				lcRetorno = "ZooLogicSA.OrganicServiciosREST.DTO.Base.MostrarBase"
+			case tcOperacion == "Listar"
+				lcRetorno = this.cNamespaceDTOs + "." + "MinimoreposicionListarRequest"
+			case "Accion" $ tcOperacion
+				lcRetorno = "ZooLogicSA.OrganicServiciosREST.DTO.Base.MostrarBase"
+			otherwise
+				goServicios.Errores.LevantarExcepcionTexto( tcOperacion + " no implementada.")
+		endcase
+		return lcRetorno
+	endfunc
+	
+	*-----------------------------------------------------------------------------------------
+	function ObtenerClaseResponse( tcOperacion as String ) as String
+		local lcRetorno as String
+		do case
+			case tcOperacion == "Listar"
+				lcRetorno = this.cNamespaceDTOs + "." + "MinimoreposicionListarResponse"
+			otherwise
+				lcRetorno = this.cNamespaceDTOs + "." + "MinimoreposicionModelo"
+		endcase
+		return lcRetorno
+	endfunc
+	
+	*-----------------------------------------------------------------------------------------
+	protected function ObtenerCursorIds( toEntidad as Object, tcFiltro as String, tcOrderBy as String, tnCantidad as Integer, tnPagina as Integer ) as String
+		return toEntidad.oAd.ObtenerIdentificadoresPaginado( tcOrderBy, tcFiltro, tnCantidad, tnPagina )
+	endfunc
+	
+	*-----------------------------------------------------------------------------------------
+	protected function SetearEntidadConDatosModelo( toEntidad as Object, toModeloEnRequest as Object ) as Void
+		with toEntidad
+			this.SetearAtributoModeloEnEntidad( toModeloEnRequest, "Codigo", toEntidad, "Codigo" )
+			this.SetearAtributoModeloEnEntidad( toModeloEnRequest, "Numero", toEntidad, "Numero" )
+			this.SetearAtributoModeloDateTimeEnEntidad( toModeloEnRequest, "Fecha", toEntidad, "Fecha" )
+			this.SetearAtributoModeloDateTimeEnEntidad( toModeloEnRequest, "Vigencia", toEntidad, "Vigencia" )
+			this.SetearAtributoModeloEnEntidad( toModeloEnRequest, "Observacion", toEntidad, "Observacion" )
+			this.SetearDetalleMinrepo( toEntidad, toModeloEnRequest )
+		endwith
+	endfunc
+	
+	*-----------------------------------------------------------------------------------------
+	protected function SetearDetalleMinRepo( toEntidad as Object, toModeloEnRequest as Object ) as Void
+		local lnI as Integer, loItem as Object, lnCantidad as Integer, loDetalle as Object 
+		local loError as Exception
+		loDetalle = _Screen.DotNetBridge.ObtenerValorPropiedad( toModeloEnRequest, "MinRepo" )
+		lnCantidad = _Screen.DotNetBridge.ObtenerValorPropiedad( loDetalle, "Count" )
+		for lnI = 1 to lnCantidad 
+			loItem = _Screen.DotNetBridge.ObtenerValorPropiedad( toModeloEnRequest,"MinRepo[" + transform( lnI -1 ) + "]" )
+			lnNroItem = _Screen.DotNetBridge.ObtenerValorPropiedad( loItem ,"NroItem" )
+			if isnull( lnNroItem )
+				toEntidad.MinRepo.LimpiarItem()
+			else
+				try
+					toEntidad.MinRepo.CargarItem( lnNroItem )
+				Catch To loError
+					toEntidad.MinRepo.LimpiarItem()
+				endtry 
+			endif
+			this.SetearAtributoModeloEnEntidad( loItem, "Articulo", toEntidad.MinRepo.oItem, "Articulo_PK" )
+			this.SetearAtributoModeloEnEntidad( loItem, "Articulodetalle", toEntidad.MinRepo.oItem, "ArticuloDetalle" )
+			this.SetearAtributoModeloEnEntidad( loItem, "Color", toEntidad.MinRepo.oItem, "Color_PK" )
+			this.SetearAtributoModeloEnEntidad( loItem, "Colordetalle", toEntidad.MinRepo.oItem, "ColorDetalle" )
+			this.SetearAtributoModeloEnEntidad( loItem, "Talle", toEntidad.MinRepo.oItem, "Talle" )
+			this.SetearAtributoModeloEnEntidad( loItem, "Cantidadactual", toEntidad.MinRepo.oItem, "CantidadActual" )
+			this.SetearAtributoModeloEnEntidad( loItem, "Cantidad", toEntidad.MinRepo.oItem, "Cantidad" )
+			this.SetearAtributoModeloEnEntidad( loItem, "Maxactual", toEntidad.MinRepo.oItem, "MaxActual" )
+			this.SetearAtributoModeloEnEntidad( loItem, "Maxnuevo", toEntidad.MinRepo.oItem, "MaxNuevo" )
+			toEntidad.MinRepo.Actualizar()
+			
+		endfor
+	endfunc
+	
+	*-----------------------------------------------------------------------------------------
+	protected function CargarModeloResponse( toModeloResponse as Object, toEntidad as Object ) as Void
+		with toModeloResponse
+			this.CargarAtributosFW(toModeloResponse, toEntidad )
+			this.SetearAtributoString( toModeloResponse, "Codigo", toEntidad.Codigo)
+			this.SetearAtributoInteger( toModeloResponse, "Numero", toEntidad.Numero)
+			this.SetearAtributoDateTime( toModeloResponse, "Fecha", toEntidad.Fecha)
+			this.SetearAtributoDateTime( toModeloResponse, "Vigencia", toEntidad.Vigencia)
+			this.SetearAtributo( toModeloResponse, "Observacion", toEntidad.Observacion)
+			this.CargarColeccionModeloMinRepo( toModeloResponse, toEntidad )
+		endwith
+	endfunc
+	
+	*-----------------------------------------------------------------------------------------
+	protected function CargarColeccionModeloMinRepo( toModeloResponse as Object, toEntidad as Object ) as Void
+		local lnI as Integer, loColeccionModelo as Object
+		loColeccionModelo = _Screen.DotNetBridge.ObtenerValorPropiedad( toModeloResponse, "MinRepo" ) 
+		with toEntidad
+			for lnI = 1 to .MinRepo.Count
+				loItem = _Screen.DotNetBridge.CrearObjeto( this.cNamespaceDTOs + ".ItemMinimoreposicion" )
+				this.SetearAtributoString( loItem, "Codigo", .MinRepo.Item(lnI).Codigo)
+				this.SetearAtributoString( loItem, "Articulo", .MinRepo.Item(lnI).Articulo_PK)
+				this.SetearAtributoString( loItem, "ArticuloDetalle", .MinRepo.Item(lnI).ArticuloDetalle)
+				this.SetearAtributoString( loItem, "Color", .MinRepo.Item(lnI).Color_PK)
+				this.SetearAtributoString( loItem, "ColorDetalle", .MinRepo.Item(lnI).ColorDetalle)
+				this.SetearAtributoString( loItem, "Talle", .MinRepo.Item(lnI).Talle)
+				this.SetearAtributoInteger( loItem, "CantidadActual", .MinRepo.Item(lnI).CantidadActual)
+				this.SetearAtributoDecimal( loItem, "Cantidad", .MinRepo.Item(lnI).Cantidad)
+				this.SetearAtributoDecimal( loItem, "MaxActual", .MinRepo.Item(lnI).MaxActual)
+				this.SetearAtributoDecimal( loItem, "MaxNuevo", .MinRepo.Item(lnI).MaxNuevo)
+				this.SetearAtributoInteger( loItem, "NroItem", .MinRepo.Item(lnI).NroItem )
+				_Screen.DotNetBridge.InvocarMetodo( loColeccionModelo, "Add", loItem) 
+			endfor
+		endwith
+	endfunc
+	
+	*-----------------------------------------------------------------------------------------
+	protected function ObtenerFiltroSegunModeloRequest( toModeloRequest as Object ) as String
+		local lcCampos as String, lcFiltro as String, loModeloRequest as Object, lcOrden as String, lcXml as String, lnI as Integer, lcOrderBy
+		
+		lcFiltro = "1=1"
+		
+		lcFiltro = this.AgregarCondicionesFWAFiltro( lcFiltro, toModeloRequest )
+		
+		lcFiltro = this.AgregarCondicionAFiltro( lcFiltro, toModeloRequest, "Numero", "NUMERO")
+		lcFiltro = this.AgregarCondicionAFiltro( lcFiltro, toModeloRequest, "Fecha", "FECHA")
+		lcFiltro = this.AgregarCondicionAFiltro( lcFiltro, toModeloRequest, "Vigencia", "FECHAVIG")
+		lcFiltro = this.AgregarCondicionAFiltro( lcFiltro, toModeloRequest, "Observacion", "CONVERT( VARCHAR(MAX), MOBS)")
+		return lcFiltro 
+	endfunc
+	
+	*-----------------------------------------------------------------------------------------
+	protected function ObtenerBusquedaSegunModeloRequest( toRequest as Object ) as String
+		local lcCampos as String, lcFiltro as String, loModeloRequest as Object, lcOrden as String, lcXml as String, lnI as Integer, lcOrderBy
+		
+		lcRetorno = ""
+		lcExpresionBusqueda = _screen.DotNetBridge.ObtenerValorPropiedad( toRequest, "ExpresionBusqueda" )
+		
+		if !isnull( lcExpresionBusqueda )
+			lcRetorno = iif( !empty( lcRetorno ), lcRetorno + " OR ", "" ) + "Codigo LIKE '%" + lcExpresionBusqueda + "%'"
+			lcRetorno = iif( !empty( lcRetorno ), lcRetorno + " OR ", "" ) + "Mobs LIKE '%" + lcExpresionBusqueda + "%'"
+		endif
+	
+		return lcRetorno 
+	endfunc
+	
+
+enddefine
