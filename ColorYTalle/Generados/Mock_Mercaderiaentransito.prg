@@ -1,0 +1,7380 @@
+
+define class Mock_mercaderiaentransito as MockBase of MockBase.prg
+
+	lNuevo = .f. 
+	lEdicion = .f. 
+	lDestroy = .f. 
+	cContexto = '' 
+
+	cClase = 'mercaderiaentransito'
+
+	
+	BASEDEDATOSALTAFW = ""                                                                                                                                                                                                                                    
+	BASEDEDATOSMODIFICACIONFW = ""                                                                                                                                                                                                                            
+	BloquearRegistro = .f.                                                                                                                                                                                                                                    
+	COMPAFEC = null                                                                                                                                                                                                                                           
+	CamposEquivalenciaLince = ""                                                                                                                                                                                                                              
+	Clase = 0                                                                                                                                                                                                                                                 
+	Codigo = ""                                                                                                                                                                                                                                               
+	ComprobanteGenerado = ""                                                                                                                                                                                                                                  
+	DatosAdicionales = ""                                                                                                                                                                                                                                     
+	DescripcionFW = ""                                                                                                                                                                                                                                        
+	ESTADOTRANSFERENCIA = ""                                                                                                                                                                                                                                  
+	FECHAALTAFW = ctod( '  /  /    ' )                                                                                                                                                                                                                        
+	FECHAEXPO = ctod( '  /  /    ' )                                                                                                                                                                                                                          
+	FECHAIMPO = ctod( '  /  /    ' )                                                                                                                                                                                                                          
+	FECHAMODIFICACIONFW = ctod( '  /  /    ' )                                                                                                                                                                                                                
+	FECHATRANSFERENCIA = ctod( '  /  /    ' )                                                                                                                                                                                                                 
+	Fecha = ctod( '  /  /    ' )                                                                                                                                                                                                                              
+	Fecha = {}                                                                                                                                                                                                                                                
+	FechaAltaFW = {}                                                                                                                                                                                                                                          
+	FechaModificacionFW = {}                                                                                                                                                                                                                                  
+	FechaOriginal = ctod( '  /  /    ' )                                                                                                                                                                                                                      
+	Guid = ""                                                                                                                                                                                                                                                 
+	HORAALTAFW = ""                                                                                                                                                                                                                                           
+	HORAEXPO = ""                                                                                                                                                                                                                                             
+	HORAIMPO = ""                                                                                                                                                                                                                                             
+	HORAMODIFICACIONFW = ""                                                                                                                                                                                                                                   
+	MontoDescuento3 = 0                                                                                                                                                                                                                                       
+	Motivo = null                                                                                                                                                                                                                                             
+	MotivoRemitoOrigen = ""                                                                                                                                                                                                                                   
+	Motivo_PK = ""                                                                                                                                                                                                                                            
+	MovimientoDetalle = null                                                                                                                                                                                                                                  
+	MovimientoGenerado = 0                                                                                                                                                                                                                                    
+	Numero = 0                                                                                                                                                                                                                                                
+	NumeroOriginal = 0                                                                                                                                                                                                                                        
+	Observacion = ""                                                                                                                                                                                                                                          
+	OrigLetra = ""                                                                                                                                                                                                                                            
+	OrigNumero = 0                                                                                                                                                                                                                                            
+	OrigPtoVta = 0                                                                                                                                                                                                                                            
+	OrigTipo = 0                                                                                                                                                                                                                                              
+	OrigenDestino = null                                                                                                                                                                                                                                      
+	OrigenDestino_PK = ""                                                                                                                                                                                                                                     
+	PorcentajeDescuento = 0                                                                                                                                                                                                                                   
+	RecargoMonto2 = 0                                                                                                                                                                                                                                         
+	RecargoPorcentaje = 0                                                                                                                                                                                                                                     
+	Remito = ""                                                                                                                                                                                                                                               
+	RetornoExtension = .t.                                                                                                                                                                                                                                    
+	SERIEALTAFW = ""                                                                                                                                                                                                                                          
+	SERIEMODIFICACIONFW = ""                                                                                                                                                                                                                                  
+	Situacionfiscal_Pk = 0                                                                                                                                                                                                                                    
+	TIMESTAMP = 0                                                                                                                                                                                                                                             
+	Tipo = 0                                                                                                                                                                                                                                                  
+	USUARIOALTAFW = ""                                                                                                                                                                                                                                        
+	USUARIOMODIFICACIONFW = ""                                                                                                                                                                                                                                
+	VERSIONALTAFW = ""                                                                                                                                                                                                                                        
+	VERSIONMODIFICACIONFW = ""                                                                                                                                                                                                                                
+	ZADSFW = ""                                                                                                                                                                                                                                               
+	anulado = .F.                                                                                                                                                                                                                                             
+	cAtributoAAuditar = ""                                                                                                                                                                                                                                    
+	cAtributoPK = ""                                                                                                                                                                                                                                          
+	cAtributoVendedor = ""                                                                                                                                                                                                                                    
+	cCaracteres = ""                                                                                                                                                                                                                                          
+	cComprobante = ""                                                                                                                                                                                                                                         
+	cContexto = ""                                                                                                                                                                                                                                            
+	cDescripcion =  "Mercadería en tránsito"                                                                                                                                                                                                                  
+	cDescripcionSingular = ""                                                                                                                                                                                                                                 
+	cDetalleComprobante = "MovimientoDetalle"                                                                                                                                                                                                                 
+	cDisenoComprobanteAdjunto = ""                                                                                                                                                                                                                            
+	cEvento = ""                                                                                                                                                                                                                                              
+	cFormatoFechaNet = ""                                                                                                                                                                                                                                     
+	cIdentificadorConexion = ""                                                                                                                                                                                                                               
+	cMensaje = ""                                                                                                                                                                                                                                             
+	cMonedaSistemaDefault = ""                                                                                                                                                                                                                                
+	cNombre = ""                                                                                                                                                                                                                                              
+	cNombre = 'MERCADERIAENTRANSITO'                                                                                                                                                                                                                          
+	cParametroPreciosNuevoEnBaseA = ""                                                                                                                                                                                                                        
+	cPrefijoImportar = ""                                                                                                                                                                                                                                     
+	cPrefijoRecibir = ""                                                                                                                                                                                                                                      
+	cUsuarioQueAutorizoSeguridad = ""                                                                                                                                                                                                                         
+	lAccionAutomaticaTipoAntes = .F.                                                                                                                                                                                                                          
+	lActivando = .f.                                                                                                                                                                                                                                          
+	lActualizaRecepcion = .T.                                                                                                                                                                                                                                 
+	lActualizaRecepcion = .f.                                                                                                                                                                                                                                 
+	lActualizandoSaldos = .f.                                                                                                                                                                                                                                 
+	lActualizarSoloEquivalenciasDeLince = .f.                                                                                                                                                                                                                 
+	lAfectaCaja = .T.                                                                                                                                                                                                                                         
+	lAfectada = .f.                                                                                                                                                                                                                                           
+	lAgruparPacksAutomaticamente = .f.                                                                                                                                                                                                                        
+	lAnular = .f.                                                                                                                                                                                                                                             
+	lBuscandoCodigo = .f.                                                                                                                                                                                                                                     
+	lCambioFecha = .f.                                                                                                                                                                                                                                        
+	lCambioListaPrecios = .f.                                                                                                                                                                                                                                 
+	lCambioSituacionFiscal = .f.                                                                                                                                                                                                                              
+	lCancelaDiferenciasDePicking = .f.                                                                                                                                                                                                                        
+	lCargando = .f.                                                                                                                                                                                                                                           
+	lCargandoRecargo = .f.                                                                                                                                                                                                                                    
+	lConfirmaGenerarMovimiento = .t.                                                                                                                                                                                                                          
+	lConfirmarImpresion = 0                                                                                                                                                                                                                                   
+	lControlaSecuencialEnCodBarAlt = .F.                                                                                                                                                                                                                      
+	lDebeAdvertirFaltantedestock = .t.                                                                                                                                                                                                                        
+	lDebeRenumerarAlEnviarABaseDeDatos = .F.                                                                                                                                                                                                                  
+	lDesarrollo = .f.                                                                                                                                                                                                                                         
+	lDestroy = .f.                                                                                                                                                                                                                                            
+	lEdicion = .F.                                                                                                                                                                                                                                            
+	lEligioUnCodigoDeLaLista = .F.                                                                                                                                                                                                                            
+	lEliminar = .T.                                                                                                                                                                                                                                           
+	lEntidadEditable =  .t.                                                                                                                                                                                                                                   
+	lEntidadEditable = .t.                                                                                                                                                                                                                                    
+	lEnviaMailErroresSegundoPlanoHerramientaEcommerce = .f.                                                                                                                                                                                                   
+	lEnviaMailTiquetDeCambioEnSegundoPlano = .f.                                                                                                                                                                                                              
+	lEsComprobanteConStock = .f.                                                                                                                                                                                                                              
+	lEsComprobanteConStock = .t.                                                                                                                                                                                                                              
+	lEsComprobanteDeMovimientoDeFondos = .f.                                                                                                                                                                                                                  
+	lEsEntidadConEdicionRestringida = .f.                                                                                                                                                                                                                     
+	lEsExe = .f.                                                                                                                                                                                                                                              
+	lEsSubEntidad = .f.                                                                                                                                                                                                                                       
+	lEstaElKontroler = .f.                                                                                                                                                                                                                                    
+	lEstaSeteandoValorSugerido = .f.                                                                                                                                                                                                                          
+	lGeneracionAutomatica = .f.                                                                                                                                                                                                                               
+	lHabilitaEnviarAlGrabar = .f.                                                                                                                                                                                                                             
+	lHabilitarComprobanteGenerado = .T.                                                                                                                                                                                                                       
+	lHabilitarTipo = .T.                                                                                                                                                                                                                                      
+	lIgnorarCamposObligatoriosDefinidosPorUsuario = .F.                                                                                                                                                                                                       
+	lIgnorarClaveprimariaEnRecepcionBD = .f.                                                                                                                                                                                                                  
+	lInicializarCodigoSugeridoHabilitado = .f.                                                                                                                                                                                                                
+	lInstanciarSubEntidadaDemanda = .t.                                                                                                                                                                                                                       
+	lInvertirSigno = .f.                                                                                                                                                                                                                                      
+	lItemControlaDisponibilidad = .f.                                                                                                                                                                                                                         
+	lLimpiando = .f.                                                                                                                                                                                                                                          
+	lLoguear = .T.                                                                                                                                                                                                                                            
+	lLogueoPropio = .T.                                                                                                                                                                                                                                       
+	lMostrarAdvertenciaRecalculoPrecios = .T.                                                                                                                                                                                                                 
+	lNoCheckSessionOpen = .f. && para omitir el objeto del analisis de sessiones abiertas de test de foxunit                                                                                                                                                  
+	lNoLoguearRestAPI = .F.                                                                                                                                                                                                                                   
+	lNuevo = .F.                                                                                                                                                                                                                                              
+	lOmiteObligatorioEnPack = .f.                                                                                                                                                                                                                             
+	lPermiteAgruparPacksAutomaticamente = .f.                                                                                                                                                                                                                 
+	lPermiteMinusculasPK = .f.                                                                                                                                                                                                                                
+	lPidiendoCotizacion = .f.                                                                                                                                                                                                                                 
+	lProcesando = .F.                                                                                                                                                                                                                                         
+	lReAsignarPk_Con_CC = .F.                                                                                                                                                                                                                                 
+	lRecalcularPorCambioDeListaDePrecios = .T.                                                                                                                                                                                                                
+	lSoloAfectaCaja = .f.                                                                                                                                                                                                                                     
+	lTieneAccionesAutomaticas = .f.                                                                                                                                                                                                                           
+	lTieneDiseñosParaEnviarMail = .t.                                                                                                                                                                                                                         
+	lTieneFuncionalidadesEnBaseA = .f.                                                                                                                                                                                                                        
+	lTieneVendedorComoClaveForanea = .t.                                                                                                                                                                                                                      
+	lUsoBuscador = .f.                                                                                                                                                                                                                                        
+	lUtilizaSecuenciaFiscal = .f.                                                                                                                                                                                                                             
+	lValidarAlModificar = .T.                                                                                                                                                                                                                                 
+	lVieneDesdeElPickingYPuedePasarPorAltoLaSeguridad = .F.                                                                                                                                                                                                   
+	lWHEliminar = .f.                                                                                                                                                                                                                                         
+	lWHIngresar = .f.                                                                                                                                                                                                                                         
+	lWHModificar = .f.                                                                                                                                                                                                                                        
+	llPermiteTipoAjusteDeCupon  = .f.                                                                                                                                                                                                                         
+	nParamAgrupamientoDePacks = 0                                                                                                                                                                                                                             
+	oAD = null                                                                                                                                                                                                                                                
+	oAfectanteAuxiliar = null                                                                                                                                                                                                                                 
+	oAtributosAnulacion = null                                                                                                                                                                                                                                
+	oAtributosAuditoria = null                                                                                                                                                                                                                                
+	oAtributosCC =  Null                                                                                                                                                                                                                                      
+	oAtributosConEdicionRestringida= null                                                                                                                                                                                                                     
+	oBuzon = null                                                                                                                                                                                                                                             
+	oCacheAfectantes = null                                                                                                                                                                                                                                   
+	oColAtributosObligatoriosDefinidosPorUsuario = null                                                                                                                                                                                                       
+	oColCombinacionesYaProcesadas = null                                                                                                                                                                                                                      
+	oColControladosPicking = null                                                                                                                                                                                                                             
+	oColaboradorCheques = null                                                                                                                                                                                                                                
+	oColaboradorValidacionControlDeStockDiponible = null                                                                                                                                                                                                      
+	oColaboradorValidacionMinimoDeReposicion = null                                                                                                                                                                                                           
+	oColeccionVS = null                                                                                                                                                                                                                                       
+	oColeccionVSFW = null                                                                                                                                                                                                                                     
+	oComponente = null                                                                                                                                                                                                                                        
+	oComportamientoCodigoSugerido = null                                                                                                                                                                                                                      
+	oDetalleCompOmnicanalidad = null                                                                                                                                                                                                                          
+	oEmpaquetador = NULL                                                                                                                                                                                                                                      
+	oEntidadCotizacion = null                                                                                                                                                                                                                                 
+	oExtension = null                                                                                                                                                                                                                                         
+	oFormularioAfectanteAuxiliar = null                                                                                                                                                                                                                       
+	oGestorDeMail = null                                                                                                                                                                                                                                      
+	oInformacion = null                                                                                                                                                                                                                                       
+	oItemAuxCotiza = null                                                                                                                                                                                                                                     
+	oLogueadorOperacionesAvanzadas = null                                                                                                                                                                                                                     
+	oLogueo = null                                                                                                                                                                                                                                            
+	oMensaje = null                                                                                                                                                                                                                                           
+	oMoneda = null                                                                                                                                                                                                                                            
+	oNumeraciones =  null                                                                                                                                                                                                                                     
+	oObservadoresDeImportacion = null                                                                                                                                                                                                                         
+	oProveedorAtributosAnulacion = null                                                                                                                                                                                                                       
+	oRegistrosDeActividadesAlGrabar = Null                                                                                                                                                                                                                    
+	oTalle = null                                                                                                                                                                                                                                             
+	oValidacionDominios= null                                                                                                                                                                                                                                 
+	oValidadores = null                                                                                                                                                                                                                                       
+	oValidadoresComp = null                                                                                                                                                                                                                                   
+	vendedor = null                                                                                                                                                                                                                                           
+	vendedor_PK = ""                                                                                                                                                                                                                                          
+	
+	*-----------------------------------------------------------------------------------------
+	function Inicializar() as boolean
+		this.InciarPropiedades()
+	endfunc
+
+	*-----------------------------------------------------------------------------------------
+	function InciarPropiedades() as Void
+		local lnIdMock as Integer, i as Integer, lcPropiedad as String
+		lnIdMock = _Screen.Mocks.BuscarMock( this.cClase )
+		if lnIdMock > 0
+			for i = 1 to _Screen.Mocks[ lnIdMock ].oPropiedades.Count
+				_Screen.Mocks.SetearResultadoPropiedad( this, lnIdMock, i )
+			endfor
+		endif
+	endfunc
+
+	*-----------------------------------------------------------------------------------------
+	function Release() as Void
+		dodefault()
+		release this
+	endfunc
+
+	*-----------------------------------------------------------------------------------------
+	function accionesautomatizadas( tcmetodo as string ) as void                                                                                                                                                                                              
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1
+
+		lnParametros = pcount()
+		lxParam1 = tcmetodo
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Accionesautomatizadas', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function accionesparaenviodeemail() as boolean                                                                                                                                                                                                            
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Accionesparaenviodeemail', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function actualizarcalculos() as void                                                                                                                                                                                                                     
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Actualizarcalculos', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function actualizarestado() as void                                                                                                                                                                                                                       
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Actualizarestado', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function actualizarprogressbar( tnvalor as integer ) as void                                                                                                                                                                                              
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1
+
+		lnParametros = pcount()
+		lxParam1 = tnvalor
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Actualizarprogressbar', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function adviertestockdisponible() as boolean                                                                                                                                                                                                             
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Adviertestockdisponible', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function agregaratributosbasadoen( toitemstock as object, toitem as object ) as void                                                                                                                                                                      
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1, lxParam2
+
+		lnParametros = pcount()
+		lxParam1 = toitemstock
+		lxParam2 = toitem
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Agregaratributosbasadoen', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function agregarcuponhuerfanoacoleccion( tcguidcupon as string ) as void                                                                                                                                                                                  
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1
+
+		lnParametros = pcount()
+		lxParam1 = tcguidcupon
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Agregarcuponhuerfanoacoleccion', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function agregarestimulo( tc1 ) as void                                                                                                                                                                                                                   
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1
+
+		lnParametros = pcount()
+		lxParam1 = tc1
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Agregarestimulo', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function agregarinformacion( tcinformacion as string, tnnumero as integer, txinfoextra as variant ) as void                                                                                                                                               
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1, lxParam2, lxParam3
+
+		lnParametros = pcount()
+		lxParam1 = tcinformacion
+		lxParam2 = tnnumero
+		lxParam3 = txinfoextra
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Agregarinformacion', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function agregarinformaciondeexcepcion( toerror as exception ) as void                                                                                                                                                                                    
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1
+
+		lnParametros = pcount()
+		lxParam1 = toerror
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Agregarinformaciondeexcepcion', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function agregarobservadordeimportacion( toprocesoimportacion as procesoimportacion of procesoimportacion.prg ) as void                                                                                                                                   
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1
+
+		lnParametros = pcount()
+		lxParam1 = toprocesoimportacion
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Agregarobservadordeimportacion', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function agregarreferencia( tcassembly as string ) as void                                                                                                                                                                                                
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1
+
+		lnParametros = pcount()
+		lxParam1 = tcassembly
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Agregarreferencia', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function agregarvalidador( lovalidador as object ) as void                                                                                                                                                                                                
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1
+
+		lnParametros = pcount()
+		lxParam1 = lovalidador
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Agregarvalidador', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function agregarvalorencomprobante( toentidad as object, tccodigovalor as string ) as void                                                                                                                                                                
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1, lxParam2
+
+		lnParametros = pcount()
+		lxParam1 = toentidad
+		lxParam2 = tccodigovalor
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Agregarvalorencomprobante', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function ajustarobjetobusqueda( tobusqueda as object ) as void                                                                                                                                                                                            
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1
+
+		lnParametros = pcount()
+		lxParam1 = tobusqueda
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Ajustarobjetobusqueda', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function anterior () as boolean                                                                                                                                                                                                                           
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Anterior', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function antesdeanular() as void                                                                                                                                                                                                                          
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Antesdeanular', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function antesdefinalizarrecibir() as void                                                                                                                                                                                                                
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Antesdefinalizarrecibir', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function antesdegrabar() as boolean                                                                                                                                                                                                                       
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Antesdegrabar', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function antesdeprocesaritemarticulosporbasadoen( toitem as object, tcatributo as string, txvalold as variant, txvalactual as variant ) as void                                                                                                           
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1, lxParam2, lxParam3, lxParam4
+
+		lnParametros = pcount()
+		lxParam1 = toitem
+		lxParam2 = tcatributo
+		lxParam3 = txvalold
+		lxParam4 = txvalactual
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Antesdeprocesaritemarticulosporbasadoen', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function anulado_assign( txval as variant ) as void                                                                                                                                                                                                       
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'anulado_assign', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'anulado_assign', lcParametros )			endif		endif		Local lxValOld As Variant		lxValOld = this.Anulado		local lxVal as Variant		lxVal = txVal		if This.CargaManual()			if this.Validar_Anulado( lxVal )				this.Setear_Anulado( lxVal )			EndIf		Else			This.Setear_Anulado( lxVal )		EndIf		dodefault( lxVal )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function anular() as void                                                                                                                                                                                                                                 
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Anular', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function apagaravisodecuponeshuerfanos() as void                                                                                                                                                                                                          
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Apagaravisodecuponeshuerfanos', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function aplicarcondiciondepago() as void                                                                                                                                                                                                                 
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Aplicarcondiciondepago', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function asignarcomprobanterelacionado( toitemcotiza as object ) as void                                                                                                                                                                                  
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1
+
+		lnParametros = pcount()
+		lxParam1 = toitemcotiza
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Asignarcomprobanterelacionado', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function asignarvaloressugeridosatributosclavecandidatanovisibles() as void                                                                                                                                                                               
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Asignarvaloressugeridosatributosclavecandidatanovisibles', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function asignarvaloressugeridosatributosclavedebusquedanovisibles() as void                                                                                                                                                                              
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Asignarvaloressugeridosatributosclavedebusquedanovisibles', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function avisarexistenciadecuponeshuerfanos() as void                                                                                                                                                                                                     
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Avisarexistenciadecuponeshuerfanos', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function basededatosaltafw_access() as date                                                                                                                                                                                                               
+		lnParametros = pcount()lcParametros = ''		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'basededatosaltafw_access', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'basededatosaltafw_access', lcParametros )			endif		endif		if !this.lDestroy and this.EsNuevo() and this.DebeCrearValoresParaAtributos()			This.BaseDeDatosAltaFW = alltrim( _screen.Zoo.App.cSucursalActiva )		endif		return This.BaseDeDatosAltaFW		
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function basededatosaltafw_assign( txval as variant ) as void                                                                                                                                                                                             
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'basededatosaltafw_assign', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'basededatosaltafw_assign', lcParametros )			endif		endif		Local lxValOld As Variant		lxValOld = this.Basededatosaltafw		local lxVal as Variant		lxVal = txVal		if This.CargaManual()			if this.Validar_Basededatosaltafw( lxVal )				this.Setear_Basededatosaltafw( lxVal )			EndIf		Else			This.Setear_Basededatosaltafw( lxVal )		EndIf		dodefault( lxVal )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function basededatosmodificacionfw_access() as date                                                                                                                                                                                                       
+		lnParametros = pcount()lcParametros = ''		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'basededatosmodificacionfw_access', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'basededatosmodificacionfw_access', lcParametros )			endif		endif		if !this.lDestroy and ( This.EsNuevo() or This.EsEdicion() ) and this.DebeCrearValoresParaAtributos()			This.BaseDeDatosModificacionFW = alltrim( _screen.Zoo.App.cSucursalActiva )		endif		return This.BaseDeDatosModificacionFW		
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function basededatosmodificacionfw_assign( txval as variant ) as void                                                                                                                                                                                     
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'basededatosmodificacionfw_assign', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'basededatosmodificacionfw_assign', lcParametros )			endif		endif		Local lxValOld As Variant		lxValOld = this.Basededatosmodificacionfw		local lxVal as Variant		lxVal = txVal		if This.CargaManual()			if this.Validar_Basededatosmodificacionfw( lxVal )				this.Setear_Basededatosmodificacionfw( lxVal )			EndIf		Else			This.Setear_Basededatosmodificacionfw( lxVal )		EndIf		dodefault( lxVal )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function bindearevento(toobjetosource, tcevento, toobjetohandler, tcdelegado) as void                                                                                                                                                                     
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1, lxParam2, lxParam3, lxParam4
+
+		lnParametros = pcount()
+		lxParam1 = toobjetosource
+		lxParam2 = tcevento
+		lxParam3 = toobjetohandler
+		lxParam4 = tcdelegado
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Bindearevento', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function borrararchivoqr() as void                                                                                                                                                                                                                        
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Borrararchivoqr', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function buscar( ) as void                                                                                                                                                                                                                                
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Buscar', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function buscarclase( tcclase as string ) as boolean                                                                                                                                                                                                      
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = tcclaselcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'BuscarClase', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'BuscarClase', lcParametros )			endif		endif		local llRetorno as Boolean				llRetorno = .f.		this.Crear_oClases()				if _screen.oClases.GetKey( sys(2007, alltrim( lower( tcClase )),0,1)) > 0			llRetorno = .t.		else			if this.ExisteArchivoClase( tcClase )				this.AgregarClaseAColeccion( tcClase )				llRetorno = .t.			endif		endif				return llRetorno
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function cambiosdetallecompafec() as void                                                                                                                                                                                                                 
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Cambiosdetallecompafec', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function cambiosdetallemovimientodetalle() as void                                                                                                                                                                                                        
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Cambiosdetallemovimientodetalle', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function cambiosumarizado() as void                                                                                                                                                                                                                       
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Cambiosumarizado', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function cancelar() as void                                                                                                                                                                                                                               
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Cancelar', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function cargamanual() as boolean                                                                                                                                                                                                                         
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Cargamanual', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function cargar() as boolean                                                                                                                                                                                                                              
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Cargar', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function cargaratributosanulacion() as void                                                                                                                                                                                                               
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Cargaratributosanulacion', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function cargarcuponeshuerfanos() as void                                                                                                                                                                                                                 
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Cargarcuponeshuerfanos', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function cargarfiltrosinsertardesde(tofiltros as object) as void                                                                                                                                                                                          
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1
+
+		lnParametros = pcount()
+		lxParam1 = tofiltros
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Cargarfiltrosinsertardesde', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function cargarinformacion( toinformacion as zooinformacion of zooinformacion.prg ) as void                                                                                                                                                               
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1
+
+		lnParametros = pcount()
+		lxParam1 = toinformacion
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Cargarinformacion', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function cargarobjetoauxiliaromnicanalidad( toitem as object ) as object                                                                                                                                                                                  
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1
+
+		lnParametros = pcount()
+		lxParam1 = toitem
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Cargarobjetoauxiliaromnicanalidad', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function clase_assign( txval as variant ) as void                                                                                                                                                                                                         
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'clase_assign', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'clase_assign', lcParametros )			endif		endif		Local lxValOld As Variant		lxValOld = this.Clase		local lxVal as Variant		lxVal = txVal		if This.CargaManual()			if this.Validar_Clase( lxVal )				this.Setear_Clase( lxVal )			EndIf		Else			This.Setear_Clase( lxVal )		EndIf		dodefault( lxVal )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function claverepetidaporremitootransito( toerror ) as boolean                                                                                                                                                                                            
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1
+
+		lnParametros = pcount()
+		lxParam1 = toerror
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Claverepetidaporremitootransito', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function codigo_assign( txval as variant ) as void                                                                                                                                                                                                        
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'codigo_assign', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'codigo_assign', lcParametros )			endif		endif		local llConsulta as Boolean, llNuevo as boolean, llEdicion as boolean		with this			llEdicion = .EsEdicion()			if !this.lPermiteMinusculasPK				try					txVal = upper( txVal )				Catch				Endtry			endif			if .lLimpiando or .lCargando				.Codigo = .TransformarAlAsignar( txVal )			else				if llEdicion				else					llNuevo = .EsNuevo()					.Codigo = .TransformarAlAsignar( txVal )					if empty( txVal ) and !llNuevo						.Limpiar()					else						if llNuevo							if .ValidarIngreso( txVal, llNuevo )							else								goServicios.Errores.LevantarExcepcion( 'Caracter inválido en el código.' )							endif						endif						llConsulta = .oAD.ConsultarPorClavePrimaria()						do case							case !llNuevo and llConsulta								.Cargar()							case !llNuevo and !llConsulta								.Limpiar()								goServicios.Errores.LevantarExcepcionTexto( 'El dato buscado ' + alltrim( transform( txVal ) ) + ' de la entidad ' + upper( this.cDescripcion ) + ' no existe.', 9001 )							case llNuevo and llConsulta								.Codigo = []								goServicios.Errores.LevantarExcepcion( 'El código ' + alltrim( transform( txVal ) ) + ' ya existe.' )						endcase					endif				endif			endif		endwith
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function compafec_access() as variant                                                                                                                                                                                                                     
+		lnParametros = pcount()lcParametros = ''		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'compafec_access', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'compafec_access', lcParametros )			endif		endif		if !this.ldestroy and ( !vartype( this.Compafec ) = 'O' or isnull( this.Compafec ) )			this.Compafec = this.crearobjeto( 'Din_DetalleMercaderiaentransitoCompafec' )			this.Compafec.inicializar()			this.enlazar( 'Compafec.EventoObtenerLogueo', 'inyectarLogueo' )			this.enlazar( 'Compafec.EventoObtenerInformacion', 'inyectarInformacion' )			bindevent( this.Compafec, 'CambioSumarizado', this, 'CambiosDetalleCompafec', 1)			this.enlazar( 'Compafec.EventoAdvertirLimitePorDiseno', 'EventoAdvertirLimitePorDiseno')			this.enlazar( 'Compafec.EventoCancelarCargaLimitePorDiseno', 'EventoCancelarCargaLimitePorDiseno')		endif		return this.Compafec
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function compararantesydespuesdemodificar() as object                                                                                                                                                                                                     
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Compararantesydespuesdemodificar', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function completarcamposecuencia() as boolean                                                                                                                                                                                                             
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Completarcamposecuencia', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function comprobantegenerado_assign( txval as variant ) as void                                                                                                                                                                                           
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'comprobantegenerado_assign', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'comprobantegenerado_assign', lcParametros )			endif		endif		Local lxValOld As Variant		lxValOld = this.Comprobantegenerado		local lxVal as Variant		lxVal = txVal		if This.CargaManual()			if this.Validar_Comprobantegenerado( lxVal )				if ( this.lHabilitarComprobantegenerado or this.lEstaSeteandoValorSugerido or alltrim( lxValOld ) == alltrim( lxVal ))					this.Setear_Comprobantegenerado( lxVal )				else					this.Comprobantegenerado = lxValOld					goServicios.Errores.LevantarExcepcion( "No se puede cambiar este valor (Entidad: Mercadería en tránsito - Atributo: Comprobantegenerado)" )				endif			EndIf		Else			This.Setear_Comprobantegenerado( lxVal )		EndIf		dodefault( lxVal )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function condicionesparaelenviodeemailalimportar() as boolean                                                                                                                                                                                             
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Condicionesparaelenviodeemailalimportar', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function confirmarstock() as void                                                                                                                                                                                                                         
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Confirmarstock', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function consultarporclavecandidata() as boolean                                                                                                                                                                                                          
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Consultarporclavecandidata', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function controlastockdisponible() as boolean                                                                                                                                                                                                             
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Controlastockdisponible', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function correspondegenerarcontracomprobante() as boolean                                                                                                                                                                                                 
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Correspondegenerarcontracomprobante', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function crear_oclases() as void                                                                                                                                                                                                                          
+		lnParametros = pcount()lcParametros = ''		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'Crear_oClases', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'Crear_oClases', lcParametros )			endif		endif		if !pemstatus( _screen, "oClases", 5 )				_screen.AddObject( "oClases", "Collection" )		endif				if !vartype( _screen.oClases ) = 'O' and isnull( _screen.oClases )			_screen.oClases = newobject( "Collection" )		endif
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function crearitemtransferencia() as object                                                                                                                                                                                                               
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Crearitemtransferencia', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function crearobjeto( tcclase as string, tclibreria as string, tvpar1 as variant, tvpar2 as variant, tvpar3 as variant, tvpar4 as variant, tvpar5 as variant , tvpar6 as variant, tvpar7 as variant, tvpar8 as variant )                                  
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1, lxParam2, lxParam3, lxParam4, lxParam5, lxParam6, lxParam7, lxParam8, lxParam9, lxParam10lnParametros = pcount()lxParam1 = tcclaselxParam2 = tclibrerialxParam3 = tvpar1lxParam4 = tvpar2lxParam5 = tvpar3lxParam6 = tvpar4lxParam7 = tvpar5lxParam8 = tvpar6lxParam9 = tvpar7lxParam10 = tvpar8lcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'crearobjeto', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'crearobjeto', lcParametros )			endif		endif		Local loReturn As Object, lnParametrosReales As Integer, lcClase as String, lcConstructor as string, lcComando as String, ;			lnParamAux as Integer, lcClase as String, lcLibreria as String , lcSetProcedure as String,;			loErrorBase as Exception, loEx as Exception, loRetorno as object, lcConstructor as String, lcProcedure as String,;			lcSetClassLib as String, lcSet as String, loMock as Object, lcClaseProxy as String					loReturn = Null		lcLibreria = tcLibreria		lcClaseProxy = ""				*-------------------------------------------------------------------		if pemstatus(_screen, "Mocks", 5 ) and vartype( _Screen.Mocks ) = "O"				*Instanciación de Mocks			*Objeto solo instanciado en DESARROLLO.			if _screen.Mocks.lUtilizarMockV2 and this.buscarClase( forceext( "MockV2_" + tcClase, "prg" ) )				lcClase = "MockV2_" + tcClase			else				if _screen.Mocks.lUtilizarMockV1					local lnItem as Integer					lcClase = this.ObtenerNombreClase( tcClase )					lnItem = _Screen.Mocks.BuscarMock( lcClase )										if !empty( lnItem )						loMock = _Screen.Mocks.Item[lnItem]						loMock.lUsado = .t.						lcClase = loMock.cNombreClaseMock												if empty( loMock.cNombrePrgMock )							lcLibreria = iif( empty( lcLibreria ), "", "Mock_" + justfname( lcLibreria ) )						else							lcLibreria = loMock.cNombrePrgMock						endif					else						lcClase = tcClase					endif				else					lcClase = tcClase				endif			endif		else			lcClase = tcClase		endif		*-------------------------------------------------------------------		If empty( lcLibreria )			lcLibreria = forceext( lcClase, "prg" )		endif				If Pcount() > 1			lnParamAux = 2		Else			lnParamAux = 1		EndIf		lnParametrosReales = Pcount() - lnParamAux			loRetorno = null				try			if this.EsClaseNet( lcClase )				if !pemstatus( _screen, "NetExtender", 5 )					goServicios.Errores.LevantarExcepcion( "Para instanciar un objeto net debe haber iniciado la aplicación." )				endif				lcComando = this.ObtenerSentenciaConDesgloseParametros( "ClrCreateObject", lcClase, "", "", lnParametrosReales )				loRetorno = this.CrearObjetoNet( lcComando, tvPar1, tvPar2, tvPar3, tvPar4, tvPar5, tvPar6, tvPar7, tvPar8 )			else				lcClase = justfname( lcClase )								if lnParametrosReales = 0 and vartype( _Screen.Zoo ) = "O" and !isnull( _Screen.Zoo ) and !isnull( _screen.Zoo.oConstructor )					lcClaseProxy = _screen.Zoo.oConstructor.ObtenerNombreClaseProxy( lcClase, lcLibreria )				endif				if !empty( lcClaseProxy )					loRetorno = _screen.Zoo.oConstructor.CrearObjeto( lcClaseProxy, set( "Datasession" ) )				else					lcSetProcedure = set('Procedure')					lcSetClassLib = set("Classlib")												if upper( justext( lcLibreria )) = "VCX"						lcSet  = "SET CLASSLIB TO "					else						lcSet = "SET PROCEDURE TO "					endif													if this.lEsExe and upper( justext( lcLibreria ) ) == "PRG"						&& En el Exe solo se pueden instanciar los archivos FXP, si no se fuerza la extensión recorre todo el path buscando el PRG.						lcLibreria = forceext( lcLibreria, "fxp" )						lcProcedure = lcLibreria					else						lcProcedure = forceext( lcLibreria, "" )					endif												lcSet = lcSet + "'" + lcProcedure + "'"										if this.BuscarClase( lcLibreria )						&lcSet					endif																			if lnParametrosReales > 0						lcComando = this.ObtenerSentenciaConDesgloseParametros( "NewObject", lcClase, lcLibreria , "", lnParametrosReales )						loRetorno = &lcComando					else						loRetorno = newobject( lcClase, lcLibreria )					endif									if !(lower(lcSetClassLib) == lower(set("Classlib")))						set classlib to &lcSetClassLib					endif						set procedure to &lcSetProcedure				endif			endif		Catch To loErrorBase				local lnError as Integer			lnError = 0						if loErrorBase.ErrorNo = 1 and left( lower( lcLibreria ), 4 ) == "din_"				do case					case !this.BuscarClase( strtran( lower( lcLibreria ), ".prg", ".fxp" ) )						lnError = 10					case !this.BuscarClase( lcLibreria )						lnError	= 20				endcase			endif			loEx = Newobject( "ZooException", "ZooException.prg" )			With loEx				.Grabar( loErrorBase )				.nZooErrorNo = lnError				.Throw()			EndWith		EndTry		return loRetorno
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function cursoraxml( tcnombrecursor) as string                                                                                                                                                                                                            
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1
+
+		lnParametros = pcount()
+		lxParam1 = tcnombrecursor
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Cursoraxml', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function datosadicionales_assign( txval as variant ) as void                                                                                                                                                                                              
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'datosadicionales_assign', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'datosadicionales_assign', lcParametros )			endif		endif		Local lxValOld As Variant		lxValOld = this.Datosadicionales		local lxVal as Variant		lxVal = txVal		if This.CargaManual()			if this.Validar_Datosadicionales( lxVal )				this.Setear_Datosadicionales( lxVal )			EndIf		Else			This.Setear_Datosadicionales( lxVal )		EndIf		dodefault( lxVal )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function debeagruparpackautomaticamente() as boolean                                                                                                                                                                                                      
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Debeagruparpackautomaticamente', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function debecambiarlistadeprecios() as boolean                                                                                                                                                                                                           
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Debecambiarlistadeprecios', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function debecrearvaloresparaatributos() as boolean                                                                                                                                                                                                       
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Debecrearvaloresparaatributos', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function debegenerarpdfsdedisenosautomaticamente() as boolean                                                                                                                                                                                             
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Debegenerarpdfsdedisenosautomaticamente', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function debehacernccancelatoria() as boolean                                                                                                                                                                                                             
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Debehacernccancelatoria', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function debeimprimirdisenosautomaticamente() as boolean                                                                                                                                                                                                  
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Debeimprimirdisenosautomaticamente', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function debesugerircodigo() as boolean                                                                                                                                                                                                                   
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Debesugerircodigo', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function desbindearevento( topublicador as object, tcevento as string, tomanejador as object, tcdelegado as string ) as void                                                                                                                              
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1, lxParam2, lxParam3, lxParam4
+
+		lnParametros = pcount()
+		lxParam1 = topublicador
+		lxParam2 = tcevento
+		lxParam3 = tomanejador
+		lxParam4 = tcdelegado
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Desbindearevento', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function descripcionfw_access() as variant                                                                                                                                                                                                                
+		lnParametros = pcount()lcParametros = ''		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'descripcionfw_access', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'descripcionfw_access', lcParametros )			endif		endif		If This.lDestroy		Else			this.DescripcionFW = alltrim( transform( This.ObtenerNombre() + " " + transform( This.Numero, "@LZ 99999999" ) ) )		Endif		return this.DescripcionFW
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function descripcionfw_assign( txval as variant ) as void                                                                                                                                                                                                 
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'descripcionfw_assign', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'descripcionfw_assign', lcParametros )			endif		endif		Local lxValOld As Variant		lxValOld = this.Descripcionfw		local lxVal as Variant		lxVal = txVal		if This.CargaManual()			if this.Validar_Descripcionfw( lxVal )				this.Setear_Descripcionfw( lxVal )			EndIf		Else			This.Setear_Descripcionfw( lxVal )		EndIf		dodefault( lxVal )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function despuesdeanular() as void                                                                                                                                                                                                                        
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Despuesdeanular', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function despuesdegrabar() as boolean                                                                                                                                                                                                                     
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Despuesdegrabar', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function despuesdesetearatributoscabecera( tomovimiento ) as void                                                                                                                                                                                         
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1
+
+		lnParametros = pcount()
+		lxParam1 = tomovimiento
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Despuesdesetearatributoscabecera', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function distribuircantidadesensaldospendientes() as boolean                                                                                                                                                                                              
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Distribuircantidadesensaldospendientes', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function ejecutarregladenegociopersonalizadaimportacion( toconexion as object ) as void                                                                                                                                                                   
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1
+
+		lnParametros = pcount()
+		lxParam1 = toconexion
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Ejecutarregladenegociopersonalizadaimportacion', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function eliminar() as void                                                                                                                                                                                                                               
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Eliminar', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function eliminarloscuponesaplicadosenotrocomprobante() as void                                                                                                                                                                                           
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Eliminarloscuponesaplicadosenotrocomprobante', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function eliminarstockinicial() as void                                                                                                                                                                                                                   
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Eliminarstockinicial', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function empaquetarmercaderiaentransitodespuesderechazar() as void                                                                                                                                                                                        
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Empaquetarmercaderiaentransitodespuesderechazar', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function enlazar( tcdelegando as string , tcdelegado as string ) as void                                                                                                                                                                                  
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1, lxParam2
+
+		lnParametros = pcount()
+		lxParam1 = tcdelegando
+		lxParam2 = tcdelegado
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Enlazar', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function enviapdfpersonalizadopormail() as boolean                                                                                                                                                                                                        
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Enviapdfpersonalizadopormail', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function enviaraccionesautomatizadas( tcmetodo as string ) as void                                                                                                                                                                                        
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1
+
+		lnParametros = pcount()
+		lxParam1 = tcmetodo
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Enviaraccionesautomatizadas', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function enviaractualizaciondestockomnicanalidad() as void                                                                                                                                                                                                
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Enviaractualizaciondestockomnicanalidad', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function enviarmail( tlnopreguntarconfirmaenviodemail as boolean ) as void                                                                                                                                                                                
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1
+
+		lnParametros = pcount()
+		lxParam1 = tlnopreguntarconfirmaenviodemail
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Enviarmail', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function enviarmailalgrabar() as void                                                                                                                                                                                                                     
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Enviarmailalgrabar', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function erroralgrabar() as void                                                                                                                                                                                                                          
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Erroralgrabar', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function erroralvalidar() as void                                                                                                                                                                                                                         
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Erroralvalidar', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function esatributoeditableenentidadconedicionrestringida( tcnombreatributo as string ) as boolean                                                                                                                                                        
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1
+
+		lnParametros = pcount()
+		lxParam1 = tcnombreatributo
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Esatributoeditableenentidadconedicionrestringida', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function escanjedecupones() as boolean                                                                                                                                                                                                                    
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Escanjedecupones', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function esclasebase( tcclase as string, tclibreria as string ) as boolean                                                                                                                                                                                
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1, lxParam2
+
+		lnParametros = pcount()
+		lxParam1 = tcclase
+		lxParam2 = tclibreria
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Esclasebase', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function escomprobantedecaja() as boolean                                                                                                                                                                                                                 
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Escomprobantedecaja', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function esedicion() as boolean                                                                                                                                                                                                                           
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Esedicion', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function esnuevo() as boolean                                                                                                                                                                                                                             
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Esnuevo', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function esobjetonet( toobjeto as object ) as boolean                                                                                                                                                                                                     
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1
+
+		lnParametros = pcount()
+		lxParam1 = toobjeto
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Esobjetonet', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function esotrospagos() as boolean                                                                                                                                                                                                                        
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Esotrospagos', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function esregistroeditable() as boolean                                                                                                                                                                                                                  
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Esregistroeditable', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function estaanulado() as boolean                                                                                                                                                                                                                         
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Estaanulado', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function estadotransferencia_assign( txval as variant ) as void                                                                                                                                                                                           
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'estadotransferencia_assign', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'estadotransferencia_assign', lcParametros )			endif		endif		Local lxValOld As Variant		lxValOld = this.Estadotransferencia		local lxVal as Variant		lxVal = txVal		if This.CargaManual()			if this.Validar_Estadotransferencia( lxVal )				this.Setear_Estadotransferencia( lxVal )			EndIf		Else			This.Setear_Estadotransferencia( lxVal )		EndIf		dodefault( lxVal )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function estaenproceso() as boolean                                                                                                                                                                                                                       
+		lnParametros = pcount()lcParametros = ''		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'estaenproceso', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'estaenproceso', lcParametros )			endif		endif		local lRetorno as Boolean		with this			lRetorno = ( .lProcesando or .lCargando or .lLimpiando or .lDestroy )		endwith		return lRetorno
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function esunitemafectado( toitem as object ) as boolean                                                                                                                                                                                                  
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1
+
+		lnParametros = pcount()
+		lxParam1 = toitem
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Esunitemafectado', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function esunitemtablaafectado( toitem as object ) as boolean                                                                                                                                                                                             
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1
+
+		lnParametros = pcount()
+		lxParam1 = toitem
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Esunitemtablaafectado', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function evaluarenviodemailenprocesoprevio() as boolean                                                                                                                                                                                                   
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Evaluarenviodemailenprocesoprevio', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function eventoactualizarbarra() as void                                                                                                                                                                                                                  
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Eventoactualizarbarra', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function eventoactualizarformulario() as void                                                                                                                                                                                                             
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Eventoactualizarformulario', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function eventoadvertirlimitepordiseno( toinfoauxiliar ) as void                                                                                                                                                                                          
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1
+
+		lnParametros = pcount()
+		lxParam1 = toinfoauxiliar
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Eventoadvertirlimitepordiseno', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function eventoalcanzominimodereposicion( toinformacion ) as void                                                                                                                                                                                         
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1
+
+		lnParametros = pcount()
+		lxParam1 = toinformacion
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Eventoalcanzominimodereposicion', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function eventocambiofecha() as void                                                                                                                                                                                                                      
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Eventocambiofecha', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function eventocancelarcargalimitepordiseno( tcdetalle as string ) as void                                                                                                                                                                                
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1
+
+		lnParametros = pcount()
+		lxParam1 = tcdetalle
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Eventocancelarcargalimitepordiseno', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function eventocomenzoprocesogenerarmovimientos( tcmensaje as string ) as void                                                                                                                                                                            
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1
+
+		lnParametros = pcount()
+		lxParam1 = tcmensaje
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Eventocomenzoprocesogenerarmovimientos', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function eventodespuesdegrabaractualizarbarradeacciones() as void                                                                                                                                                                                         
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Eventodespuesdegrabaractualizarbarradeacciones', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function eventoemitirmensaje( tcmensaje as string, tctitulo as string, tnicono as integer, tnespeta as integer ) as void                                                                                                                                  
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1, lxParam2, lxParam3, lxParam4
+
+		lnParametros = pcount()
+		lxParam1 = tcmensaje
+		lxParam2 = tctitulo
+		lxParam3 = tnicono
+		lxParam4 = tnespeta
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Eventoemitirmensaje', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function eventoenviarmensajecargandocomprobante() as void                                                                                                                                                                                                 
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Eventoenviarmensajecargandocomprobante', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function eventoestablecerfocodetalledespuesdecargaautomaticaporoperatoria( tncantidaddeitemsdistribuidos as integer, tlcodigodebarras as boolean, tlquedaronsinagregar as boolean ) as void                                                               
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1, lxParam2, lxParam3
+
+		lnParametros = pcount()
+		lxParam1 = tncantidaddeitemsdistribuidos
+		lxParam2 = tlcodigodebarras
+		lxParam3 = tlquedaronsinagregar
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Eventoestablecerfocodetalledespuesdecargaautomaticaporoperatoria', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function eventoestaseteandovalorsugerido( lcatributo as string ) as void                                                                                                                                                                                  
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1
+
+		lnParametros = pcount()
+		lxParam1 = lcatributo
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Eventoestaseteandovalorsugerido', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function eventoinformararticuloconcolorotallefueradepaletaocurva( toinformacion as object ) as void                                                                                                                                                       
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1
+
+		lnParametros = pcount()
+		lxParam1 = toinformacion
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Eventoinformararticuloconcolorotallefueradepaletaocurva', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function eventokeycodecondiciondepago() as void                                                                                                                                                                                                           
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Eventokeycodecondiciondepago', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function eventomensajedecuponeshuerfanos( tcmensaje as string ) as void                                                                                                                                                                                   
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1
+
+		lnParametros = pcount()
+		lxParam1 = tcmensaje
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Eventomensajedecuponeshuerfanos', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function eventomensajedenegarmodificar_anular_eliminarempaquetado( tctexto as string ) as void                                                                                                                                                            
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1
+
+		lnParametros = pcount()
+		lxParam1 = tctexto
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Eventomensajedenegarmodificar_anular_eliminarempaquetado', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function eventomensajeria( tcmensaje as string, tncantidaddepasos as integer ) as void                                                                                                                                                                    
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1, lxParam2
+
+		lnParametros = pcount()
+		lxParam1 = tcmensaje
+		lxParam2 = tncantidaddepasos
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Eventomensajeria', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function eventomostrarcomprobante( toformulario ) as void                                                                                                                                                                                                 
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1
+
+		lnParametros = pcount()
+		lxParam1 = toformulario
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Eventomostrarcomprobante', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function eventonohaystock( toinformacion ) as void                                                                                                                                                                                                        
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1
+
+		lnParametros = pcount()
+		lxParam1 = toinformacion
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Eventonohaystock', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function eventonuevocomprobante( toform as object ) as void                                                                                                                                                                                               
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1
+
+		lnParametros = pcount()
+		lxParam1 = toform
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Eventonuevocomprobante', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function eventoobtenerafectante( tcafectante ) as void                                                                                                                                                                                                    
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1
+
+		lnParametros = pcount()
+		lxParam1 = tcafectante
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Eventoobtenerafectante', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function eventoobtenerdatosmovimientobancario( tocomprobante as object, todatos as object, todetalle as object ) as void                                                                                                                                  
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1, lxParam2, lxParam3
+
+		lnParametros = pcount()
+		lxParam1 = tocomprobante
+		lxParam2 = todatos
+		lxParam3 = todetalle
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Eventoobtenerdatosmovimientobancario', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function eventoobtenerinformacion( toyomismo as object ) as void                                                                                                                                                                                          
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1
+
+		lnParametros = pcount()
+		lxParam1 = toyomismo
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Eventoobtenerinformacion', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function eventoobtenerlogueo( toyomismo as object ) as void                                                                                                                                                                                               
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1
+
+		lnParametros = pcount()
+		lxParam1 = toyomismo
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Eventoobtenerlogueo', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function eventoobtenermascaracantidad( tcnombredetalle as string, tcmascaracantidades as string ) as void                                                                                                                                                 
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1, lxParam2
+
+		lnParametros = pcount()
+		lxParam1 = tcnombredetalle
+		lxParam2 = tcmascaracantidades
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Eventoobtenermascaracantidad', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function eventoporinsertar() as void                                                                                                                                                                                                                      
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Eventoporinsertar', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function eventopreguntaranular( tcmensaje as string ) as void                                                                                                                                                                                             
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1
+
+		lnParametros = pcount()
+		lxParam1 = tcmensaje
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Eventopreguntaranular', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function eventopreguntareliminar() as void                                                                                                                                                                                                                
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Eventopreguntareliminar', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function eventopreguntasigeneramovimiento( tctitulo as string ) as void                                                                                                                                                                                   
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1
+
+		lnParametros = pcount()
+		lxParam1 = tctitulo
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Eventopreguntasigeneramovimiento', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function eventorefrescardetalle( tcdetalle as string ) as void                                                                                                                                                                                            
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1
+
+		lnParametros = pcount()
+		lxParam1 = tcdetalle
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Eventorefrescardetalle', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function eventosalvarentidad()                                                                                                                                                                                                                            
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Eventosalvarentidad', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function eventosetearfiltrobuscadorarticulo( toentidad as entidad of entidad.prg ) as boolean                                                                                                                                                             
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1
+
+		lnParametros = pcount()
+		lxParam1 = toentidad
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Eventosetearfiltrobuscadorarticulo', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function eventosetearitemantesdeactualizadetallearticulos() as void                                                                                                                                                                                       
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Eventosetearitemantesdeactualizadetallearticulos', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function eventosetearitemdespuesdeexcepcionfueradepaletaocurva() as void                                                                                                                                                                                  
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Eventosetearitemdespuesdeexcepcionfueradepaletaocurva', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function eventosetearmonedacomprobante() as void                                                                                                                                                                                                          
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Eventosetearmonedacomprobante', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function eventosetearultimaaccionyestado(tcaccion as string, tcestado as string) as void                                                                                                                                                                  
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1, lxParam2
+
+		lnParametros = pcount()
+		lxParam1 = tcaccion
+		lxParam2 = tcestado
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Eventosetearultimaaccionyestado', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function eventotalonariolleno() as void                                                                                                                                                                                                                   
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Eventotalonariolleno', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function eventoverificarlimitesendisenoimpresion( tcdetalle as string ) as void                                                                                                                                                                           
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1
+
+		lnParametros = pcount()
+		lxParam1 = tcdetalle
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Eventoverificarlimitesendisenoimpresion', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function eventoverificarvalidezarticulo( toarticulo as entidad of entidad.prg ) as boolean                                                                                                                                                                
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1
+
+		lnParametros = pcount()
+		lxParam1 = toarticulo
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Eventoverificarvalidezarticulo', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function existearchivoclase( tcfile as string ) as boolean                                                                                                                                                                                                
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = tcfilelcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'ExisteArchivoClase', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'ExisteArchivoClase', lcParametros )			endif		endif		local llRetorno as Boolean				llRetorno = .f.				if _VFP.StartMode = 5 and !_screen.zoo.EsBuildAutomatico &&and "FOXEXTENDER" $ upper( sys( 16 ) )			try				do ( tcFile )				llRetorno = .t.			catch			endtry		else			llRetorno = file( tcFile )		endif				return llRetorno
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function existeidarticuloenitempromociones( tciditem as string ) as boolean                                                                                                                                                                               
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1
+
+		lnParametros = pcount()
+		lxParam1 = tciditem
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Existeidarticuloenitempromociones', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function existemontoderecargoenuncambio() as boolean                                                                                                                                                                                                      
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Existemontoderecargoenuncambio', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function existencuponeshuerfanos() as boolean                                                                                                                                                                                                             
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Existencuponeshuerfanos', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function fecha_assign( txval as variant ) as void                                                                                                                                                                                                         
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'fecha_assign', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'fecha_assign', lcParametros )			endif		endif		Local lxValOld As Variant		lxValOld = this.Fecha		local lxVal as Variant		lxVal = txVal		if This.CargaManual()			if this.Validar_Fecha( lxVal )				this.ValidarDominio_Fechacomprobante( lxVal )				this.Setear_Fecha( lxVal )			EndIf		Else			This.Setear_Fecha( lxVal )		EndIf		dodefault( lxVal )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function fechaaltafw_access() as date                                                                                                                                                                                                                     
+		lnParametros = pcount()lcParametros = ''		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'fechaaltafw_access', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'fechaaltafw_access', lcParametros )			endif		endif		if !this.ldestroy and this.EsNuevo() and this.DebeCrearValoresParaAtributos()			This.FechaAltaFW = goServicios.Librerias.ObtenerFecha()		endif		return This.FechaAltaFW		
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function fechaaltafw_assign( txval as variant ) as void                                                                                                                                                                                                   
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'fechaaltafw_assign', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'fechaaltafw_assign', lcParametros )			endif		endif		Local lxValOld As Variant		lxValOld = this.Fechaaltafw		local lxVal as Variant		lxVal = txVal		if This.CargaManual()			if this.Validar_Fechaaltafw( lxVal )				this.ValidarDominio_Fecha( lxVal )				this.Setear_Fechaaltafw( lxVal )			EndIf		Else			This.Setear_Fechaaltafw( lxVal )		EndIf		dodefault( lxVal )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function fechaexpo_assign( txval as variant ) as void                                                                                                                                                                                                     
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'fechaexpo_assign', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'fechaexpo_assign', lcParametros )			endif		endif		Local lxValOld As Variant		lxValOld = this.Fechaexpo		local lxVal as Variant		lxVal = txVal		if This.CargaManual()			if this.Validar_Fechaexpo( lxVal )				this.ValidarDominio_Fecha( lxVal )				this.Setear_Fechaexpo( lxVal )			EndIf		Else			This.Setear_Fechaexpo( lxVal )		EndIf		dodefault( lxVal )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function fechaimpo_assign( txval as variant ) as void                                                                                                                                                                                                     
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'fechaimpo_assign', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'fechaimpo_assign', lcParametros )			endif		endif		Local lxValOld As Variant		lxValOld = this.Fechaimpo		local lxVal as Variant		lxVal = txVal		if This.CargaManual()			if this.Validar_Fechaimpo( lxVal )				this.ValidarDominio_Fecha( lxVal )				this.Setear_Fechaimpo( lxVal )			EndIf		Else			This.Setear_Fechaimpo( lxVal )		EndIf		dodefault( lxVal )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function fechamodificacionfw_access() as date                                                                                                                                                                                                             
+		lnParametros = pcount()lcParametros = ''		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'fechamodificacionfw_access', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'fechamodificacionfw_access', lcParametros )			endif		endif		if !this.ldestroy and ( This.EsNuevo() or This.EsEdicion() or this.lAnular ) and this.DebeCrearValoresParaAtributos()			This.FechaModificacionFW = goServicios.Librerias.ObtenerFecha()		endif		return This.FechaModificacionFW
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function fechamodificacionfw_assign( txval as variant ) as void                                                                                                                                                                                           
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'fechamodificacionfw_assign', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'fechamodificacionfw_assign', lcParametros )			endif		endif		Local lxValOld As Variant		lxValOld = this.Fechamodificacionfw		local lxVal as Variant		lxVal = txVal		if This.CargaManual()			if this.Validar_Fechamodificacionfw( lxVal )				this.ValidarDominio_Fecha( lxVal )				this.Setear_Fechamodificacionfw( lxVal )			EndIf		Else			This.Setear_Fechamodificacionfw( lxVal )		EndIf		dodefault( lxVal )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function fechaoriginal_assign( txval as variant ) as void                                                                                                                                                                                                 
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'fechaoriginal_assign', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'fechaoriginal_assign', lcParametros )			endif		endif		Local lxValOld As Variant		lxValOld = this.Fechaoriginal		local lxVal as Variant		lxVal = txVal		if This.CargaManual()			if this.Validar_Fechaoriginal( lxVal )				this.ValidarDominio_Fecha( lxVal )				this.Setear_Fechaoriginal( lxVal )			EndIf		Else			This.Setear_Fechaoriginal( lxVal )		EndIf		dodefault( lxVal )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function fechatransferencia_assign( txval as variant ) as void                                                                                                                                                                                            
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'fechatransferencia_assign', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'fechatransferencia_assign', lcParametros )			endif		endif		Local lxValOld As Variant		lxValOld = this.Fechatransferencia		local lxVal as Variant		lxVal = txVal		if This.CargaManual()			if this.Validar_Fechatransferencia( lxVal )				this.ValidarDominio_Fecha( lxVal )				this.Setear_Fechatransferencia( lxVal )			EndIf		Else			This.Setear_Fechatransferencia( lxVal )		EndIf		dodefault( lxVal )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function finalizar()                                                                                                                                                                                                                                      
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Finalizar', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function finalizarlogueo() as void                                                                                                                                                                                                                        
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Finalizarlogueo', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function formatearcodigosugerido( txval as string ) as string                                                                                                                                                                                             
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1
+
+		lnParametros = pcount()
+		lxParam1 = txval
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Formatearcodigosugerido', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function fuegeneradoporpromocionbancaria() as boolean                                                                                                                                                                                                     
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Fuegeneradoporpromocionbancaria', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function generarautomaticamentenuevoenbaseainterviniente( tcnombreentidadinterviniente as string, tccodigoregistrointerviniente as string, tlgeneracancelacion as boolean ) as void                                                                       
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1, lxParam2, lxParam3
+
+		lnParametros = pcount()
+		lxParam1 = tcnombreentidadinterviniente
+		lxParam2 = tccodigoregistrointerviniente
+		lxParam3 = tlgeneracancelacion
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Generarautomaticamentenuevoenbaseainterviniente', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function generarcomprobante( tcentidad as string, tccodigo as string, tccodigovalor as string, torequest as object ) as void                                                                                                                              
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1, lxParam2, lxParam3, lxParam4
+
+		lnParametros = pcount()
+		lxParam1 = tcentidad
+		lxParam2 = tccodigo
+		lxParam3 = tccodigovalor
+		lxParam4 = torequest
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Generarcomprobante', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function generardevolucion() as void                                                                                                                                                                                                                      
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Generardevolucion', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function generarmercaderiaentransitoderechazo() as void                                                                                                                                                                                                   
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Generarmercaderiaentransitoderechazo', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function generarmovimientosdestock() as void                                                                                                                                                                                                              
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Generarmovimientosdestock', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function generarmovimientosdestockautomatico( tctablaaux as string, tndatasessionid as integer ) as void                                                                                                                                                  
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1, lxParam2
+
+		lnParametros = pcount()
+		lxParam1 = tctablaaux
+		lxParam2 = tndatasessionid
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Generarmovimientosdestockautomatico', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function generarpdf() as boolean                                                                                                                                                                                                                          
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Generarpdf', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function generarremitodecompra() as void                                                                                                                                                                                                                  
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Generarremitodecompra', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function generarxmlcomprobantes() as string                                                                                                                                                                                                               
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Generarxmlcomprobantes', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function grabar() as void                                                                                                                                                                                                                                 
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Grabar', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function grabarcotizacion( toitemcotiza, lcmoneda ) as void                                                                                                                                                                                               
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1, lxParam2
+
+		lnParametros = pcount()
+		lxParam1 = toitemcotiza
+		lxParam2 = lcmoneda
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Grabarcotizacion', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function guardardetalleoriginalaanularomodificar() as void                                                                                                                                                                                                
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Guardardetalleoriginalaanularomodificar', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function haybasadoen() as boolean                                                                                                                                                                                                                         
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Haybasadoen', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function haydatos() as boolean                                                                                                                                                                                                                            
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Haydatos', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function hayinformacion() as boolean                                                                                                                                                                                                                      
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Hayinformacion', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function horaaltafw_access() as string                                                                                                                                                                                                                    
+		lnParametros = pcount()lcParametros = ''		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'horaaltafw_access', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'horaaltafw_access', lcParametros )			endif		endif				if !this.ldestroy and this.EsNuevo() and this.DebeCrearValoresParaAtributos()			this.HoraAltaFW = goLibrerias.ObtenerHora()		endif		return this.HoraAltaFW		
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function horaaltafw_assign( txval as variant ) as void                                                                                                                                                                                                    
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'horaaltafw_assign', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'horaaltafw_assign', lcParametros )			endif		endif		Local lxValOld As Variant		lxValOld = this.Horaaltafw		local lxVal as Variant		lxVal = txVal		if This.CargaManual()			if this.Validar_Horaaltafw( lxVal )				this.Setear_Horaaltafw( lxVal )			EndIf		Else			This.Setear_Horaaltafw( lxVal )		EndIf		dodefault( lxVal )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function horaexpo_assign( txval as variant ) as void                                                                                                                                                                                                      
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'horaexpo_assign', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'horaexpo_assign', lcParametros )			endif		endif		Local lxValOld As Variant		lxValOld = this.Horaexpo		local lxVal as Variant		lxVal = txVal		if This.CargaManual()			if this.Validar_Horaexpo( lxVal )				this.Setear_Horaexpo( lxVal )			EndIf		Else			This.Setear_Horaexpo( lxVal )		EndIf		dodefault( lxVal )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function horaimpo_assign( txval as variant ) as void                                                                                                                                                                                                      
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'horaimpo_assign', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'horaimpo_assign', lcParametros )			endif		endif		Local lxValOld As Variant		lxValOld = this.Horaimpo		local lxVal as Variant		lxVal = txVal		if This.CargaManual()			if this.Validar_Horaimpo( lxVal )				this.Setear_Horaimpo( lxVal )			EndIf		Else			This.Setear_Horaimpo( lxVal )		EndIf		dodefault( lxVal )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function horamodificacionfw_access() as string                                                                                                                                                                                                            
+		lnParametros = pcount()lcParametros = ''		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'horamodificacionfw_access', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'horamodificacionfw_access', lcParametros )			endif		endif		if !this.ldestroy and ( This.EsNuevo() or This.EsEdicion() or this.lAnular ) and this.DebeCrearValoresParaAtributos()			this.HoraModificacionFW = goServicios.Librerias.ObtenerHora()		endif		return this.HoraModificacionFW
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function horamodificacionfw_assign( txval as variant ) as void                                                                                                                                                                                            
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'horamodificacionfw_assign', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'horamodificacionfw_assign', lcParametros )			endif		endif		Local lxValOld As Variant		lxValOld = this.Horamodificacionfw		local lxVal as Variant		lxVal = txVal		if This.CargaManual()			if this.Validar_Horamodificacionfw( lxVal )				this.Setear_Horamodificacionfw( lxVal )			EndIf		Else			This.Setear_Horamodificacionfw( lxVal )		EndIf		dodefault( lxVal )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function importar( tcxmldatos as string, tlcompletoconvalidaciones as boolean ) as void                                                                                                                                                                   
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1, lxParam2
+
+		lnParametros = pcount()
+		lxParam1 = tcxmldatos
+		lxParam2 = tlcompletoconvalidaciones
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Importar', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function importar_sintransaccion( tcxmldatos as string ) as void                                                                                                                                                                                          
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1
+
+		lnParametros = pcount()
+		lxParam1 = tcxmldatos
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Importar_sintransaccion', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function imprimir() as boolean                                                                                                                                                                                                                            
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Imprimir', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function imprimirdespuesdegrabar() as boolean                                                                                                                                                                                                             
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Imprimirdespuesdegrabar', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function informarerroresimportacion( tccursorinformacionerrores as string ) as void                                                                                                                                                                       
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1
+
+		lnParametros = pcount()
+		lxParam1 = tccursorinformacionerrores
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Informarerroresimportacion', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function ingresarcotizacion()                                                                                                                                                                                                                             
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Ingresarcotizacion', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function ingresecotizacion() as string                                                                                                                                                                                                                    
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Ingresecotizacion', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function iniciaraccionesautomaticas() as void                                                                                                                                                                                                             
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Iniciaraccionesautomaticas', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function init( t1, t2, t3, t4 ) as boolean                                                                                                                                                                                                                
+		this.Inicializar()
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function invocarmetodoestatico( tcclase as string, tcmetodo as string, tvpar1 as variant, tvpar2 as variant, tvpar3 as variant, tvpar4 as variant, tvpar5 as variant , tvpar6 as variant, tvpar7 as variant, tvpar8 as variant ) as variant               
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1, lxParam2, lxParam3, lxParam4, lxParam5, lxParam6, lxParam7, lxParam8, lxParam9, lxParam10
+
+		lnParametros = pcount()
+		lxParam1 = tcclase
+		lxParam2 = tcmetodo
+		lxParam3 = tvpar1
+		lxParam4 = tvpar2
+		lxParam5 = tvpar3
+		lxParam6 = tvpar4
+		lxParam7 = tvpar5
+		lxParam8 = tvpar6
+		lxParam9 = tvpar7
+		lxParam10 = tvpar8
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Invocarmetodoestatico', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function inyectarinformacion( toquienllama as object ) as void                                                                                                                                                                                            
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1
+
+		lnParametros = pcount()
+		lxParam1 = toquienllama
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Inyectarinformacion', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function inyectarlogueo( toquienllama as object ) as void                                                                                                                                                                                                 
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1
+
+		lnParametros = pcount()
+		lxParam1 = toquienllama
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Inyectarlogueo', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function itemafectado( tnnroitem as integer ) as boolean                                                                                                                                                                                                  
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1
+
+		lnParametros = pcount()
+		lxParam1 = tnnroitem
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Itemafectado', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function lanzareventopreguntaranular() as void                                                                                                                                                                                                            
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Lanzareventopreguntaranular', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function lesentidadconedicionrestringida_access() as boolean                                                                                                                                                                                              
+		lnParametros = pcount()lcParametros = ''		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'lesentidadconedicionrestringida_access', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'lesentidadconedicionrestringida_access', lcParametros )			endif		endif		local llRetorno as Boolean		llRetorno = .f.		if vartype( this.oAtributosConEdicionRestringida ) = 'O' and this.oAtributosConEdicionRestringida.Count > 0			llRetorno = .t.		endif		return llRetorno
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function limparsedistribuyeroncantidades() as void                                                                                                                                                                                                        
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Limparsedistribuyeroncantidades', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function limpiar( tlforzar as boolean ) as void                                                                                                                                                                                                           
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1
+
+		lnParametros = pcount()
+		lxParam1 = tlforzar
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Limpiar', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function limpiaratributosvirtuales() as void                                                                                                                                                                                                              
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Limpiaratributosvirtuales', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function limpiarbasadoen() as void                                                                                                                                                                                                                        
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Limpiarbasadoen', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function limpiarestimulos() as void                                                                                                                                                                                                                       
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Limpiarestimulos', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function limpiarflag() as void                                                                                                                                                                                                                            
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Limpiarflag', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function limpiarinformacion() as void                                                                                                                                                                                                                     
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Limpiarinformacion', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function limpiarvariablesporoperatoria() as void                                                                                                                                                                                                          
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Limpiarvariablesporoperatoria', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function loguear( tctexto as string, tnnivel as integer ) as void                                                                                                                                                                                         
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1, lxParam2
+
+		lnParametros = pcount()
+		lxParam1 = tctexto
+		lxParam2 = tnnivel
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Loguear', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function mayusculaencodigosdeldetallecontextorest() as void                                                                                                                                                                                               
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Mayusculaencodigosdeldetallecontextorest', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function mensagelogueoinicial() as string                                                                                                                                                                                                                 
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Mensagelogueoinicial', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function mensajeerrorclaverepetida() as string                                                                                                                                                                                                            
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Mensajeerrorclaverepetida', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function modificar() as void                                                                                                                                                                                                                              
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Modificar', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function modificarsinvalidarafectados() as void                                                                                                                                                                                                           
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Modificarsinvalidarafectados', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function modificastockbasadoen() as boolean                                                                                                                                                                                                               
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Modificastockbasadoen', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function montodescuento3_assign( txval as variant ) as void                                                                                                                                                                                               
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'montodescuento3_assign', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'montodescuento3_assign', lcParametros )			endif		endif		Local lxValOld As Variant		lxValOld = this.Montodescuento3		local lxVal as Variant		lxVal = txVal		if This.CargaManual()			if this.Validar_Montodescuento3( lxVal )				this.Setear_Montodescuento3( lxVal )			EndIf		Else			This.Setear_Montodescuento3( lxVal )		EndIf		dodefault( lxVal )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function motivo_access() as variant                                                                                                                                                                                                                       
+		lnParametros = pcount()lcParametros = ''		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'motivo_access', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'motivo_access', lcParametros )			endif		endif		if this.ldestroy		else			if This.lInstanciarSubEntidadaDemanda				if ( !vartype( this.Motivo ) = 'O' or isnull( this.Motivo ) )					this.Motivo = _Screen.zoo.instanciarentidad( 'Motivo' )					this.Motivo.lEsSubEntidad = .t.					this.enlazar( 'Motivo.EventoObtenerLogueo', 'inyectarLogueo' )					this.enlazar( 'Motivo.EventoObtenerInformacion', 'inyectarInformacion' )				endif				if !this.lBuscandoCodigo					if this.Motivo.CODIGO # this.Motivo_PK						this.Motivo.CODIGO = this.Motivo_PK					endif				endif			endif		endif		return this.Motivo
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function motivo_pk_assign( txval as variant ) as void                                                                                                                                                                                                     
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'motivo_pk_assign', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'motivo_pk_assign', lcParametros )			endif		endif		Local lxValOld As Variant		lxValOld = this.Motivo_PK		local lxVal as Variant		local loSugerido as Object				lxVal = txVal		lxVal = iif( len( lxVal ) < 3, padr( lxVal, 3 ), lxVal )		this.Motivo_PK = lxVal		if this.Validar_Motivo( lxVal, lxValOld )			This.Setear_Motivo( lxVal )		endif		dodefault( lxVal )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function motivoremitoorigen_assign( txval as variant ) as void                                                                                                                                                                                            
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'motivoremitoorigen_assign', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'motivoremitoorigen_assign', lcParametros )			endif		endif		Local lxValOld As Variant		lxValOld = this.Motivoremitoorigen		local lxVal as Variant		lxVal = txVal		if This.CargaManual()			if this.Validar_Motivoremitoorigen( lxVal )				this.Setear_Motivoremitoorigen( lxVal )			EndIf		Else			This.Setear_Motivoremitoorigen( lxVal )		EndIf		dodefault( lxVal )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function movimientodetalle_access() as variant                                                                                                                                                                                                            
+		lnParametros = pcount()lcParametros = ''		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'movimientodetalle_access', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'movimientodetalle_access', lcParametros )			endif		endif		if !this.ldestroy and ( !vartype( this.Movimientodetalle ) = 'O' or isnull( this.Movimientodetalle ) )			this.Movimientodetalle = this.crearobjeto( 'Din_DetalleMercaderiaentransitoMovimientodetalle' )			this.Movimientodetalle.inicializar()			this.enlazar( 'Movimientodetalle.EventoObtenerLogueo', 'inyectarLogueo' )			this.enlazar( 'Movimientodetalle.EventoObtenerInformacion', 'inyectarInformacion' )			bindevent( this.Movimientodetalle, 'CambioSumarizado', this, 'CambiosDetalleMovimientodetalle', 1)			this.enlazar( 'Movimientodetalle.EventoAdvertirLimitePorDiseno', 'EventoAdvertirLimitePorDiseno')			this.enlazar( 'Movimientodetalle.EventoCancelarCargaLimitePorDiseno', 'EventoCancelarCargaLimitePorDiseno')			this.Movimientodetalle.lVerificarLimitesEnDisenoImpresion = .t.				this.Movimientodetalle.lHabilitaInsertarDetalle = .t.		endif		return this.Movimientodetalle
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function movimientogenerado_assign( txval as variant ) as void                                                                                                                                                                                            
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'movimientogenerado_assign', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'movimientogenerado_assign', lcParametros )			endif		endif		Local lxValOld As Variant		lxValOld = this.Movimientogenerado		local lxVal as Variant		lxVal = txVal		if This.CargaManual()			if this.Validar_Movimientogenerado( lxVal )				this.Setear_Movimientogenerado( lxVal )			EndIf		Else			This.Setear_Movimientogenerado( lxVal )		EndIf		dodefault( lxVal )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function nopermitepasaralsuperarminimodereposicion() as boolean                                                                                                                                                                                           
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Nopermitepasaralsuperarminimodereposicion', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function notieneprefijodeintegrado( toitem as object ) as boolean                                                                                                                                                                                         
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1
+
+		lnParametros = pcount()
+		lxParam1 = toitem
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Notieneprefijodeintegrado', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function novalidardetalleporoperatoriaenbasea() as boolean                                                                                                                                                                                                
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Novalidardetalleporoperatoriaenbasea', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function nuevo() as void                                                                                                                                                                                                                                  
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Nuevo', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function nuevobasadoen() as void                                                                                                                                                                                                                          
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Nuevobasadoen', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function numero_assign( txval as variant ) as void                                                                                                                                                                                                        
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'numero_assign', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'numero_assign', lcParametros )			endif		endif		Local lxValOld As Variant		lxValOld = this.Numero		local lxVal as Variant		lxVal = txVal		if This.CargaManual()			if this.Validar_Numero( lxVal )				this.Setear_Numero( lxVal )			EndIf		Else			This.Setear_Numero( lxVal )		EndIf		dodefault( lxVal )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function numerooriginal_assign( txval as variant ) as void                                                                                                                                                                                                
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'numerooriginal_assign', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'numerooriginal_assign', lcParametros )			endif		endif		Local lxValOld As Variant		lxValOld = this.Numerooriginal		local lxVal as Variant		lxVal = txVal		if This.CargaManual()			if this.Validar_Numerooriginal( lxVal )				this.Setear_Numerooriginal( lxVal )			EndIf		Else			This.Setear_Numerooriginal( lxVal )		EndIf		dodefault( lxVal )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function oad_access() as variant                                                                                                                                                                                                                          
+		lnParametros = pcount()lcParametros = ''		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'oad_access', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'oad_access', lcParametros )			endif		endif		if !this.ldestroy and ( !vartype( this.oAD ) = 'O' or isnull( this.oAD ) )			this.oAD = this.crearobjeto( 'Din_EntidadMERCADERIAENTRANSITOAD_' + alltrim( _screen.zoo.app.TipoDeBase ))			this.oAD.InyectarEntidad( this )			this.oAD.Inicializar()		endif		return this.oAD
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function oatributosconedicionrestringida_access() as zoocoleccion of zoocoleccion.prg                                                                                                                                                                     
+		lnParametros = pcount()lcParametros = ''		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'oatributosconedicionrestringida_access', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'oatributosconedicionrestringida_access', lcParametros )			endif		endif		if !this.ldestroy and !vartype( this.oAtributosConEdicionRestringida ) = 'O'			this.oAtributosConEdicionRestringida = _Screen.zoo.CrearObjeto( "ZooColeccion" )		endif		return this.oAtributosConEdicionRestringida
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function observacion_assign( txval as variant ) as void                                                                                                                                                                                                   
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'observacion_assign', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'observacion_assign', lcParametros )			endif		endif		Local lxValOld As Variant		lxValOld = this.Observacion		local lxVal as Variant		lxVal = txVal		if This.CargaManual()			if this.Validar_Observacion( lxVal )				this.Setear_Observacion( lxVal )			EndIf		Else			This.Setear_Observacion( lxVal )		EndIf		dodefault( lxVal )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function obteneratributoclaveprimaria() as string                                                                                                                                                                                                         
+		lnParametros = pcount()lcParametros = ''		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'obteneratributoclaveprimaria', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'obteneratributoclaveprimaria', lcParametros )			endif		endif		return this.cAtributoPK
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function obteneratributodetalleainsertar() as detalle of detalle.prg                                                                                                                                                                                      
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Obteneratributodetalleainsertar', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function obteneratributosanulacion() as void                                                                                                                                                                                                              
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Obteneratributosanulacion', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function obteneratributoscombinacion() as object                                                                                                                                                                                                          
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Obteneratributoscombinacion', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function obteneratributosobligatorios() as zoocoleccion                                                                                                                                                                                                   
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Obteneratributosobligatorios', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function obtenercadenacomprobantes( tcclave as string ) as string                                                                                                                                                                                         
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1
+
+		lnParametros = pcount()
+		lxParam1 = tcclave
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Obtenercadenacomprobantes', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function obtenercampossegunequivalencia( taest ) as void                                                                                                                                                                                                  
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1
+
+		lnParametros = pcount()
+		lxParam1 = taest
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Obtenercampossegunequivalencia', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function obtenercantidadderegistrosconfiltro( tchaving as string ) as void                                                                                                                                                                                
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1
+
+		lnParametros = pcount()
+		lxParam1 = tchaving
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Obtenercantidadderegistrosconfiltro', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function obtenercantidaditemsinfoadicional() as integer                                                                                                                                                                                                   
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Obtenercantidaditemsinfoadicional', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function obtenercantidadregistros() as integer                                                                                                                                                                                                            
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Obtenercantidadregistros', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function obtenercodigoerrorparavalidaciontimestamp() as integer                                                                                                                                                                                           
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Obtenercodigoerrorparavalidaciontimestamp', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function obtenercolstockafectado( todetalle as zoocoleccion of zoocoleccion.prg, tocombinacion as zoocoleccion of zoocoleccion.prg ) as void                                                                                                              
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1, lxParam2
+
+		lnParametros = pcount()
+		lxParam1 = todetalle
+		lxParam2 = tocombinacion
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Obtenercolstockafectado', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function obtenercomprobantesvalidosdeenbasea() as string                                                                                                                                                                                                  
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Obtenercomprobantesvalidosdeenbasea', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function obtenercuponeshuerfanosaplicados() as zoocoleccion of zoocoleccion.prg                                                                                                                                                                           
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Obtenercuponeshuerfanosaplicados', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function obtenerdatosentidad( tcatributos as string, tchaving as string, tcorder as string , tcfunc as string, tntope as integer ) as string                                                                                                              
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1, lxParam2, lxParam3, lxParam4, lxParam5
+
+		lnParametros = pcount()
+		lxParam1 = tcatributos
+		lxParam2 = tchaving
+		lxParam3 = tcorder
+		lxParam4 = tcfunc
+		lxParam5 = tntope
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Obtenerdatosentidad', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function obtenerdatosmovimientobancario( todatos as object, tcdetalle as object ) as void                                                                                                                                                                 
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1, lxParam2
+
+		lnParametros = pcount()
+		lxParam1 = todatos
+		lxParam2 = tcdetalle
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Obtenerdatosmovimientobancario', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function obtenerdescripcion() as string                                                                                                                                                                                                                   
+		lnParametros = pcount()lcParametros = ''		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'obtenerdescripcion', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'obtenerdescripcion', lcParametros )			endif		endif		return this.cDescripcion
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function obtenerdescripcioncomplementariavalorcomprobante( tovalor as object, tocheques as object ) as string                                                                                                                                             
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1, lxParam2
+
+		lnParametros = pcount()
+		lxParam1 = tovalor
+		lxParam2 = tocheques
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Obtenerdescripcioncomplementariavalorcomprobante', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function obtenerdescripcioncomprobante() as void                                                                                                                                                                                                          
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Obtenerdescripcioncomprobante', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function obtenerdetalleafectacioinfoadicional() as object                                                                                                                                                                                                 
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Obtenerdetalleafectacioinfoadicional', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function obtenerdetalleainsertar() as detalle of detalle.prg                                                                                                                                                                                              
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Obtenerdetalleainsertar', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function obtenerentidadafectada( toitem as object ) as string                                                                                                                                                                                             
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1
+
+		lnParametros = pcount()
+		lxParam1 = toitem
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Obtenerentidadafectada', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function obtenerentidadafectadaitemtabla( toitem as object ) as string                                                                                                                                                                                    
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1
+
+		lnParametros = pcount()
+		lxParam1 = toitem
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Obtenerentidadafectadaitemtabla', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function obtenerentidaddecomprobantedeventas( tntipocomprobante as integer ) as string                                                                                                                                                                    
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1
+
+		lnParametros = pcount()
+		lxParam1 = tntipocomprobante
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Obtenerentidaddecomprobantedeventas', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function obtenerestadodestockdecomprobante( tcentidad ) as string                                                                                                                                                                                         
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1
+
+		lnParametros = pcount()
+		lxParam1 = tcentidad
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Obtenerestadodestockdecomprobante', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function obtenerestadodestockdecomprobanteafectado() as string                                                                                                                                                                                            
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Obtenerestadodestockdecomprobanteafectado', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function obtenerestadosdestock( ) as zoocoleccion                                                                                                                                                                                                         
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Obtenerestadosdestock', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function obtenerfechabaseparavigencia() as date                                                                                                                                                                                                           
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Obtenerfechabaseparavigencia', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function obtenerfechadeultimacotizacion() as void                                                                                                                                                                                                         
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Obtenerfechadeultimacotizacion', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function obtenerfiltrodebusquedaadicional() as string                                                                                                                                                                                                     
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Obtenerfiltrodebusquedaadicional', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function obtenerfuncionalidades() as string                                                                                                                                                                                                               
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Obtenerfuncionalidades', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function obteneridentificadordecomprobante( tntipocomprobante as integer ) as string                                                                                                                                                                      
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1
+
+		lnParametros = pcount()
+		lxParam1 = tntipocomprobante
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Obteneridentificadordecomprobante', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function obteneridporclavecandidata() as variant                                                                                                                                                                                                          
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Obteneridporclavecandidata', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function obtenerinformacion() as zooinformacion of zooinformacion.prg                                                                                                                                                                                     
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Obtenerinformacion', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function obtenerinvertisignodecomprobanteafectado() as boolean                                                                                                                                                                                            
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Obtenerinvertisignodecomprobanteafectado', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function obteneritemauxiliarcotizacion() as void                                                                                                                                                                                                          
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Obteneritemauxiliarcotizacion', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function obtenermensajeclavecandidataexistente() as string                                                                                                                                                                                                
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Obtenermensajeclavecandidataexistente', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function obtenermensajedeavisoparacuponeshuerfanos( ) as string                                                                                                                                                                                           
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Obtenermensajedeavisoparacuponeshuerfanos', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function obtenernocalculapercepciones() as boolean                                                                                                                                                                                                        
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Obtenernocalculapercepciones', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function obtenernombre() as string                                                                                                                                                                                                                        
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Obtenernombre', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function obtenernombredecomprobantedeventas( tntipocomprobante as integer ) as string                                                                                                                                                                     
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1
+
+		lnParametros = pcount()
+		lxParam1 = tntipocomprobante
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Obtenernombredecomprobantedeventas', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function obtenernombredetallesconprepantalla() as zoocoleccion of zoocoleccion.prg                                                                                                                                                                        
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Obtenernombredetallesconprepantalla', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function obtenernombredevalor( tccodigo as string ) as string                                                                                                                                                                                             
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1
+
+		lnParametros = pcount()
+		lxParam1 = tccodigo
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Obtenernombredevalor', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function obtenernombreoriginal() as string                                                                                                                                                                                                                
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Obtenernombreoriginal', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function obtenernombresvalidadores() as zoocoleccion                                                                                                                                                                                                      
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Obtenernombresvalidadores', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function obtenernombretransferencia() as string                                                                                                                                                                                                           
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Obtenernombretransferencia', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function obtenernumerocomprobante( tcentidad as string ) as integer                                                                                                                                                                                       
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1
+
+		lnParametros = pcount()
+		lxParam1 = tcentidad
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Obtenernumerocomprobante', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function obtenerobjetobusquedaespecial( tcatributo as string ) as object                                                                                                                                                                                  
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1
+
+		lnParametros = pcount()
+		lxParam1 = tcatributo
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Obtenerobjetobusquedaespecial', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function obtenerproximonumeroenstring() as string                                                                                                                                                                                                         
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Obtenerproximonumeroenstring', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function obtenerrelacionesdebusquedaadicional() as string                                                                                                                                                                                                 
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Obtenerrelacionesdebusquedaadicional', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function obtenerresultadodevotacion( pepe as zoocoleccion of zoocoleccion.prg) as zoocoleccion                                                                                                                                                            
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1
+
+		lnParametros = pcount()
+		lxParam1 = pepe
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Obtenerresultadodevotacion', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function obtenerrutadepdfpersonalizadoparaenviodemail() as string                                                                                                                                                                                         
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Obtenerrutadepdfpersonalizadoparaenviodemail', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function obtenersentenciasdelete() as zoocoleccion of zoocoleccion.prg                                                                                                                                                                                    
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Obtenersentenciasdelete', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function obtenersentenciasinsert() as zoocoleccion of zoocoleccion.prg                                                                                                                                                                                    
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Obtenersentenciasinsert', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function obtenersentenciasupdate() as zoocoleccion of zoocoleccion.prg                                                                                                                                                                                    
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Obtenersentenciasupdate', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function obtenersignodemovimientoregistroconciliable( todetalle as object ) as integer                                                                                                                                                                    
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1
+
+		lnParametros = pcount()
+		lxParam1 = todetalle
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Obtenersignodemovimientoregistroconciliable', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function obtenersignoentidadafectada( tcentidad as string ) as boolean                                                                                                                                                                                    
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1
+
+		lnParametros = pcount()
+		lxParam1 = tcentidad
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Obtenersignoentidadafectada', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function obtenersiguientenumerico() as integer                                                                                                                                                                                                            
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Obtenersiguientenumerico', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function obtenertooltipcomprobanteafectado( tnnroitem as integer ) as string                                                                                                                                                                              
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1
+
+		lnParametros = pcount()
+		lxParam1 = tnnroitem
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Obtenertooltipcomprobanteafectado', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function obtenertooltiptalle( tccodigotalle as string ) as string                                                                                                                                                                                         
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1
+
+		lnParametros = pcount()
+		lxParam1 = tccodigotalle
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Obtenertooltiptalle', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function obtenerultimamodificacionenregistros() as datetime                                                                                                                                                                                               
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Obtenerultimamodificacionenregistros', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function obtenerultimocargado( todetalle as object ) as integer                                                                                                                                                                                           
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1
+
+		lnParametros = pcount()
+		lxParam1 = todetalle
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Obtenerultimocargado', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function obtenerultimoitemdegrilladevalores() as integer                                                                                                                                                                                                  
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Obtenerultimoitemdegrilladevalores', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function obtenervalorpropiedadestatica( tcclase as string, tcpropiedad as string ) as variant                                                                                                                                                             
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1, lxParam2
+
+		lnParametros = pcount()
+		lxParam1 = tcclase
+		lxParam2 = tcpropiedad
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Obtenervalorpropiedadestatica', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function obtenerwhereadicionalparasentenciaupdate() as string                                                                                                                                                                                             
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Obtenerwhereadicionalparasentenciaupdate', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function obuzon_access() as object                                                                                                                                                                                                                        
+		lnParametros = pcount()lcParametros = ''		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'obuzon_access', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'obuzon_access', lcParametros )			endif		endif		if !this.lDestroy and ( !vartype( this.oBuzon ) = 'O' or isnull( this.oBuzon ) )			this.oBuzon = _screen.zoo.instanciarentidad( "buzon" )		endif		return this.oBuzon
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function ocacheafectantes_access() as object                                                                                                                                                                                                              
+		lnParametros = pcount()lcParametros = ''		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'ocacheafectantes_access', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'ocacheafectantes_access', lcParametros )			endif		endif		if !this.ldestroy and (type("this.oCacheAfectantes") <> 'O' or isnull(this.oCacheAfectantes))			this.oCacheAfectantes = _screen.Zoo.CrearObjeto( "ZooColeccion" )		endif		return this.oCacheAfectantes
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function ocolaboradorcheques_access() as variant                                                                                                                                                                                                          
+		lnParametros = pcount()lcParametros = ''		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'ocolaboradorcheques_access', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'ocolaboradorcheques_access', lcParametros )			endif		endif		if !this.ldestroy and ( type( "this.oColaboradorCheques" ) != 'O' or isnull( this.oColaboradorCheques ) )			this.oColaboradorCheques = _screen.zoo.CrearObjeto( "colaboradorCheques", "colaboradorCheques.PRG" )		endif		return this.oColaboradorCheques
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function ocolaboradorvalidacioncontroldestockdiponible_access() as variant                                                                                                                                                                                
+		lnParametros = pcount()lcParametros = ''		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'ocolaboradorvalidacioncontroldestockdiponible_access', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'ocolaboradorvalidacioncontroldestockdiponible_access', lcParametros )			endif		endif		if !this.ldestroy and ( !vartype( this.oColaboradorValidacionControlDeStockDiponible ) = 'O' or isnull( this.oColaboradorValidacionControlDeStockDiponible ) )			this.oColaboradorValidacionControlDeStockDiponible = _Screen.Zoo.CrearObjeto( "ColaboradorValidacionControlDeStockDiponible" )		endif		return this.oColaboradorValidacionControlDeStockDiponible
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function ocolaboradorvalidacionminimodereposicion_access() as variant                                                                                                                                                                                     
+		lnParametros = pcount()lcParametros = ''		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'ocolaboradorvalidacionminimodereposicion_access', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'ocolaboradorvalidacionminimodereposicion_access', lcParametros )			endif		endif		if !this.ldestroy and ( !vartype( this.oColaboradorValidacionMinimoDeReposicion ) = 'O' or isnull( this.oColaboradorValidacionMinimoDeReposicion ) )			this.oColaboradorValidacionMinimoDeReposicion = _Screen.Zoo.CrearObjeto( "ColaboradorValidacionMinimoDeReposicion" )		endif		return this.oColaboradorValidacionMinimoDeReposicion
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function ocolatributosobligatoriosdefinidosporusuario_access() as object                                                                                                                                                                                  
+		lnParametros = pcount()lcParametros = ''		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'ocolatributosobligatoriosdefinidosporusuario_access', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'ocolatributosobligatoriosdefinidosporusuario_access', lcParametros )			endif		endif		local loRetorno as Object				loRetorno = null		if !this.lDestroy					loRetorno = goServicios.SaltosDeCampoyValoresSugeridos.ObtenerColeccionAtributosObligatorios( this.ObtenerNombre() )		endif				return loRetorno
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function ocolcombinacionesyaprocesadas_access() as object                                                                                                                                                                                                 
+		lnParametros = pcount()lcParametros = ''		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'ocolcombinacionesyaprocesadas_access', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'ocolcombinacionesyaprocesadas_access', lcParametros )			endif		endif		if !this.ldestroy and (type("this.oColCombinacionesYaProcesadas") <> 'O' or isnull(this.oColCombinacionesYaProcesadas))			this.oColCombinacionesYaProcesadas = _screen.Zoo.CrearObjeto( "ZooColeccion" )		endif		return this.oColCombinacionesYaProcesadas
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function ocomportamientocodigosugerido_access() as void                                                                                                                                                                                                   
+		lnParametros = pcount()lcParametros = ''		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'ocomportamientocodigosugerido_access', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'ocomportamientocodigosugerido_access', lcParametros )			endif		endif		local loComportamientoCodigoSugerido as Object		if !this.ldestroy and !vartype( this.oComportamientoCodigoSugerido ) = 'O'			loComportamientoCodigoSugerido = _Screen.zoo.CrearObjeto( "DecoradorDeCodigosDeEntidades" )			this.InicializarComportamientoCodigoSugerido(loComportamientoCodigoSugerido )			this.oComportamientoCodigoSugerido = loComportamientoCodigoSugerido		endif		return this.oComportamientoCodigoSugerido
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function oempaquetador_access() as object                                                                                                                                                                                                                 
+		lnParametros = pcount()lcParametros = ''		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'oempaquetador_access', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'oempaquetador_access', lcParametros )			endif		endif		if !vartype( this.oEmpaquetador ) = 'O' or isnull( this.oEmpaquetador )			this.oEmpaquetador = newobject( "EmpaquetadorMercaderiaEnTransito", "EmpaquetarMercaderiaEnTransitoDespuesDeRechazar.Prg")		endif		return this.oEmpaquetador
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function oentidadcotizacion_access() as void                                                                                                                                                                                                              
+		lnParametros = pcount()lcParametros = ''		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'oentidadcotizacion_access', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'oentidadcotizacion_access', lcParametros )			endif		endif		if !this.lDestroy and !( vartype( this.oEntidadCotizacion ) == "O" )			this.oEntidadCotizacion = _screen.zoo.instanciarentidad( "Cotizacion" )		endif		return this.oEntidadCotizacion
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function ogestordemail_access() as zoocoleccion of zoocoleccion.prg                                                                                                                                                                                       
+		lnParametros = pcount()lcParametros = ''		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'ogestordemail_access', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'ogestordemail_access', lcParametros )			endif		endif		if !this.ldestroy and !vartype( this.oGestorDeMail ) = 'O'			this.oGestorDeMail = _Screen.zoo.CrearObjeto( "GestorDeMail" )		endif		return this.oGestorDeMail
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function oinformacion_access() as variant                                                                                                                                                                                                                 
+		lnParametros = pcount()lcParametros = ''		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'oinformacion_access', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'oinformacion_access', lcParametros )			endif		endif		with this			if !.ldestroy and !vartype( .oInformacion ) = 'O' and isnull( .oInformacion )				this.eventoObtenerInformacion( this )				if !vartype( .oInformacion ) = 'O' and isnull( .oInformacion )					.oInformacion = this.CrearObjeto( "ZooInformacion" )				endif				endif		endwith		return this.oInformacion
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function ologueadoroperacionesavanzadas_access() as variant                                                                                                                                                                                               
+		lnParametros = pcount()lcParametros = ''		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'ologueadoroperacionesavanzadas_access', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'ologueadoroperacionesavanzadas_access', lcParametros )			endif		endif		if !this.ldestroy and (type("this.oLogueadorOperacionesAvanzadas") <> 'O' or isnull(this.oLogueadorOperacionesAvanzadas))			this.oLogueadorOperacionesAvanzadas = _screen.Zoo.CrearObjeto( "LogueoOperacionesAvanzadas" )		endif		return this.oLogueadorOperacionesAvanzadas
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function ologueo_access() as variant                                                                                                                                                                                                                      
+		lnParametros = pcount()lcParametros = ''		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'ologueo_access', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'ologueo_access', lcParametros )			endif		endif		with this			if !.ldestroy and !vartype( .oLogueo ) = 'O' and isnull( .oLogueo ) and vartype( goServicios ) = 'O'				this.eventoObtenerLogueo( this )				if !vartype( .oLogueo ) = 'O' and isnull( .oLogueo )					.oLogueo = goServicios.Logueos.obtenerObjetoLogueo( this )					.SetearAccion()					.lLogueoPropio = .T.				else					.lLogueoPropio = .F.								endif				endif		endwith		return this.oLogueo
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function omensaje_access() as void                                                                                                                                                                                                                        
+		lnParametros = pcount()lcParametros = ''		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'omensaje_access', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'omensaje_access', lcParametros )			endif		endif		if !this.ldestroy and ( !vartype( this.oMensaje ) = 'O' or isnull( this.oMensaje ) )			this.oMensaje = _screen.zoo.crearobjeto( "mensajeentidad", "", this )		endif				return this.oMensaje
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function omoneda_access() as variant                                                                                                                                                                                                                      
+		lnParametros = pcount()lcParametros = ''		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'omoneda_access', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'omoneda_access', lcParametros )			endif		endif		if !this.ldestroy			if !vartype( this.oMoneda ) = 'O'				this.oMoneda = _screen.zoo.instanciarentidad( "Moneda" )				this.oMoneda.inicializar()			endif		endif		return this.oMoneda
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function onumeraciones_access() as variant                                                                                                                                                                                                                
+		lnParametros = pcount()lcParametros = ''		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'onumeraciones_access', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'onumeraciones_access', lcParametros )			endif		endif		if !this.ldestroy and ( !vartype( this.oNumeraciones ) = 'O' or isnull( this.oNumeraciones ) )			this.oNumeraciones = this.CrearObjeto( 'Numeraciones' )			this.oNumeraciones.Inicializar()			this.oNumeraciones.SetearEntidad( this )		endif		return this.oNumeraciones
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function oobservadoresdeimportacion_access() as variant                                                                                                                                                                                                   
+		lnParametros = pcount()lcParametros = ''		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'oobservadoresdeimportacion_access', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'oobservadoresdeimportacion_access', lcParametros )			endif		endif		if !this.ldestroy and ( !vartype( this.oObservadoresDeImportacion ) = 'O' or isnull( this.oObservadoresDeImportacion ) )			this.oObservadoresDeImportacion = _Screen.zoo.crearobjeto( 'ZooColeccion' )		endif		return this.oObservadoresDeImportacion
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function oregistrosdeactividadesalgrabar_access() as zoocoleccion of zoocoleccion.prg                                                                                                                                                                     
+		lnParametros = pcount()lcParametros = ''		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'oregistrosdeactividadesalgrabar_access', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'oregistrosdeactividadesalgrabar_access', lcParametros )			endif		endif		if !this.ldestroy and !vartype( this.oRegistrosDeActividadesAlGrabar ) = 'O'			this.oRegistrosDeActividadesAlGrabar = _Screen.zoo.CrearObjeto( "ZooColeccion" )		endif		return this.oRegistrosDeActividadesAlGrabar
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function origendestino_access() as variant                                                                                                                                                                                                                
+		lnParametros = pcount()lcParametros = ''		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'origendestino_access', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'origendestino_access', lcParametros )			endif		endif		if this.ldestroy		else			if This.lInstanciarSubEntidadaDemanda				if ( !vartype( this.Origendestino ) = 'O' or isnull( this.Origendestino ) )					this.Origendestino = _Screen.zoo.instanciarentidad( 'Origendedatos' )					this.Origendestino.lEsSubEntidad = .t.					this.enlazar( 'Origendestino.EventoObtenerLogueo', 'inyectarLogueo' )					this.enlazar( 'Origendestino.EventoObtenerInformacion', 'inyectarInformacion' )				endif				if !this.lBuscandoCodigo					if this.Origendestino.CODIGO # this.Origendestino_PK						this.Origendestino.CODIGO = this.Origendestino_PK					endif				endif			endif		endif		return this.Origendestino
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function origendestino_pk_assign( txval as variant ) as void                                                                                                                                                                                              
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'origendestino_pk_assign', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'origendestino_pk_assign', lcParametros )			endif		endif		Local lxValOld As Variant		lxValOld = this.Origendestino_PK		local lxVal as Variant		local loSugerido as Object				lxVal = txVal		lxVal = iif( len( lxVal ) < 8, padr( lxVal, 8 ), lxVal )		this.Origendestino_PK = lxVal		if this.Validar_Origendestino( lxVal, lxValOld )			This.Setear_Origendestino( lxVal )		endif		dodefault( lxVal )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function origletra_assign( txval as variant ) as void                                                                                                                                                                                                     
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'origletra_assign', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'origletra_assign', lcParametros )			endif		endif		Local lxValOld As Variant		lxValOld = this.Origletra		local lxVal as Variant		lxVal = txVal		if This.CargaManual()			if this.Validar_Origletra( lxVal )				this.Setear_Origletra( lxVal )			EndIf		Else			This.Setear_Origletra( lxVal )		EndIf		dodefault( lxVal )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function orignumero_assign( txval as variant ) as void                                                                                                                                                                                                    
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'orignumero_assign', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'orignumero_assign', lcParametros )			endif		endif		Local lxValOld As Variant		lxValOld = this.Orignumero		local lxVal as Variant		lxVal = txVal		if This.CargaManual()			if this.Validar_Orignumero( lxVal )				this.Setear_Orignumero( lxVal )			EndIf		Else			This.Setear_Orignumero( lxVal )		EndIf		dodefault( lxVal )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function origptovta_assign( txval as variant ) as void                                                                                                                                                                                                    
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'origptovta_assign', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'origptovta_assign', lcParametros )			endif		endif		Local lxValOld As Variant		lxValOld = this.Origptovta		local lxVal as Variant		lxVal = txVal		if This.CargaManual()			if this.Validar_Origptovta( lxVal )				this.Setear_Origptovta( lxVal )			EndIf		Else			This.Setear_Origptovta( lxVal )		EndIf		dodefault( lxVal )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function origtipo_assign( txval as variant ) as void                                                                                                                                                                                                      
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'origtipo_assign', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'origtipo_assign', lcParametros )			endif		endif		Local lxValOld As Variant		lxValOld = this.Origtipo		local lxVal as Variant		lxVal = txVal		if This.CargaManual()			if this.Validar_Origtipo( lxVal )				this.Setear_Origtipo( lxVal )			EndIf		Else			This.Setear_Origtipo( lxVal )		EndIf		dodefault( lxVal )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function otalle_access() as variant                                                                                                                                                                                                                       
+		lnParametros = pcount()lcParametros = ''		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'otalle_access', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'otalle_access', lcParametros )			endif		endif		if this.ldestroy		else			if ( !vartype( this.oTalle ) = 'O' or isnull( this.oTalle ) )				this.oTalle = _Screen.zoo.instanciarentidad( 'Talle' )			endif		endif		return this.oTalle
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function ovalidadores_access() as void                                                                                                                                                                                                                    
+		lnParametros = pcount()lcParametros = ''		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'ovalidadores_access', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'ovalidadores_access', lcParametros )			endif		endifif this.ldestroyelseif !vartype( this.oValidadores ) = 'O' or isnull( this.oValidadores )					loFactoryValidadoresComprobantes = _screen.zoo.crearobjeto( "FactoryValidadoresDeComprobantes", "FactoryValidadoresDeComprobantes.prg" )					this.oValidadores = loFactoryValidadoresComprobantes.ObtenerColeccionValidadores( this )					this.enlazar( 'oValidadores.EventoObtenerInformacion', 'inyectarInformacion' )					this.oValidadores.PasarInformacion()release loFactoryValidadoresComprobantesendifendifreturn this.oValidadores
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function ovalidadorescomp_access() as object                                                                                                                                                                                                              
+		lnParametros = pcount()lcParametros = ''		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'ovalidadorescomp_access', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'ovalidadorescomp_access', lcParametros )			endif		endif		if !this.lDestroy and !( vartype( this.oValidadoresComp ) == "O" )			this.oValidadoresComp = _screen.Zoo.Crearobjeto( "ZooColeccion" )		endif				return this.oValidadoresComp
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function parsearfecha( txfecha as variant ) as date                                                                                                                                                                                                       
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1
+
+		lnParametros = pcount()
+		lxParam1 = txfecha
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Parsearfecha', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function pedircotizacionnueva() as void                                                                                                                                                                                                                   
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Pedircotizacionnueva', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function pedircotizacionparalafechadelcomprobante() as void                                                                                                                                                                                               
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Pedircotizacionparalafechadelcomprobante', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function permiteejecutartriggers() as boolean                                                                                                                                                                                                             
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Permiteejecutartriggers', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function permiteemitirmonedaextranjera() as boolean                                                                                                                                                                                                       
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Permiteemitirmonedaextranjera', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function permitegenerarpdf() as boolean                                                                                                                                                                                                                   
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Permitegenerarpdf', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function porcentajedescuento_assign( txval as variant ) as void                                                                                                                                                                                           
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'porcentajedescuento_assign', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'porcentajedescuento_assign', lcParametros )			endif		endif		Local lxValOld As Variant		lxValOld = this.Porcentajedescuento		local lxVal as Variant		lxVal = txVal		if This.CargaManual()			if this.Validar_Porcentajedescuento( lxVal )				this.Setear_Porcentajedescuento( lxVal )			EndIf		Else			This.Setear_Porcentajedescuento( lxVal )		EndIf		dodefault( lxVal )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function preguntarconfirmacionimpresion( tcmensaje as string, tnbotones as integer, tnrespuestasugerida as integer ) as void s                                                                                                                            
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1, lxParam2, lxParam3
+
+		lnParametros = pcount()
+		lxParam1 = tcmensaje
+		lxParam2 = tnbotones
+		lxParam3 = tnrespuestasugerida
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Preguntarconfirmacionimpresion', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function prepararlogueofiltroscompletardesdeventas(tofiltros as object) as void                                                                                                                                                                           
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1
+
+		lnParametros = pcount()
+		lxParam1 = tofiltros
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Prepararlogueofiltroscompletardesdeventas', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function prepararlogueofiltrosnuevoenbasea(tofiltros as object) as void                                                                                                                                                                                   
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1
+
+		lnParametros = pcount()
+		lxParam1 = tofiltros
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Prepararlogueofiltrosnuevoenbasea', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function preprocesarcursorparaimportacionenbloque( tcnombrecursor as string ) as void                                                                                                                                                                     
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1
+
+		lnParametros = pcount()
+		lxParam1 = tcnombrecursor
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Preprocesarcursorparaimportacionenbloque', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function primero() as boolean                                                                                                                                                                                                                             
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Primero', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function procesarenviodeemailalimportarporbuffer() as void                                                                                                                                                                                                
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Procesarenviodeemailalimportarporbuffer', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function quitarcuponesafectados( tocupones as object ) as void                                                                                                                                                                                            
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1
+
+		lnParametros = pcount()
+		lxParam1 = tocupones
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Quitarcuponesafectados', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function quitarcuponhuerfanoaplicado( tcitem as string ) as void                                                                                                                                                                                          
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1
+
+		lnParametros = pcount()
+		lxParam1 = tcitem
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Quitarcuponhuerfanoaplicado', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function reasignarpk_con_cc() as void                                                                                                                                                                                                                     
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Reasignarpk_con_cc', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function reasignarvalorsugeridoencasodeconcurrencia() as string                                                                                                                                                                                           
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Reasignarvalorsugeridoencasodeconcurrencia', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function recalcularporcambiodelistadeprecios( txval as variant ) as void                                                                                                                                                                                  
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1
+
+		lnParametros = pcount()
+		lxParam1 = txval
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Recalcularporcambiodelistadeprecios', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function recalcularporcambiofecha() as void                                                                                                                                                                                                               
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Recalcularporcambiofecha', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function recalcularporprepantalla(toitemscargados as zoocoleccion of zoocoleccion.prg ) as void                                                                                                                                                           
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1
+
+		lnParametros = pcount()
+		lxParam1 = toitemscargados
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Recalcularporprepantalla', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function recargomonto2_assign( txval as variant ) as void                                                                                                                                                                                                 
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'recargomonto2_assign', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'recargomonto2_assign', lcParametros )			endif		endif		Local lxValOld As Variant		lxValOld = this.Recargomonto2		local lxVal as Variant		lxVal = txVal		if This.CargaManual()			if this.Validar_Recargomonto2( lxVal )				this.Setear_Recargomonto2( lxVal )			EndIf		Else			This.Setear_Recargomonto2( lxVal )		EndIf		dodefault( lxVal )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function recargoporcentaje_assign( txval as variant ) as void                                                                                                                                                                                             
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'recargoporcentaje_assign', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'recargoporcentaje_assign', lcParametros )			endif		endif		Local lxValOld As Variant		lxValOld = this.Recargoporcentaje		local lxVal as Variant		lxVal = txVal		if This.CargaManual()			if this.Validar_Recargoporcentaje( lxVal )				this.Setear_Recargoporcentaje( lxVal )			EndIf		Else			This.Setear_Recargoporcentaje( lxVal )		EndIf		dodefault( lxVal )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function recibir( tolistatablas as zoocoleccion of zoocoleccion.prg, tlloguear as boolean ) as void                                                                                                                                                       
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1, lxParam2
+
+		lnParametros = pcount()
+		lxParam1 = tolistatablas
+		lxParam2 = tlloguear
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Recibir', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function remito_assign( txval as variant ) as void                                                                                                                                                                                                        
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'remito_assign', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'remito_assign', lcParametros )			endif		endif		Local lxValOld As Variant		lxValOld = this.Remito		local lxVal as Variant		lxVal = txVal		if This.CargaManual()			if this.Validar_Remito( lxVal )				this.Setear_Remito( lxVal )			EndIf		Else			This.Setear_Remito( lxVal )		EndIf		dodefault( lxVal )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function restablecersaldosafectados() as void                                                                                                                                                                                                             
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Restablecersaldosafectados', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function restaurargenhabilitar() as void                                                                                                                                                                                                                  
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Restaurargenhabilitar', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function restaurarstock() as void                                                                                                                                                                                                                         
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Restaurarstock', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function retiraefectivo() as boolean                                                                                                                                                                                                                      
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Retiraefectivo', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function sedebeestimular() as boolean                                                                                                                                                                                                                     
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Sedebeestimular', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function sedebeloguear() as boolean                                                                                                                                                                                                                       
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Sedebeloguear', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function seeliminounitem() as boolean                                                                                                                                                                                                                     
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Seeliminounitem', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function seguridadenentidadmenucondosoperaciones(tcoperacion as string, tcaccion as string, tcestado as string ) as void                                                                                                                                  
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1, lxParam2, lxParam3
+
+		lnParametros = pcount()
+		lxParam1 = tcoperacion
+		lxParam2 = tcaccion
+		lxParam3 = tcestado
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Seguridadenentidadmenucondosoperaciones', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function seriealtafw_access() as date                                                                                                                                                                                                                     
+		lnParametros = pcount()lcParametros = ''		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'seriealtafw_access', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'seriealtafw_access', lcParametros )			endif		endif		if !this.lDestroy and this.EsNuevo() and this.DebeCrearValoresParaAtributos()			This.SerieAltaFW = alltrim( _screen.Zoo.App.cSerie )		endif		return This.SerieAltaFW		
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function seriealtafw_assign( txval as variant ) as void                                                                                                                                                                                                   
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'seriealtafw_assign', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'seriealtafw_assign', lcParametros )			endif		endif		Local lxValOld As Variant		lxValOld = this.Seriealtafw		local lxVal as Variant		lxVal = txVal		if This.CargaManual()			if this.Validar_Seriealtafw( lxVal )				this.Setear_Seriealtafw( lxVal )			EndIf		Else			This.Setear_Seriealtafw( lxVal )		EndIf		dodefault( lxVal )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function seriemodificacionfw_access() as date                                                                                                                                                                                                             
+		lnParametros = pcount()lcParametros = ''		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'seriemodificacionfw_access', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'seriemodificacionfw_access', lcParametros )			endif		endif		if !this.lDestroy and ( This.EsNuevo() or This.EsEdicion() ) and this.DebeCrearValoresParaAtributos()			This.SerieModificacionFW = alltrim( _screen.Zoo.App.cSerie )		endif		return This.SerieModificacionFW		
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function seriemodificacionfw_assign( txval as variant ) as void                                                                                                                                                                                           
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'seriemodificacionfw_assign', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'seriemodificacionfw_assign', lcParametros )			endif		endif		Local lxValOld As Variant		lxValOld = this.Seriemodificacionfw		local lxVal as Variant		lxVal = txVal		if This.CargaManual()			if this.Validar_Seriemodificacionfw( lxVal )				this.Setear_Seriemodificacionfw( lxVal )			EndIf		Else			This.Setear_Seriemodificacionfw( lxVal )		EndIf		dodefault( lxVal )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function setear_anulado( txval as variant ) as void                                                                                                                                                                                                       
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'setear_anulado', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'setear_anulado', lcParametros )			endif		endif		this.Anulado = txVal		dodefault( txVal )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function setear_basededatosaltafw( txval as variant ) as void                                                                                                                                                                                             
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'setear_basededatosaltafw', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'setear_basededatosaltafw', lcParametros )			endif		endif		this.Basededatosaltafw = txVal		dodefault( txVal )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function setear_basededatosmodificacionfw( txval as variant ) as void                                                                                                                                                                                     
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'setear_basededatosmodificacionfw', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'setear_basededatosmodificacionfw', lcParametros )			endif		endif		this.Basededatosmodificacionfw = txVal		dodefault( txVal )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function setear_clase( txval as variant ) as void                                                                                                                                                                                                         
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'setear_clase', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'setear_clase', lcParametros )			endif		endif		this.Clase = txVal		dodefault( txVal )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function setear_comprobantegenerado( txval as variant ) as void                                                                                                                                                                                           
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'setear_comprobantegenerado', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'setear_comprobantegenerado', lcParametros )			endif		endif		this.Comprobantegenerado = txVal		dodefault( txVal )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function setear_datosadicionales( txval as variant ) as void                                                                                                                                                                                              
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'setear_datosadicionales', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'setear_datosadicionales', lcParametros )			endif		endif		this.Datosadicionales = txVal		dodefault( txVal )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function setear_descripcionfw( txval as variant ) as void                                                                                                                                                                                                 
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'setear_descripcionfw', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'setear_descripcionfw', lcParametros )			endif		endif		this.Descripcionfw = txVal		dodefault( txVal )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function setear_estadotransferencia( txval as variant ) as void                                                                                                                                                                                           
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'setear_estadotransferencia', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'setear_estadotransferencia', lcParametros )			endif		endif		this.Estadotransferencia = txVal		dodefault( txVal )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function setear_fecha( txval as variant ) as void                                                                                                                                                                                                         
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'setear_fecha', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'setear_fecha', lcParametros )			endif		endif		this.Fecha = txVal		dodefault( txVal )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function setear_fechaaltafw( txval as variant ) as void                                                                                                                                                                                                   
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'setear_fechaaltafw', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'setear_fechaaltafw', lcParametros )			endif		endif		this.Fechaaltafw = txVal		dodefault( txVal )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function setear_fechaexpo( txval as variant ) as void                                                                                                                                                                                                     
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'setear_fechaexpo', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'setear_fechaexpo', lcParametros )			endif		endif		this.Fechaexpo = txVal		dodefault( txVal )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function setear_fechaimpo( txval as variant ) as void                                                                                                                                                                                                     
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'setear_fechaimpo', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'setear_fechaimpo', lcParametros )			endif		endif		this.Fechaimpo = txVal		dodefault( txVal )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function setear_fechamodificacionfw( txval as variant ) as void                                                                                                                                                                                           
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'setear_fechamodificacionfw', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'setear_fechamodificacionfw', lcParametros )			endif		endif		this.Fechamodificacionfw = txVal		dodefault( txVal )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function setear_fechaoriginal( txval as variant ) as void                                                                                                                                                                                                 
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'setear_fechaoriginal', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'setear_fechaoriginal', lcParametros )			endif		endif		this.Fechaoriginal = txVal		dodefault( txVal )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function setear_fechatransferencia( txval as variant ) as void                                                                                                                                                                                            
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'setear_fechatransferencia', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'setear_fechatransferencia', lcParametros )			endif		endif		this.Fechatransferencia = txVal		dodefault( txVal )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function setear_horaaltafw( txval as variant ) as void                                                                                                                                                                                                    
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'setear_horaaltafw', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'setear_horaaltafw', lcParametros )			endif		endif		this.Horaaltafw = txVal		dodefault( txVal )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function setear_horaexpo( txval as variant ) as void                                                                                                                                                                                                      
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'setear_horaexpo', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'setear_horaexpo', lcParametros )			endif		endif		this.Horaexpo = txVal		dodefault( txVal )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function setear_horaimpo( txval as variant ) as void                                                                                                                                                                                                      
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'setear_horaimpo', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'setear_horaimpo', lcParametros )			endif		endif		this.Horaimpo = txVal		dodefault( txVal )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function setear_horamodificacionfw( txval as variant ) as void                                                                                                                                                                                            
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'setear_horamodificacionfw', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'setear_horamodificacionfw', lcParametros )			endif		endif		this.Horamodificacionfw = txVal		dodefault( txVal )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function setear_monedacomprobante( txval as variant ) as void                                                                                                                                                                                             
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'setear_monedacomprobante', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'setear_monedacomprobante', lcParametros )			endif		endif		dodefault( txVal )				if !empty( txVal )			this.EventoSetearMonedaComprobante()			this.SetearMonedaComprobante()			this.SimboloMonetarioComprobante = this.MonedaComprobante.Simbolo			this.SetearCotizacion()		endif		if vartype( this.ListaDePrecios ) = "O" and this.ListaDePrecios.Moneda_Pk != txVal and !empty( this.ListaDePrecios_Pk )			this.ListaDePrecios_Pk = ""			if this.DebeCambiarListaDePrecios()				this.ListaDePrecios_Pk = this.Cliente.ListaDePrecio_Pk				&&this.lCambioMonedaComprobante = .f.			endif		endif
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function setear_montodescuento3( txval as variant ) as void                                                                                                                                                                                               
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'setear_montodescuento3', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'setear_montodescuento3', lcParametros )			endif		endif		this.Montodescuento3 = txVal		dodefault( txVal )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function setear_motivo( txval as variant ) as void                                                                                                                                                                                                        
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'setear_motivo', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'setear_motivo', lcParametros )			endif		endif		this.Motivo.CODIGO = txVal		dodefault( txVal )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function setear_motivoremitoorigen( txval as variant ) as void                                                                                                                                                                                            
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'setear_motivoremitoorigen', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'setear_motivoremitoorigen', lcParametros )			endif		endif		this.Motivoremitoorigen = txVal		dodefault( txVal )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function setear_movimientogenerado( txval as variant ) as void                                                                                                                                                                                            
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'setear_movimientogenerado', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'setear_movimientogenerado', lcParametros )			endif		endif		this.Movimientogenerado = txVal		dodefault( txVal )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function setear_numero( txval as variant ) as void                                                                                                                                                                                                        
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'setear_numero', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'setear_numero', lcParametros )			endif		endif		this.Numero = txVal		dodefault( txVal )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function setear_numerooriginal( txval as variant ) as void                                                                                                                                                                                                
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'setear_numerooriginal', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'setear_numerooriginal', lcParametros )			endif		endif		this.Numerooriginal = txVal		dodefault( txVal )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function setear_observacion( txval as variant ) as void                                                                                                                                                                                                   
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'setear_observacion', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'setear_observacion', lcParametros )			endif		endif		this.Observacion = txVal		dodefault( txVal )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function setear_origendestino( txval as variant ) as void                                                                                                                                                                                                 
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'setear_origendestino', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'setear_origendestino', lcParametros )			endif		endif		this.Origendestino.CODIGO = txVal		dodefault( txVal )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function setear_origletra( txval as variant ) as void                                                                                                                                                                                                     
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'setear_origletra', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'setear_origletra', lcParametros )			endif		endif		this.Origletra = txVal		dodefault( txVal )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function setear_orignumero( txval as variant ) as void                                                                                                                                                                                                    
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'setear_orignumero', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'setear_orignumero', lcParametros )			endif		endif		this.Orignumero = txVal		dodefault( txVal )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function setear_origptovta( txval as variant ) as void                                                                                                                                                                                                    
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'setear_origptovta', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'setear_origptovta', lcParametros )			endif		endif		this.Origptovta = txVal		dodefault( txVal )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function setear_origtipo( txval as variant ) as void                                                                                                                                                                                                      
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'setear_origtipo', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'setear_origtipo', lcParametros )			endif		endif		this.Origtipo = txVal		dodefault( txVal )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function setear_porcentajedescuento( txval as variant ) as void                                                                                                                                                                                           
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'setear_porcentajedescuento', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'setear_porcentajedescuento', lcParametros )			endif		endif		this.Porcentajedescuento = txVal		dodefault( txVal )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function setear_recargomonto2( txval as variant ) as void                                                                                                                                                                                                 
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'setear_recargomonto2', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'setear_recargomonto2', lcParametros )			endif		endif		this.Recargomonto2 = txVal		dodefault( txVal )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function setear_recargoporcentaje( txval as variant ) as void                                                                                                                                                                                             
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'setear_recargoporcentaje', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'setear_recargoporcentaje', lcParametros )			endif		endif		this.Recargoporcentaje = txVal		dodefault( txVal )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function setear_remito( txval as variant ) as void                                                                                                                                                                                                        
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'setear_remito', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'setear_remito', lcParametros )			endif		endif		this.Remito = txVal		dodefault( txVal )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function setear_seriealtafw( txval as variant ) as void                                                                                                                                                                                                   
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'setear_seriealtafw', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'setear_seriealtafw', lcParametros )			endif		endif		this.Seriealtafw = txVal		dodefault( txVal )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function setear_seriemodificacionfw( txval as variant ) as void                                                                                                                                                                                           
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'setear_seriemodificacionfw', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'setear_seriemodificacionfw', lcParametros )			endif		endif		this.Seriemodificacionfw = txVal		dodefault( txVal )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function setear_situacionfiscal( txval as variant ) as void                                                                                                                                                                                               
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'setear_situacionfiscal', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'setear_situacionfiscal', lcParametros )			endif		endif		if ( This.EsNuevo() or This.EsEdicion() ) and txVal = 0			txVal = goServicios.Registry.Felino.SituacionFiscalClienteConsumidorFinal		Endif		this.Situacionfiscal.Codigo = txVal
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function setear_timestamp( txval as variant ) as void                                                                                                                                                                                                     
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'setear_timestamp', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'setear_timestamp', lcParametros )			endif		endif		this.Timestamp = txVal		dodefault( txVal )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function setear_tipo( txval as variant ) as void                                                                                                                                                                                                          
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'setear_tipo', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'setear_tipo', lcParametros )			endif		endif		this.Tipo = txVal		dodefault( txVal )		loDetalle = This.cDetalleComprobante		this.&loDetalle..oitem.lPermiteCantidadesNegativas = .T.
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function setear_usuarioaltafw( txval as variant ) as void                                                                                                                                                                                                 
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'setear_usuarioaltafw', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'setear_usuarioaltafw', lcParametros )			endif		endif		this.Usuarioaltafw = txVal		dodefault( txVal )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function setear_usuariomodificacionfw( txval as variant ) as void                                                                                                                                                                                         
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'setear_usuariomodificacionfw', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'setear_usuariomodificacionfw', lcParametros )			endif		endif		this.Usuariomodificacionfw = txVal		dodefault( txVal )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function setear_vendedor( txval as variant ) as void                                                                                                                                                                                                      
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'setear_vendedor', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'setear_vendedor', lcParametros )			endif		endif		this.Vendedor.CODIGO = txVal		dodefault( txVal )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function setear_versionaltafw( txval as variant ) as void                                                                                                                                                                                                 
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'setear_versionaltafw', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'setear_versionaltafw', lcParametros )			endif		endif		this.Versionaltafw = txVal		dodefault( txVal )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function setear_versionmodificacionfw( txval as variant ) as void                                                                                                                                                                                         
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'setear_versionmodificacionfw', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'setear_versionmodificacionfw', lcParametros )			endif		endif		this.Versionmodificacionfw = txVal		dodefault( txVal )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function setear_zadsfw( txval as variant ) as void                                                                                                                                                                                                        
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'setear_zadsfw', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'setear_zadsfw', lcParametros )			endif		endif		this.Zadsfw = txVal		dodefault( txVal )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function setearaccion() as string                                                                                                                                                                                                                         
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Setearaccion', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function setearcoleccionsentenciasanterior_anular() as void                                                                                                                                                                                               
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Setearcoleccionsentenciasanterior_anular', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function setearcoleccionsentenciasanterior_eliminar() as void                                                                                                                                                                                             
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Setearcoleccionsentenciasanterior_eliminar', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function setearcoleccionsentenciasanterior_modificar() as void                                                                                                                                                                                            
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Setearcoleccionsentenciasanterior_modificar', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function setearcoleccionsentenciasanterior_nuevo() as void                                                                                                                                                                                                
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Setearcoleccionsentenciasanterior_nuevo', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function setearcombinacionafectada( toitem as object, tocoleccion as object ) as void                                                                                                                                                                     
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1, lxParam2
+
+		lnParametros = pcount()
+		lxParam1 = toitem
+		lxParam2 = tocoleccion
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Setearcombinacionafectada', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function setearcomponentes() as void                                                                                                                                                                                                                      
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Setearcomponentes', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function setearcontexto() as void                                                                                                                                                                                                                         
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Setearcontexto', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function seteardescripciondecuponesintegrados() as void                                                                                                                                                                                                   
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Seteardescripciondecuponesintegrados', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function setearenviodeemailalimportarporbuffer() as void                                                                                                                                                                                                  
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Setearenviodeemailalimportarporbuffer', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function setearestadoedicionenitems() as void                                                                                                                                                                                                             
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Setearestadoedicionenitems', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function setearestadonuevoenitems() as void                                                                                                                                                                                                               
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Setearestadonuevoenitems', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function setearinformacion( toinformacion as object ) as void                                                                                                                                                                                             
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1
+
+		lnParametros = pcount()
+		lxParam1 = toinformacion
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Setearinformacion', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function setearlogueo( tologueo as object ) as void                                                                                                                                                                                                       
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1
+
+		lnParametros = pcount()
+		lxParam1 = tologueo
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Setearlogueo', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function setearmonedasistemadefault() as void                                                                                                                                                                                                             
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Setearmonedasistemadefault', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function setearsidebeadvertirfaltantedestock( tlvalor as boolean ) as void                                                                                                                                                                                
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1
+
+		lnParametros = pcount()
+		lxParam1 = tlvalor
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Setearsidebeadvertirfaltantedestock', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function setearstockinicial() as void                                                                                                                                                                                                                     
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Setearstockinicial', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function setearvaloressugeridos() as void                                                                                                                                                                                                                 
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Setearvaloressugeridos', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function setearvalorpropiedadestatica( tcclase as string, tcpropiedad as string, tvpar1 as variant ) as variant                                                                                                                                           
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1, lxParam2, lxParam3
+
+		lnParametros = pcount()
+		lxParam1 = tcclase
+		lxParam2 = tcpropiedad
+		lxParam3 = tvpar1
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Setearvalorpropiedadestatica', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function seteosprivados() as void                                                                                                                                                                                                                         
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Seteosprivados', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function siguiente () as boolean                                                                                                                                                                                                                          
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Siguiente', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function soportabusquedaextendida( txval as variant ) as boolean                                                                                                                                                                                          
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'soportabusquedaextendida', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'soportabusquedaextendida', lcParametros )			endif		endif		return This.oComportamientoCodigoSugerido.SoportaBusquedaExtendida()
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function soportapromociones() as boolean                                                                                                                                                                                                                  
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Soportapromociones', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function soyafectada() as boolean                                                                                                                                                                                                                         
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Soyafectada', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function tieneaccioncancelatoria() as boolean                                                                                                                                                                                                             
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Tieneaccioncancelatoria', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function tienecontratadoelservicio( tnservicio as integer ) as boolean                                                                                                                                                                                    
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1
+
+		lnParametros = pcount()
+		lxParam1 = tnservicio
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Tienecontratadoelservicio', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function tienedetallecomprobantecargado() as boolean                                                                                                                                                                                                      
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Tienedetallecomprobantecargado', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function tienedetallesconprepantalla() as boolean                                                                                                                                                                                                         
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Tienedetallesconprepantalla', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function tienefuncionalidadbasadoen() as boolean                                                                                                                                                                                                          
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Tienefuncionalidadbasadoen', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function tienekits() as boolean                                                                                                                                                                                                                           
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Tienekits', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function tienepromocionbancaria() as boolean                                                                                                                                                                                                              
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Tienepromocionbancaria', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function tienepromos() as boolean                                                                                                                                                                                                                         
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Tienepromos', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function tienequeloguearexcepciones() as boolean                                                                                                                                                                                                          
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Tienequeloguearexcepciones', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function tienequeverificarminimodereposicion() as boolean                                                                                                                                                                                                 
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Tienequeverificarminimodereposicion', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function timestamp_assign( txval as variant ) as void                                                                                                                                                                                                     
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'timestamp_assign', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'timestamp_assign', lcParametros )			endif		endif		Local lxValOld As Variant		lxValOld = this.Timestamp		local lxVal as Variant		lxVal = txVal		if This.CargaManual()			if this.Validar_Timestamp( lxVal )				this.Setear_Timestamp( lxVal )			EndIf		Else			This.Setear_Timestamp( lxVal )		EndIf		dodefault( lxVal )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function tipo_assign( txval as variant ) as void                                                                                                                                                                                                          
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'tipo_assign', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'tipo_assign', lcParametros )			endif		endif		Local lxValOld As Variant		lxValOld = this.Tipo		local lxVal as Variant		lxVal = txVal		if This.CargaManual()			if this.Validar_Tipo( lxVal )				if ( this.lHabilitarTipo or this.lEstaSeteandoValorSugerido or lxValOld == lxVal)					this.Setear_Tipo( lxVal )				else					this.Tipo = lxValOld					goServicios.Errores.LevantarExcepcion( "No se puede cambiar este valor (Entidad: Mercadería en tránsito - Atributo: Tipo)" )				endif			EndIf		Else			This.Setear_Tipo( lxVal )		EndIf		dodefault( lxVal )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function ultimo () as boolean                                                                                                                                                                                                                             
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Ultimo', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function usuarioaltafw_access() as date                                                                                                                                                                                                                   
+		lnParametros = pcount()lcParametros = ''		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'usuarioaltafw_access', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'usuarioaltafw_access', lcParametros )			endif		endif		if !this.lDestroy and this.EsNuevo() and this.DebeCrearValoresParaAtributos()			This.UsuarioAltaFW = alltrim( goServicios.Seguridad.ObtenerUltimoUsuarioLogueado() ) + this.UsuarioAutorizante()		endif		return This.UsuarioAltaFW		
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function usuarioaltafw_assign( txval as variant ) as void                                                                                                                                                                                                 
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'usuarioaltafw_assign', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'usuarioaltafw_assign', lcParametros )			endif		endif		Local lxValOld As Variant		lxValOld = this.Usuarioaltafw		local lxVal as Variant		lxVal = txVal		if This.CargaManual()			if this.Validar_Usuarioaltafw( lxVal )				this.Setear_Usuarioaltafw( lxVal )			EndIf		Else			This.Setear_Usuarioaltafw( lxVal )		EndIf		dodefault( lxVal )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function usuarioautorizante() as string                                                                                                                                                                                                                   
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Usuarioautorizante', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function usuariomodificacionfw_access() as date                                                                                                                                                                                                           
+		lnParametros = pcount()lcParametros = ''		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'usuariomodificacionfw_access', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'usuariomodificacionfw_access', lcParametros )			endif		endif		if !this.lDestroy and ( This.EsNuevo() or This.EsEdicion() ) and this.DebeCrearValoresParaAtributos()			This.UsuarioModificacionFW = alltrim( goServicios.Seguridad.ObtenerUltimoUsuarioLogueado() )  + this.UsuarioAutorizante()		endif		return This.UsuarioModificacionFW		
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function usuariomodificacionfw_assign( txval as variant ) as void                                                                                                                                                                                         
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'usuariomodificacionfw_assign', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'usuariomodificacionfw_assign', lcParametros )			endif		endif		Local lxValOld As Variant		lxValOld = this.Usuariomodificacionfw		local lxVal as Variant		lxVal = txVal		if This.CargaManual()			if this.Validar_Usuariomodificacionfw( lxVal )				this.Setear_Usuariomodificacionfw( lxVal )			EndIf		Else			This.Setear_Usuariomodificacionfw( lxVal )		EndIf		dodefault( lxVal )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function validacionatributos() as boolean                                                                                                                                                                                                                 
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Validacionatributos', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function validacionbasica() as boolean                                                                                                                                                                                                                    
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Validacionbasica', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function validaciondetalles() as boolean                                                                                                                                                                                                                  
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Validaciondetalles', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function validacionrecargomonto2( txval as variant ) as boolean                                                                                                                                                                                           
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1
+
+		lnParametros = pcount()
+		lxParam1 = txval
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Validacionrecargomonto2', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function validaciontimestamp() as boolean                                                                                                                                                                                                                 
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Validaciontimestamp', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function validaminimodereposicionalgrabar() as void                                                                                                                                                                                                       
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Validaminimodereposicionalgrabar', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function validar() as boolean                                                                                                                                                                                                                             
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Validar', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function validar_anulado( txval as variant ) as boolean                                                                                                                                                                                                   
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'validar_anulado', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'validar_anulado', lcParametros )			endif		endif		Return dodefault( txVal )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function validar_basededatosaltafw( txval as variant ) as boolean                                                                                                                                                                                         
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'validar_basededatosaltafw', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'validar_basededatosaltafw', lcParametros )			endif		endif		Return dodefault( txVal )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function validar_basededatosmodificacionfw( txval as variant ) as boolean                                                                                                                                                                                 
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'validar_basededatosmodificacionfw', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'validar_basededatosmodificacionfw', lcParametros )			endif		endif		Return dodefault( txVal )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function validar_clase( txval as variant ) as boolean                                                                                                                                                                                                     
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'validar_clase', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'validar_clase', lcParametros )			endif		endif		Return dodefault( txVal )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function validar_comprobantegenerado( txval as variant ) as boolean                                                                                                                                                                                       
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'validar_comprobantegenerado', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'validar_comprobantegenerado', lcParametros )			endif		endif		Return dodefault( txVal )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function validar_datosadicionales( txval as variant ) as boolean                                                                                                                                                                                          
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'validar_datosadicionales', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'validar_datosadicionales', lcParametros )			endif		endif		Return dodefault( txVal )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function validar_descripcionfw( txval as variant ) as boolean                                                                                                                                                                                             
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'validar_descripcionfw', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'validar_descripcionfw', lcParametros )			endif		endif		Return dodefault( txVal )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function validar_estadotransferencia( txval as variant ) as boolean                                                                                                                                                                                       
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'validar_estadotransferencia', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'validar_estadotransferencia', lcParametros )			endif		endif		Return dodefault( txVal )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function validar_fecha( txval as variant ) as boolean                                                                                                                                                                                                     
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'validar_fecha', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'validar_fecha', lcParametros )			endif		endif		Return dodefault( txVal )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function validar_fechaaltafw( txval as variant ) as boolean                                                                                                                                                                                               
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'validar_fechaaltafw', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'validar_fechaaltafw', lcParametros )			endif		endif		Return dodefault( txVal )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function validar_fechaexpo( txval as variant ) as boolean                                                                                                                                                                                                 
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'validar_fechaexpo', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'validar_fechaexpo', lcParametros )			endif		endif		Return dodefault( txVal )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function validar_fechaimpo( txval as variant ) as boolean                                                                                                                                                                                                 
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'validar_fechaimpo', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'validar_fechaimpo', lcParametros )			endif		endif		Return dodefault( txVal )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function validar_fechamodificacionfw( txval as variant ) as boolean                                                                                                                                                                                       
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'validar_fechamodificacionfw', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'validar_fechamodificacionfw', lcParametros )			endif		endif		Return dodefault( txVal )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function validar_fechaoriginal( txval as variant ) as boolean                                                                                                                                                                                             
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'validar_fechaoriginal', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'validar_fechaoriginal', lcParametros )			endif		endif		Return dodefault( txVal )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function validar_fechatransferencia( txval as variant ) as boolean                                                                                                                                                                                        
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'validar_fechatransferencia', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'validar_fechatransferencia', lcParametros )			endif		endif		Return dodefault( txVal )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function validar_horaaltafw( txval as variant ) as boolean                                                                                                                                                                                                
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'validar_horaaltafw', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'validar_horaaltafw', lcParametros )			endif		endif		Return dodefault( txVal )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function validar_horaexpo( txval as variant ) as boolean                                                                                                                                                                                                  
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'validar_horaexpo', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'validar_horaexpo', lcParametros )			endif		endif		Return dodefault( txVal )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function validar_horaimpo( txval as variant ) as boolean                                                                                                                                                                                                  
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'validar_horaimpo', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'validar_horaimpo', lcParametros )			endif		endif		Return dodefault( txVal )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function validar_horamodificacionfw( txval as variant ) as boolean                                                                                                                                                                                        
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'validar_horamodificacionfw', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'validar_horamodificacionfw', lcParametros )			endif		endif		Return dodefault( txVal )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function validar_montodescuento3( txval as variant ) as boolean                                                                                                                                                                                           
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'validar_montodescuento3', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'validar_montodescuento3', lcParametros )			endif		endif		Return dodefault( txVal )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function validar_motivo( txval as variant, txvalold as variant ) as boolean                                                                                                                                                                               
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1, lxParam2lnParametros = pcount()lxParam1 = txvallxParam2 = txvaloldlcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'validar_motivo', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'validar_motivo', lcParametros )			endif		endif		Return This.CargaManual() and dodefault( txVal, txValOld )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function validar_motivoremitoorigen( txval as variant ) as boolean                                                                                                                                                                                        
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'validar_motivoremitoorigen', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'validar_motivoremitoorigen', lcParametros )			endif		endif		Return dodefault( txVal )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function validar_movimientogenerado( txval as variant ) as boolean                                                                                                                                                                                        
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'validar_movimientogenerado', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'validar_movimientogenerado', lcParametros )			endif		endif		Return dodefault( txVal )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function validar_numero( txval as variant ) as boolean                                                                                                                                                                                                    
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'validar_numero', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'validar_numero', lcParametros )			endif		endif		Return dodefault( txVal )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function validar_numerooriginal( txval as variant ) as boolean                                                                                                                                                                                            
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'validar_numerooriginal', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'validar_numerooriginal', lcParametros )			endif		endif		Return dodefault( txVal )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function validar_observacion( txval as variant ) as boolean                                                                                                                                                                                               
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'validar_observacion', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'validar_observacion', lcParametros )			endif		endif		Return dodefault( txVal )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function validar_origendestino( txval as variant, txvalold as variant ) as boolean                                                                                                                                                                        
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1, lxParam2lnParametros = pcount()lxParam1 = txvallxParam2 = txvaloldlcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'validar_origendestino', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'validar_origendestino', lcParametros )			endif		endif		Return This.CargaManual() and dodefault( txVal, txValOld )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function validar_origletra( txval as variant ) as boolean                                                                                                                                                                                                 
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'validar_origletra', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'validar_origletra', lcParametros )			endif		endif		Return dodefault( txVal )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function validar_orignumero( txval as variant ) as boolean                                                                                                                                                                                                
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'validar_orignumero', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'validar_orignumero', lcParametros )			endif		endif		Return dodefault( txVal )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function validar_origptovta( txval as variant ) as boolean                                                                                                                                                                                                
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'validar_origptovta', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'validar_origptovta', lcParametros )			endif		endif		Return dodefault( txVal )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function validar_origtipo( txval as variant ) as boolean                                                                                                                                                                                                  
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'validar_origtipo', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'validar_origtipo', lcParametros )			endif		endif		Return dodefault( txVal )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function validar_porcentajedescuento( txval as variant ) as boolean                                                                                                                                                                                       
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'validar_porcentajedescuento', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'validar_porcentajedescuento', lcParametros )			endif		endif		Return dodefault( txVal )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function validar_recargomonto2( txval as variant ) as boolean                                                                                                                                                                                             
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'validar_recargomonto2', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'validar_recargomonto2', lcParametros )			endif		endif		Return dodefault( txVal )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function validar_recargoporcentaje( txval as variant ) as boolean                                                                                                                                                                                         
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'validar_recargoporcentaje', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'validar_recargoporcentaje', lcParametros )			endif		endif		Return dodefault( txVal )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function validar_remito( txval as variant ) as boolean                                                                                                                                                                                                    
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'validar_remito', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'validar_remito', lcParametros )			endif		endif		Return dodefault( txVal )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function validar_seriealtafw( txval as variant ) as boolean                                                                                                                                                                                               
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'validar_seriealtafw', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'validar_seriealtafw', lcParametros )			endif		endif		Return dodefault( txVal )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function validar_seriemodificacionfw( txval as variant ) as boolean                                                                                                                                                                                       
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'validar_seriemodificacionfw', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'validar_seriemodificacionfw', lcParametros )			endif		endif		Return dodefault( txVal )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function validar_timestamp( txval as variant ) as boolean                                                                                                                                                                                                 
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'validar_timestamp', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'validar_timestamp', lcParametros )			endif		endif		Return dodefault( txVal )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function validar_tipo( txval as variant ) as boolean                                                                                                                                                                                                      
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'validar_tipo', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'validar_tipo', lcParametros )			endif		endif		Return dodefault( txVal )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function validar_usuarioaltafw( txval as variant ) as boolean                                                                                                                                                                                             
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'validar_usuarioaltafw', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'validar_usuarioaltafw', lcParametros )			endif		endif		Return dodefault( txVal )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function validar_usuariomodificacionfw( txval as variant ) as boolean                                                                                                                                                                                     
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'validar_usuariomodificacionfw', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'validar_usuariomodificacionfw', lcParametros )			endif		endif		Return dodefault( txVal )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function validar_vendedor( txval as variant, txvalold as variant ) as boolean                                                                                                                                                                             
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1, lxParam2lnParametros = pcount()lxParam1 = txvallxParam2 = txvaloldlcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'validar_vendedor', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'validar_vendedor', lcParametros )			endif		endif		Return This.CargaManual() and dodefault( txVal, txValOld ) and This.Vendedor.oDesactivador.ValidarEstadoActivacion( txVal, txValOld, this.lnuevo, this.ledicion)
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function validar_versionaltafw( txval as variant ) as boolean                                                                                                                                                                                             
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'validar_versionaltafw', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'validar_versionaltafw', lcParametros )			endif		endif		Return dodefault( txVal )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function validar_versionmodificacionfw( txval as variant ) as boolean                                                                                                                                                                                     
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'validar_versionmodificacionfw', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'validar_versionmodificacionfw', lcParametros )			endif		endif		Return dodefault( txVal )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function validar_zadsfw( txval as variant ) as boolean                                                                                                                                                                                                    
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'validar_zadsfw', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'validar_zadsfw', lcParametros )			endif		endif		Return dodefault( txVal )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function validaranulacion() as boolean                                                                                                                                                                                                                    
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Validaranulacion', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function validarcamposobligatoriosdefinidosporusuario() as boolean                                                                                                                                                                                        
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Validarcamposobligatoriosdefinidosporusuario', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function validarcaracter(tccaracter as character, tlpermitecaracterespecial as boolean ) as boolean                                                                                                                                                       
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1, lxParam2
+
+		lnParametros = pcount()
+		lxParam1 = tccaracter
+		lxParam2 = tlpermitecaracterespecial
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Validarcaracter', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function validarclase() as boolean                                                                                                                                                                                                                        
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Validarclase', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function validardominio_fecha( txval as variant ) as void                                                                                                                                                                                                 
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1
+
+		lnParametros = pcount()
+		lxParam1 = txval
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Validardominio_fecha', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function validardominio_fechacomprobante( txval as variant ) as void                                                                                                                                                                                      
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1
+
+		lnParametros = pcount()
+		lxParam1 = txval
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Validardominio_fechacomprobante', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function validarelenviodeemailalimportarporbuffer() as boolean                                                                                                                                                                                            
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Validarelenviodeemailalimportarporbuffer', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function validarextension() as boolean                                                                                                                                                                                                                    
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Validarextension', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function validarfecha() as boolean                                                                                                                                                                                                                        
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Validarfecha', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function validarfechavencimientopresupuestos( tlcontinuar, toafectanteauxiliar) as void                                                                                                                                                                   
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1, lxParam2
+
+		lnParametros = pcount()
+		lxParam1 = tlcontinuar
+		lxParam2 = toafectanteauxiliar
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Validarfechavencimientopresupuestos', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function validaringreso( tctexto as string, tlpermitecaracterespecial as boolean ) as boolean                                                                                                                                                             
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1, lxParam2
+
+		lnParametros = pcount()
+		lxParam1 = tctexto
+		lxParam2 = tlpermitecaracterespecial
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Validaringreso', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function validaringresomanualenbasea() as void                                                                                                                                                                                                            
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Validaringresomanualenbasea', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function validarmotivo() as boolean                                                                                                                                                                                                                       
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Validarmotivo', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function validarorigendestino() as boolean                                                                                                                                                                                                                
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Validarorigendestino', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function validarpedircotizacionobligatoria( tdfecha ) as boolean                                                                                                                                                                                          
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1
+
+		lnParametros = pcount()
+		lxParam1 = tdfecha
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Validarpedircotizacionobligatoria', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function validarpk() as boolean                                                                                                                                                                                                                           
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Validarpk', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function validarremito() as boolean                                                                                                                                                                                                                       
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Validarremito', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function validarsicambioelvalordelatributo( tcatributo as string, txvalold as variant, txval as variant ) as boolean                                                                                                                                      
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1, lxParam2, lxParam3
+
+		lnParametros = pcount()
+		lxParam1 = tcatributo
+		lxParam2 = txvalold
+		lxParam3 = txval
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Validarsicambioelvalordelatributo', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function validartipo() as boolean                                                                                                                                                                                                                         
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Validartipo', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function validarvendedor() as boolean                                                                                                                                                                                                                     
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Validarvendedor', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function valorpermitidoparacomprobante( tntipovalor as integer ) as boolean                                                                                                                                                                               
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1
+
+		lnParametros = pcount()
+		lxParam1 = tntipovalor
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Valorpermitidoparacomprobante', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function valorsugeridoclase() as void                                                                                                                                                                                                                     
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Valorsugeridoclase', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function valorsugeridocomprobantegenerado() as void                                                                                                                                                                                                       
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Valorsugeridocomprobantegenerado', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function valorsugeridofecha() as void                                                                                                                                                                                                                     
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Valorsugeridofecha', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function valorsugeridofwclase() as void                                                                                                                                                                                                                   
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Valorsugeridofwclase', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function valorsugeridofwfecha() as void                                                                                                                                                                                                                   
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Valorsugeridofwfecha', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function valorsugeridofwtipo() as void                                                                                                                                                                                                                    
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Valorsugeridofwtipo', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function valorsugeridomotivoremitoorigen() as void                                                                                                                                                                                                        
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Valorsugeridomotivoremitoorigen', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function valorsugeridoobservacion() as void                                                                                                                                                                                                               
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Valorsugeridoobservacion', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function valorsugeridoorigendestino() as void                                                                                                                                                                                                             
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Valorsugeridoorigendestino', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function valorsugeridoremito() as void                                                                                                                                                                                                                    
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Valorsugeridoremito', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function valorsugeridotipo() as void                                                                                                                                                                                                                      
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Valorsugeridotipo', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function vendedor_access() as variant                                                                                                                                                                                                                     
+		lnParametros = pcount()lcParametros = ''		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'vendedor_access', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'vendedor_access', lcParametros )			endif		endif		if this.ldestroy		else			if This.lInstanciarSubEntidadaDemanda				if ( !vartype( this.Vendedor ) = 'O' or isnull( this.Vendedor ) )					this.Vendedor = _Screen.zoo.instanciarentidad( 'Vendedor' )					this.Vendedor.lEsSubEntidad = .t.					this.enlazar( 'Vendedor.EventoObtenerLogueo', 'inyectarLogueo' )					this.enlazar( 'Vendedor.EventoObtenerInformacion', 'inyectarInformacion' )				endif				if !this.lBuscandoCodigo					if this.Vendedor.CODIGO # this.Vendedor_PK						this.Vendedor.CODIGO = this.Vendedor_PK					endif				endif			endif		endif		return this.Vendedor
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function vendedor_pk_assign( txval as variant ) as void                                                                                                                                                                                                   
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'vendedor_pk_assign', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'vendedor_pk_assign', lcParametros )			endif		endif		Local lxValOld As Variant		lxValOld = this.Vendedor_PK		local lxVal as Variant		local loSugerido as Object				if txVal = lxValOld or empty( txVal )			lxVal = txVal		else			this.lBuscandoCodigo = .t.			if !this.lEsSubEntidad and ( this.EsNuevo() or this.EsEdicion() )				lxVal = This.Vendedor.oComportamientoCodigoSugerido.ObtenerPKaAsignar( txVal, This.Vendedor )			else				lxVal = txVal			endif			this.lBuscandoCodigo = .f.		endif		lxVal = iif( len( lxVal ) < 10, padr( lxVal, 10 ), lxVal )		this.Vendedor_PK = lxVal		if this.Validar_Vendedor( lxVal, lxValOld )			This.Setear_Vendedor( lxVal )		endif		dodefault( lxVal )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function verificarcontexto( tctipos as string ) as boolean                                                                                                                                                                                                
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = tctiposlcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'verificarcontexto', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'verificarcontexto', lcParametros )			endif		endif		local llRetorno as boolean, i as Integer, lcLetra as string				if empty( tcTipos )			llRetorno = empty( this.cContexto )		else			tcTipos = upper( alltrim( tcTipos ) )			llRetorno = .f.			for i = 1 to len( tcTipos )				lcLetra = substr( tcTipos, i, 1 )				llRetorno = ( lcLetra $ this.cContexto ) or llRetorno				if llRetorno					exit				endif			endfor		endif				return llRetorno
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function verificarexistenciaclaveprimaria( txval as variant ) as boolean                                                                                                                                                                                  
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1
+
+		lnParametros = pcount()
+		lxParam1 = txval
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Verificarexistenciaclaveprimaria', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function verificarexistenciaremito( tcremito as string ) as boolean                                                                                                                                                                                       
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1
+
+		lnParametros = pcount()
+		lxParam1 = tcremito
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Verificarexistenciaremito', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function verificarlimitesendisenoimpresion( tcdetalle as string ) as void                                                                                                                                                                                 
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1
+
+		lnParametros = pcount()
+		lxParam1 = tcdetalle
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Verificarlimitesendisenoimpresion', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function verificarsepuedegenerarrecepcion() as boolean                                                                                                                                                                                                    
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Verificarsepuedegenerarrecepcion', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function versionaltafw_access() as string                                                                                                                                                                                                                 
+		lnParametros = pcount()lcParametros = ''		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'versionaltafw_access', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'versionaltafw_access', lcParametros )			endif		endif		if !this.lDestroy and this.EsNuevo() and this.DebeCrearValoresParaAtributos()			This.VersionAltaFW = _screen.zoo.app.ObtenerVersion()		endif		return This.VersionAltaFW		
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function versionaltafw_assign( txval as variant ) as void                                                                                                                                                                                                 
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'versionaltafw_assign', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'versionaltafw_assign', lcParametros )			endif		endif		Local lxValOld As Variant		lxValOld = this.Versionaltafw		local lxVal as Variant		lxVal = txVal		if This.CargaManual()			if this.Validar_Versionaltafw( lxVal )				this.Setear_Versionaltafw( lxVal )			EndIf		Else			This.Setear_Versionaltafw( lxVal )		EndIf		dodefault( lxVal )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function versionmodificacionfw_access() as string                                                                                                                                                                                                         
+		lnParametros = pcount()lcParametros = ''		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'versionmodificacionfw_access', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'versionmodificacionfw_access', lcParametros )			endif		endif		if !this.lDestroy and ( This.EsNuevo() or This.EsEdicion() ) and this.DebeCrearValoresParaAtributos()			This.VersionModificacionFW = _screen.zoo.app.ObtenerVersion()		endif		return This.VersionModificacionFW		
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function versionmodificacionfw_assign( txval as variant ) as void                                                                                                                                                                                         
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'versionmodificacionfw_assign', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'versionmodificacionfw_assign', lcParametros )			endif		endif		Local lxValOld As Variant		lxValOld = this.Versionmodificacionfw		local lxVal as Variant		lxVal = txVal		if This.CargaManual()			if this.Validar_Versionmodificacionfw( lxVal )				this.Setear_Versionmodificacionfw( lxVal )			EndIf		Else			This.Setear_Versionmodificacionfw( lxVal )		EndIf		dodefault( lxVal )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function votacioncambioestadoanular( tcestado as string ) as boolean                                                                                                                                                                                      
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1
+
+		lnParametros = pcount()
+		lxParam1 = tcestado
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Votacioncambioestadoanular', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function votacioncambioestadocancelar( tcestado as string ) as boolean                                                                                                                                                                                    
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1
+
+		lnParametros = pcount()
+		lxParam1 = tcestado
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Votacioncambioestadocancelar', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function votacioncambioestadoeliminar( tcestado as string ) as boolean                                                                                                                                                                                    
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1
+
+		lnParametros = pcount()
+		lxParam1 = tcestado
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Votacioncambioestadoeliminar', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function votacioncambioestadograbar( tcestado as string ) as boolean                                                                                                                                                                                      
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1
+
+		lnParametros = pcount()
+		lxParam1 = tcestado
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Votacioncambioestadograbar', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function votacioncambioestadomodificar( tcestado as string ) as boolean                                                                                                                                                                                   
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1
+
+		lnParametros = pcount()
+		lxParam1 = tcestado
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Votacioncambioestadomodificar', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function votacioncambioestadonuevo( tcestado as string ) as boolean                                                                                                                                                                                       
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1
+
+		lnParametros = pcount()
+		lxParam1 = tcestado
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Votacioncambioestadonuevo', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function xmlacursor( tcxml as string, tcnombrecursor as string ) as void                                                                                                                                                                                  
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1, lxParam2
+
+		lnParametros = pcount()
+		lxParam1 = tcxml
+		lxParam2 = tcnombrecursor
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Xmlacursor', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	function zadsfw_assign( txval as variant ) as void                                                                                                                                                                                                        
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'zadsfw_assign', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'zadsfw_assign', lcParametros )			endif		endif		Local lxValOld As Variant		lxValOld = this.Zadsfw		local lxVal as Variant		lxVal = txVal		if This.CargaManual()			if this.Validar_Zadsfw( lxVal )				this.Setear_Zadsfw( lxVal )			EndIf		Else			This.Setear_Zadsfw( lxVal )		EndIf		dodefault( lxVal )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	hidden function crearobjetonet( tccomando as string, tvpar1 as variant, tvpar2 as variant, tvpar3 as variant, tvpar4 as variant, tvpar5 as variant , tvpar6 as variant, tvpar7 as variant, tvpar8 as variant ) as variant                                 
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1, lxParam2, lxParam3, lxParam4, lxParam5, lxParam6, lxParam7, lxParam8, lxParam9
+
+		lnParametros = pcount()
+		lxParam1 = tccomando
+		lxParam2 = tvpar1
+		lxParam3 = tvpar2
+		lxParam4 = tvpar3
+		lxParam5 = tvpar4
+		lxParam6 = tvpar5
+		lxParam7 = tvpar6
+		lxParam8 = tvpar7
+		lxParam9 = tvpar8
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Crearobjetonet', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	hidden function esclasenet( tcclase as string ) as boolean                                                                                                                                                                                                
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = tcclaselcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'esclasenet', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'esclasenet', lcParametros )			endif		endif		return "." $ tcClase
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	hidden function obtenernombreclase( tcclase ) as string                                                                                                                                                                                                   
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = tcclaselcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'obtenernombreclase', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'obtenernombreclase', lcParametros )			endif		endif		Local lcRetorno as String, lcNombreApp as String		if upper( substr( alltrim( tcClase ), len( alltrim( tcClase ) ) - 1 ) ) = "UO"			if !this.lEsExe and this.BuscarClase( alltrim( tcClase ) + "UO.prg" )				lcRetorno = strtran( tcClase, "Din_","" ,1 ,1 )			else				lcRetorno = tcClase			endif		else			if type( "_screen.zoo.app.cProyecto" ) = "C"				lcNombreApp = upper( _screen.zoo.app.cProyecto )			else				lcNombreApp = ""			endif							do case				case upper( left( tcClase, 4 ) ) = "ENT_"					lcRetorno = strtran( upper( tcClase ), "ENT_","" ,1 ,1 )				case upper( left( tcClase, 4 + len( lcNombreApp ) ) ) = "ENT" + lcNombreApp + "_"					lcRetorno = strtran( upper( tcClase ), "ENT" + lcNombreApp + "_", "", 1 ,1 )				case upper( left( tcClase, 11 ) ) = "DIN_ENTIDAD"					lcRetorno = strtran( tcClase, "Din_Entidad","" ,1 ,1 )				otherwise					lcRetorno = strtran( tcClase, "Din_","" ,1 ,1 )			endcase		endif		return lcRetorno
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	hidden function obtenersentenciacondesgloseparametros( tccomando as string, tcclase as string, tclibreria as string, tcapp as string, tnparametros as integer )                                                                                           
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1, lxParam2, lxParam3, lxParam4, lxParam5lnParametros = pcount()lxParam1 = tccomandolxParam2 = tcclaselxParam3 = tclibrerialxParam4 = tcapplxParam5 = tnparametroslcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'obtenersentenciaCondesgloseparametros', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'obtenersentenciaCondesgloseparametros', lcParametros )			endif		endif		local lcRetorno as string, lni as integer, lcLibreria as string, lcApp as string				if empty( tcLibreria )			lcLibreria = ""		else			lcLibreria = alltrim( tcLibreria )		endif				if empty( tcApp )			lcApp = ""		else			lcApp = alltrim( tcApp )		endif		if inlist( upper( tcComando ), "CLRCREATEOBJECT", "CLRINVOKESTATICMETHOD" )			lcRetorno = tcComando + "( '" + tcClase + "'"		else			if empty( tnParametros ) and empty( tcApp )				lcRetorno = tcComando + "( '" + tcClase + "', '" + lcLibreria + "'"			else				lcRetorno = tcComando + "( '" + tcClase + "', '" + lcLibreria + "', '" + tcApp + "'"			endif		endif				for lni = 1 to tnParametros			lcRetorno = lcRetorno + ", tvPar" + transform( lni )		endfor		lcRetorno = lcRetorno + " )"		return lcRetorno
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	protected function _anular() as void                                                                                                                                                                                                                      
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( '_anular', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	protected function _buscar() as void                                                                                                                                                                                                                      
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( '_buscar', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	protected function _cancelar() as void                                                                                                                                                                                                                    
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( '_cancelar', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	protected function _eliminarsinvalidaciones() as void                                                                                                                                                                                                     
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( '_eliminarsinvalidaciones', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	protected function _entidadeditable() as void                                                                                                                                                                                                             
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( '_entidadeditable', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	protected function _esentidadquepermitenuevo() as void                                                                                                                                                                                                    
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( '_esentidadquepermitenuevo', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	protected function _esregistroanulable() as void                                                                                                                                                                                                          
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( '_esregistroanulable', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	protected function _esregistroeliminable() as void                                                                                                                                                                                                        
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( '_esregistroeliminable', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	protected function _esregistromodificable() as void                                                                                                                                                                                                       
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( '_esregistromodificable', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	protected function _modificar() as void                                                                                                                                                                                                                   
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( '_modificar', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	protected function _nuevo() as boolean                                                                                                                                                                                                                    
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( '_nuevo', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	protected function actualizarcotizacionmoneda( txval as variant ) as void                                                                                                                                                                                 
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1
+
+		lnParametros = pcount()
+		lxParam1 = txval
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Actualizarcotizacionmoneda', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	protected function actualizardetallearticulos() as void                                                                                                                                                                                                   
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Actualizardetallearticulos', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	protected function actualizardetallesadicionales() as void                                                                                                                                                                                                
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Actualizardetallesadicionales', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	protected function agregarclaseacoleccion( tcclase as string ) as void                                                                                                                                                                                    
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = tcclaselcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'AgregarClaseAColeccion', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'AgregarClaseAColeccion', lcParametros )			endif		endif		if !alltrim( upper( "mock" ) )$alltrim( upper( tcClase ) )			_screen.oClases.Add( tcClase, sys(2007, alltrim( lower( tcClase )),0,1))		endif
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	protected function agregarcotizacionmoneda( txval as variant ) as void                                                                                                                                                                                    
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1
+
+		lnParametros = pcount()
+		lxParam1 = txval
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Agregarcotizacionmoneda', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	protected function asignarcomprobanterelacionadoafecta()                                                                                                                                                                                                  
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Asignarcomprobanterelacionadoafecta', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	protected function cargarvalorescpterelacionado( toentidad as object, torequest as object ) as void                                                                                                                                                       
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1, lxParam2
+
+		lnParametros = pcount()
+		lxParam1 = toentidad
+		lxParam2 = torequest
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Cargarvalorescpterelacionado', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	protected function completardatosencomprobanteagenerar ( tccodigo as string ) as void                                                                                                                                                                     
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1
+
+		lnParametros = pcount()
+		lxParam1 = tccodigo
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Completardatosencomprobanteagenerar', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	protected function consultarporclaveprimariasugerida() as boolean                                                                                                                                                                                         
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Consultarporclaveprimariasugerida', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	protected function debeempaquetarelcomprobante() as boolean                                                                                                                                                                                               
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Debeempaquetarelcomprobante', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	protected function debemostraradvertenciarecalculoprecios() as boolean                                                                                                                                                                                    
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Debemostraradvertenciarecalculoprecios', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	protected function debevalidaritemssinequivalencias() as void                                                                                                                                                                                             
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Debevalidaritemssinequivalencias', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	protected function deboimprimir() as boolean                                                                                                                                                                                                              
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Deboimprimir', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	protected function eliminarregistrosdeactividad() as void                                                                                                                                                                                                 
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Eliminarregistrosdeactividad', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	protected function eliminarsinvalidaciones() as void                                                                                                                                                                                                      
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Eliminarsinvalidaciones', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	protected function esatributoobligatorioexistente( tcatributo as string ) as boolean                                                                                                                                                                      
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1
+
+		lnParametros = pcount()
+		lxParam1 = tcatributo
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Esatributoobligatorioexistente', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	protected function escomprobanteconvalores() as boolean                                                                                                                                                                                                   
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Escomprobanteconvalores', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	protected function escomprobantedepago() as boolean                                                                                                                                                                                                       
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Escomprobantedepago', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	protected function esentidadquepermitenuevobasadoen() as void                                                                                                                                                                                             
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Esentidadquepermitenuevobasadoen', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	protected function esextensionvalidaparafox( tcnombre as string ) as boolean                                                                                                                                                                              
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1
+
+		lnParametros = pcount()
+		lxParam1 = tcnombre
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Esextensionvalidaparafox', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	protected function esitemgiftcard( todetalle as object, tnitem as integer ) as void                                                                                                                                                                       
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1, lxParam2
+
+		lnParametros = pcount()
+		lxParam1 = todetalle
+		lxParam2 = tnitem
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Esitemgiftcard', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	protected function esitempack( todetalle as object, tnitem as integer ) as void                                                                                                                                                                           
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1, lxParam2
+
+		lnParametros = pcount()
+		lxParam1 = todetalle
+		lxParam2 = tnitem
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Esitempack', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	protected function esitemsenia( todetalle as object, tnitem as integer ) as void                                                                                                                                                                          
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1, lxParam2
+
+		lnParametros = pcount()
+		lxParam1 = todetalle
+		lxParam2 = tnitem
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Esitemsenia', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	protected function esregistrobloqueado() as boolean                                                                                                                                                                                                       
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Esregistrobloqueado', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	protected function esregistroinactivo() as boolean                                                                                                                                                                                                        
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Esregistroinactivo', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	protected function establecertiemposenregistrodeactividad( tcitem as string ) as void                                                                                                                                                                     
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1
+
+		lnParametros = pcount()
+		lxParam1 = tcitem
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Establecertiemposenregistrodeactividad', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	protected function establecertiemposenregistrodeactividadextendido( tcitem as string ) as void                                                                                                                                                            
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1
+
+		lnParametros = pcount()
+		lxParam1 = tcitem
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Establecertiemposenregistrodeactividadextendido', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	protected function estamodificandounregistrodelince() as boolean                                                                                                                                                                                          
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Estamodificandounregistrodelince', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	protected function esvalidoatributoobligatorio( tcatributo as string, tcdescatrib as string, tcdetalle as string ) as boolean                                                                                                                             
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1, lxParam2, lxParam3
+
+		lnParametros = pcount()
+		lxParam1 = tcatributo
+		lxParam2 = tcdescatrib
+		lxParam3 = tcdetalle
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Esvalidoatributoobligatorio', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	protected function existeatributo( tcatributo as string ) as boolean                                                                                                                                                                                      
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1
+
+		lnParametros = pcount()
+		lxParam1 = tcatributo
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Existeatributo', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	protected function existeatributopk( tcatributopk as string ) as boolean                                                                                                                                                                                  
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1
+
+		lnParametros = pcount()
+		lxParam1 = tcatributopk
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Existeatributopk', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	protected function existemercaderiaentransitoactiva() as boolean                                                                                                                                                                                          
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Existemercaderiaentransitoactiva', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	protected function existemercaderiaentransitodesalidagenerada( tccomprobantegenerado as string ) as boolean                                                                                                                                               
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1
+
+		lnParametros = pcount()
+		lxParam1 = tccomprobantegenerado
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Existemercaderiaentransitodesalidagenerada', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	protected function existemovimientodestockgenerado( tccomprobantegenerado as string ) as boolean                                                                                                                                                          
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1
+
+		lnParametros = pcount()
+		lxParam1 = tccomprobantegenerado
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Existemovimientodestockgenerado', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	protected function finalizarregistrosdeactividad( tcagrupadordeactividad as string ) as void                                                                                                                                                              
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1
+
+		lnParametros = pcount()
+		lxParam1 = tcagrupadordeactividad
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Finalizarregistrosdeactividad', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	protected function formatearnumerocomprobante() as string                                                                                                                                                                                                 
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Formatearnumerocomprobante', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	protected function generarpdfsdespuesdegrabar() as zoocoleccion of zoocoleccion.prg                                                                                                                                                                       
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Generarpdfsdespuesdegrabar', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	protected function generarrecepcion( todatosgenerador as object ) as void                                                                                                                                                                                 
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1
+
+		lnParametros = pcount()
+		lxParam1 = todatosgenerador
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Generarrecepcion', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	protected function grabarsinentornovisual() as void                                                                                                                                                                                                       
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Grabarsinentornovisual', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	protected function haycuponeshuerfanos() as boolean                                                                                                                                                                                                       
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Haycuponeshuerfanos', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	protected function haycuponeshuerfanosaplicados() as boolean                                                                                                                                                                                              
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Haycuponeshuerfanosaplicados', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	protected function inicializandoentidadcomportamientosugerido( toentidadcomportamientosugerido as entidad of entidad.prg ) as void                                                                                                                        
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1
+
+		lnParametros = pcount()
+		lxParam1 = toentidadcomportamientosugerido
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Inicializandoentidadcomportamientosugerido', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	protected function inicializarcomponentes( tllimpiar as boolean ) as void                                                                                                                                                                                 
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1
+
+		lnParametros = pcount()
+		lxParam1 = tllimpiar
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Inicializarcomponentes', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	protected function inicializarcomportamientocodigosugerido( tocomportamientocodigosugerido as object ) as void                                                                                                                                            
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1
+
+		lnParametros = pcount()
+		lxParam1 = tocomportamientocodigosugerido
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Inicializarcomportamientocodigosugerido', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	protected function inicializarpreciosdelistaenarticulos() as void                                                                                                                                                                                         
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Inicializarpreciosdelistaenarticulos', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	protected function iniciarregistrodeactividad( tcactividad as string) as void                                                                                                                                                                             
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1
+
+		lnParametros = pcount()
+		lxParam1 = tcactividad
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Iniciarregistrodeactividad', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	protected function iniciarregistrodeactividadextendido( tcactividad as string) as void                                                                                                                                                                    
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1
+
+		lnParametros = pcount()
+		lxParam1 = tcactividad
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Iniciarregistrodeactividadextendido', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	protected function instanciarextension() as void                                                                                                                                                                                                          
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Instanciarextension', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	protected function limpiarregistrosdeactividadalgrabar() as void                                                                                                                                                                                          
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Limpiarregistrosdeactividadalgrabar', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	protected function llenarpreciodelistaenarticulos( todetalle as object ) as void                                                                                                                                                                          
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1
+
+		lnParametros = pcount()
+		lxParam1 = todetalle
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Llenarpreciodelistaenarticulos', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	protected function loguearaccion() as void                                                                                                                                                                                                                
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Loguearaccion', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	protected function obtenerafectantedecache( tcafectante as string ) as object                                                                                                                                                                             
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1
+
+		lnParametros = pcount()
+		lxParam1 = tcafectante
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Obtenerafectantedecache', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	protected function obtenercantidaddearticuloscargados() as void                                                                                                                                                                                           
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Obtenercantidaddearticuloscargados', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	protected function obtenercaracteresvalidos() as void                                                                                                                                                                                                     
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Obtenercaracteresvalidos', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	protected function obtenerdetalleavalidarstock() as object                                                                                                                                                                                                
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Obtenerdetalleavalidarstock', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	protected function obtenerestado() as string                                                                                                                                                                                                              
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Obtenerestado', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	protected function obtenerextensiones( tcruta as string ) as zoocoleccion of zoocoleccion.prg                                                                                                                                                             
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1
+
+		lnParametros = pcount()
+		lxParam1 = tcruta
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Obtenerextensiones', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	protected function obtenerextensionesvalidasparafox() as zoocoleccion of zoocoleccion.prg                                                                                                                                                                 
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Obtenerextensionesvalidasparafox', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	protected function obtenerhoracotizacion( toitemcotiza as object ) as string                                                                                                                                                                              
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1
+
+		lnParametros = pcount()
+		lxParam1 = toitemcotiza
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Obtenerhoracotizacion', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	protected function obteneritemauxcotiz( tcmoneda as string, tdfecha ) as object                                                                                                                                                                           
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1, lxParam2
+
+		lnParametros = pcount()
+		lxParam1 = tcmoneda
+		lxParam2 = tdfecha
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Obteneritemauxcotiz', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	protected function obtenermensajeadvertenciarecalculopreciosporfecha() as string                                                                                                                                                                          
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Obtenermensajeadvertenciarecalculopreciosporfecha', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	protected function obtenermensajeexcepcion() as string                                                                                                                                                                                                    
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Obtenermensajeexcepcion', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	protected function obtenermonedasconcotizacionobligatoria( tdfecha ) as object                                                                                                                                                                            
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1
+
+		lnParametros = pcount()
+		lxParam1 = tdfecha
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Obtenermonedasconcotizacionobligatoria', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	protected function obtenermonedasistemadefault() as void                                                                                                                                                                                                  
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Obtenermonedasistemadefault', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	protected function pedircotizacionobligatoriademoneda( tcmoneda as string, tdfecha ) as boolean                                                                                                                                                           
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1, lxParam2
+
+		lnParametros = pcount()
+		lxParam1 = tcmoneda
+		lxParam2 = tdfecha
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Pedircotizacionobligatoriademoneda', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	protected function procesarcomprobanteaempaquetar() as void                                                                                                                                                                                               
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Procesarcomprobanteaempaquetar', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	protected function recalcularimpuestosdetalleadicionales() as void                                                                                                                                                                                        
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Recalcularimpuestosdetalleadicionales', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	protected function recalcularimpuestosdetallearticulos() as void                                                                                                                                                                                          
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Recalcularimpuestosdetallearticulos', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	protected function recalcularpreciosdedetallesadicionales( tclistadeprecios as string ) as void                                                                                                                                                           
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1
+
+		lnParametros = pcount()
+		lxParam1 = tclistadeprecios
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Recalcularpreciosdedetallesadicionales', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	protected function recorreryacumular() as void                                                                                                                                                                                                            
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Recorreryacumular', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	protected function setearcotizacion() as void                                                                                                                                                                                                             
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Setearcotizacion', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	protected function setearmonedacomprobante() as void                                                                                                                                                                                                      
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Setearmonedacomprobante', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	protected function transformaralasignar( txval as variant ) as variant                                                                                                                                                                                    
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer, ;		lnIdMetodo as Integer, lnIdClase as Integer, lxParam1lnParametros = pcount()lxParam1 = txvallcParametros = ''		for lni = 1 to lnParametros			lcParam = 'lxParam' + alltrim(str(lni))			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )		endfor		lnIdClase = _screen.Mocks.BuscarMock( 'MERCADERIAENTRANSITO' )		if lnIdClase > 0			lnIdMetodo =  _screen.Mocks.BuscarMetodo( lnIdClase, 'Transformaralasignar', lcParametros )			if lnIdMetodo > 0				return this.ObtenerResultado( 'Transformaralasignar', lcParametros )			endif		endif		return txVal
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	protected function validacionescompuestas() as boolean                                                                                                                                                                                                    
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Validacionescompuestas', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	protected function validaragrupamientopublicaciones() as boolean                                                                                                                                                                                          
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Validaragrupamientopublicaciones', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	protected function validarantesdeanular() as boolean                                                                                                                                                                                                      
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Validarantesdeanular', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	protected function validarcampoobligatorioendetalle( todetalle as object, tcatributo as string, tcatributoprincipal as string ) as boolean                                                                                                                
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1, lxParam2, lxParam3
+
+		lnParametros = pcount()
+		lxParam1 = todetalle
+		lxParam2 = tcatributo
+		lxParam3 = tcatributoprincipal
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Validarcampoobligatorioendetalle', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	protected function validarcomprobantesafectantes( tcaccion as string ) as void                                                                                                                                                                            
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1
+
+		lnParametros = pcount()
+		lxParam1 = tcaccion
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Validarcomprobantesafectantes', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	protected function validarequivalencias as boolean                                                                                                                                                                                                        
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Validarequivalencias As Boolean', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	protected function validarexistencia() as boolean                                                                                                                                                                                                         
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Validarexistencia', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	protected function validarminimodereposicionalgrabar() as boolean                                                                                                                                                                                         
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Validarminimodereposicionalgrabar', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	protected function validarmostraradvertenciarecalculopreciosporcambiodefecha() as boolean                                                                                                                                                                 
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Validarmostraradvertenciarecalculopreciosporcambiodefecha', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	protected function validarsiescomprobanteenmonedaextranjera() as boolean                                                                                                                                                                                  
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Validarsiescomprobanteenmonedaextranjera', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	protected function validarsifuegeneradoporunamercaderiaentransito() as boolean                                                                                                                                                                            
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Validarsifuegeneradoporunamercaderiaentransito', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	protected function validarstockdispoiblealgrabar() as boolean                                                                                                                                                                                             
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Validarstockdispoiblealgrabar', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	protected function validarundetalle( todetalle as detalle of detalle.prg, tcetiqueta as string ) as boolean                                                                                                                                               
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1, lxParam2
+
+		lnParametros = pcount()
+		lxParam1 = todetalle
+		lxParam2 = tcetiqueta
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Validarundetalle', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	protected function verificaragrupublidetallesindatos() as void                                                                                                                                                                                            
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Verificaragrupublidetallesindatos', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	protected function verificaratributoencombinacion( tcatributo as string ) as boolean                                                                                                                                                                      
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1
+
+		lnParametros = pcount()
+		lxParam1 = tcatributo
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Verificaratributoencombinacion', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	protected function verificardiferenciasdeatributosstock( tcentidad as string ) as boolean                                                                                                                                                                 
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+		local lxParam1
+
+		lnParametros = pcount()
+		lxParam1 = tcentidad
+
+		lcParametros = ''
+		for lni = 1 to lnParametros
+			lcParam = 'lxParam' + alltrim(str(lni))
+			lcParametros = lcParametros + iif( !empty(lcParametros),',','') + iif( vartype( &lcParam ) = 'O' or isnull(&lcParam), "'*OBJETO'", goLibrerias.ValorAString( &lcParam ) )
+		endfor
+
+		return this.ObtenerResultado( 'Verificardiferenciasdeatributosstock', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	protected function verificardisponibilidadtalonario() as void                                                                                                                                                                                             
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Verificardisponibilidadtalonario', lcParametros )
+	EndFunc
+
+	*-----------------------------------------------------------------------------------------
+	protected function verificaroperatoriaenbasea() as boolean                                                                                                                                                                                                
+		local lcParametros as string, lcParam as string, lni as integer, lnParametros as integer
+
+		lnParametros = pcount()
+
+		lcParametros = ''
+
+		return this.ObtenerResultado( 'Verificaroperatoriaenbasea', lcParametros )
+	EndFunc
+
+
+enddefine

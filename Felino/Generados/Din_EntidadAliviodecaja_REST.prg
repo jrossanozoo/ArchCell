@@ -1,0 +1,171 @@
+
+define class Din_EntidadAliviodecaja_REST as ServicioRestOperacionesEntidad of ServicioRestOperacionesEntidad.prg
+
+	cNamespaceDTOs = "ZooLogicSA.OrganicServiciosREST.Felino.Generados.DTO.Aliviodecaja"
+	cClaseResponse = this.cNamespaceDTOs + ".AliviodecajaResponse"
+	cClaseModelo = "AliviodecajaModelo"
+	cEntidad = "Aliviodecaja"
+	lPermiteModificacion = .f.
+
+	*-----------------------------------------------------------------------------------------
+	protected function ObtenerClavePrimariaEnModeloRequest( toModeloRequest as Object ) as Variant
+		return _Screen.Dotnetbridge.ObtenerValorPropiedad( toModeloRequest, "Codigo" )
+	endfunc
+	
+	*-----------------------------------------------------------------------------------------
+	protected function SetearClavePrimaria( toEntidad as Object, txValor as Variant ) as Void
+		toEntidad.Codigo = txValor 
+	endfunc
+	
+	*-----------------------------------------------------------------------------------------
+	protected function SetearClavePrimariaPorId( toEntidad as Object, tcId as String ) as Void
+		toEntidad.Codigo = tcId
+	endfunc
+	
+	*-----------------------------------------------------------------------------------------
+	function ObtenerClaseRequest( tcOperacion as String ) as String
+		local lcRetorno as String
+		do case
+			case tcOperacion == "Nuevo"
+				lcRetorno = this.cNamespaceDTOs + "." + "AliviodecajaModelo"
+			case tcOperacion == "Eliminar"
+				lcRetorno = "ZooLogicSA.OrganicServiciosREST.DTO.Base.MostrarBase"
+			case tcOperacion == "Modificar"
+				lcRetorno = this.cNamespaceDTOs + "." + "AliviodecajaModelo"
+			case tcOperacion == "Mostrar"
+				lcRetorno = "ZooLogicSA.OrganicServiciosREST.DTO.Base.MostrarBase"
+			case tcOperacion == "Listar"
+				lcRetorno = this.cNamespaceDTOs + "." + "AliviodecajaListarRequest"
+			case "Accion" $ tcOperacion
+				lcRetorno = "ZooLogicSA.OrganicServiciosREST.DTO.Base.MostrarBase"
+			otherwise
+				goServicios.Errores.LevantarExcepcionTexto( tcOperacion + " no implementada.")
+		endcase
+		return lcRetorno
+	endfunc
+	
+	*-----------------------------------------------------------------------------------------
+	function ObtenerClaseResponse( tcOperacion as String ) as String
+		local lcRetorno as String
+		do case
+			case tcOperacion == "Listar"
+				lcRetorno = this.cNamespaceDTOs + "." + "AliviodecajaListarResponse"
+			otherwise
+				lcRetorno = this.cNamespaceDTOs + "." + "AliviodecajaModelo"
+		endcase
+		return lcRetorno
+	endfunc
+	
+	*-----------------------------------------------------------------------------------------
+	protected function ObtenerCursorIds( toEntidad as Object, tcFiltro as String, tcOrderBy as String, tnCantidad as Integer, tnPagina as Integer ) as String
+		return toEntidad.oAd.ObtenerIdentificadoresPaginado( tcOrderBy, tcFiltro, tnCantidad, tnPagina )
+	endfunc
+	
+	*-----------------------------------------------------------------------------------------
+	protected function SetearEntidadConDatosModelo( toEntidad as Object, toModeloEnRequest as Object ) as Void
+		with toEntidad
+			this.SetearAtributoModeloEnEntidad( toModeloEnRequest, "Codigo", toEntidad, "Codigo" )
+			this.SetearAtributoModeloEnEntidad( toModeloEnRequest, "Descripcion", toEntidad, "Descripcion" )
+			this.SetearAtributoModeloEnEntidad( toModeloEnRequest, "Basededatos", toEntidad, "Basededatos" )
+			this.SetearAtributoModeloEnEntidad( toModeloEnRequest, "Tipoalivio", toEntidad, "Tipoalivio" )
+			this.SetearDetalleDetallealivio( toEntidad, toModeloEnRequest )
+			this.SetearAtributoModeloEnEntidad( toModeloEnRequest, "Observacion", toEntidad, "Observacion" )
+		endwith
+	endfunc
+	
+	*-----------------------------------------------------------------------------------------
+	protected function SetearDetalleDetalleAlivio( toEntidad as Object, toModeloEnRequest as Object ) as Void
+		local lnI as Integer, loItem as Object, lnCantidad as Integer, loDetalle as Object 
+		local loError as Exception
+		loDetalle = _Screen.DotNetBridge.ObtenerValorPropiedad( toModeloEnRequest, "DetalleAlivio" )
+		lnCantidad = _Screen.DotNetBridge.ObtenerValorPropiedad( loDetalle, "Count" )
+		for lnI = 1 to lnCantidad 
+			loItem = _Screen.DotNetBridge.ObtenerValorPropiedad( toModeloEnRequest,"DetalleAlivio[" + transform( lnI -1 ) + "]" )
+			lnNroItem = _Screen.DotNetBridge.ObtenerValorPropiedad( loItem ,"NroItem" )
+			if isnull( lnNroItem )
+				toEntidad.DetalleAlivio.LimpiarItem()
+			else
+				try
+					toEntidad.DetalleAlivio.CargarItem( lnNroItem )
+				Catch To loError
+					toEntidad.DetalleAlivio.LimpiarItem()
+				endtry 
+			endif
+			this.SetearAtributoModeloEnEntidad( loItem, "Caja", toEntidad.DetalleAlivio.oItem, "Caja" )
+			this.SetearAtributoModeloEnEntidad( loItem, "Cajadetalle", toEntidad.DetalleAlivio.oItem, "CajaDetalle" )
+			this.SetearAtributoModeloEnEntidad( loItem, "Valor", toEntidad.DetalleAlivio.oItem, "Valor_PK" )
+			this.SetearAtributoModeloEnEntidad( loItem, "Valordetalle", toEntidad.DetalleAlivio.oItem, "ValorDetalle" )
+			this.SetearAtributoModeloEnEntidad( loItem, "Montoadvertencia", toEntidad.DetalleAlivio.oItem, "MontoAdvertencia" )
+			this.SetearAtributoModeloEnEntidad( loItem, "Montomaximo", toEntidad.DetalleAlivio.oItem, "MontoMaximo" )
+			toEntidad.DetalleAlivio.Actualizar()
+			
+		endfor
+	endfunc
+	
+	*-----------------------------------------------------------------------------------------
+	protected function CargarModeloResponse( toModeloResponse as Object, toEntidad as Object ) as Void
+		with toModeloResponse
+			this.CargarAtributosFW(toModeloResponse, toEntidad )
+			this.SetearAtributoString( toModeloResponse, "Codigo", toEntidad.Codigo)
+			this.SetearAtributoString( toModeloResponse, "Descripcion", toEntidad.Descripcion)
+			this.SetearAtributoString( toModeloResponse, "BaseDeDatos", toEntidad.BaseDeDatos)
+			this.SetearAtributoInteger( toModeloResponse, "TipoAlivio", toEntidad.TipoAlivio)
+			this.CargarColeccionModeloDetalleAlivio( toModeloResponse, toEntidad )
+			this.SetearAtributo( toModeloResponse, "Observacion", toEntidad.Observacion)
+		endwith
+	endfunc
+	
+	*-----------------------------------------------------------------------------------------
+	protected function CargarColeccionModeloDetalleAlivio( toModeloResponse as Object, toEntidad as Object ) as Void
+		local lnI as Integer, loColeccionModelo as Object
+		loColeccionModelo = _Screen.DotNetBridge.ObtenerValorPropiedad( toModeloResponse, "DetalleAlivio" ) 
+		with toEntidad
+			for lnI = 1 to .DetalleAlivio.Count
+				loItem = _Screen.DotNetBridge.CrearObjeto( this.cNamespaceDTOs + ".ItemAlivio" )
+				this.SetearAtributoString( loItem, "Codigo", .DetalleAlivio.Item(lnI).Codigo)
+				this.SetearAtributoInteger( loItem, "Caja", .DetalleAlivio.Item(lnI).Caja)
+				this.SetearAtributoString( loItem, "CajaDetalle", .DetalleAlivio.Item(lnI).CajaDetalle)
+				this.SetearAtributoString( loItem, "Valor", .DetalleAlivio.Item(lnI).Valor_PK)
+				this.SetearAtributoString( loItem, "ValorDetalle", .DetalleAlivio.Item(lnI).ValorDetalle)
+				this.SetearAtributoDecimal( loItem, "MontoAdvertencia", .DetalleAlivio.Item(lnI).MontoAdvertencia)
+				this.SetearAtributoDecimal( loItem, "MontoMaximo", .DetalleAlivio.Item(lnI).MontoMaximo)
+				this.SetearAtributoInteger( loItem, "NroItem", .DetalleAlivio.Item(lnI).NroItem )
+				_Screen.DotNetBridge.InvocarMetodo( loColeccionModelo, "Add", loItem) 
+			endfor
+		endwith
+	endfunc
+	
+	*-----------------------------------------------------------------------------------------
+	protected function ObtenerFiltroSegunModeloRequest( toModeloRequest as Object ) as String
+		local lcCampos as String, lcFiltro as String, loModeloRequest as Object, lcOrden as String, lcXml as String, lnI as Integer, lcOrderBy
+		
+		lcFiltro = "1=1"
+		
+		lcFiltro = this.AgregarCondicionesFWAFiltro( lcFiltro, toModeloRequest )
+		
+		lcFiltro = this.AgregarCondicionAFiltro( lcFiltro, toModeloRequest, "Descripcion", "DESCRI")
+		lcFiltro = this.AgregarCondicionAFiltro( lcFiltro, toModeloRequest, "Basededatos", "BASEDATOS")
+		lcFiltro = this.AgregarCondicionAFiltro( lcFiltro, toModeloRequest, "Tipoalivio", "TIPOALIVIO")
+		lcFiltro = this.AgregarCondicionAFiltro( lcFiltro, toModeloRequest, "Observacion", "CONVERT( VARCHAR(MAX), OBS)")
+		return lcFiltro 
+	endfunc
+	
+	*-----------------------------------------------------------------------------------------
+	protected function ObtenerBusquedaSegunModeloRequest( toRequest as Object ) as String
+		local lcCampos as String, lcFiltro as String, loModeloRequest as Object, lcOrden as String, lcXml as String, lnI as Integer, lcOrderBy
+		
+		lcRetorno = ""
+		lcExpresionBusqueda = _screen.DotNetBridge.ObtenerValorPropiedad( toRequest, "ExpresionBusqueda" )
+		
+		if !isnull( lcExpresionBusqueda )
+			lcRetorno = iif( !empty( lcRetorno ), lcRetorno + " OR ", "" ) + "Codigo LIKE '%" + lcExpresionBusqueda + "%'"
+			lcRetorno = iif( !empty( lcRetorno ), lcRetorno + " OR ", "" ) + "Descri LIKE '%" + lcExpresionBusqueda + "%'"
+			lcRetorno = iif( !empty( lcRetorno ), lcRetorno + " OR ", "" ) + "Basedatos LIKE '%" + lcExpresionBusqueda + "%'"
+			lcRetorno = iif( !empty( lcRetorno ), lcRetorno + " OR ", "" ) + "Obs LIKE '%" + lcExpresionBusqueda + "%'"
+		endif
+	
+		return lcRetorno 
+	endfunc
+	
+
+enddefine
